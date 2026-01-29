@@ -172,433 +172,324 @@
 
 <body class="bg-cream text-slate-900 antialiased">
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-slate-800 text-white z-50 shadow-lg" x-data="{ mobileMenuOpen: false }">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <!-- Logo -->
-                <a href="index.html" class="flex items-center space-x-3">
-                    <svg class="w-12 h-12" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="25" r="12" stroke="currentColor" stroke-width="3" fill="none" />
-                        <path d="M15 40 Q50 20, 85 40" stroke="currentColor" stroke-width="3" fill="none"
-                            stroke-linecap="round" />
-                    </svg>
-                    <div>
-                        <div class="text-2xl font-sans font-bold tracking-wider">HORIZON WILLS</div>
-                        <div class="text-xs text-slate-300 tracking-widest">PROTECTING YOUR ASSETS</div>
-                    </div>
-                </a>
+    <header class="sticky top-0">
+        <!-- Navigation -->
+        <nav class="  w-full bg-slate-800 text-white z-50 shadow-lg" x-data="{ mobileMenuOpen: false }">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <!-- Logo -->
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <svg class="w-12 h-12" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="25" r="12" stroke="currentColor" stroke-width="3" fill="none" />
+                            <path d="M15 40 Q50 20, 85 40" stroke="currentColor" stroke-width="3" fill="none"
+                                stroke-linecap="round" />
+                        </svg>
+                        <div>
+                            <div class="text-2xl font-sans font-bold tracking-wider">HORIZON WILLS</div>
+                            <div class="text-xs text-slate-300 tracking-widest">PROTECTING YOUR ASSETS</div>
+                        </div>
+                    </a>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <div class="relative group">
-                        <button
-                            class="flex items-center gap-2 font-sans tracking-wide text-sm  text-slate-100/90 hover:text-primary-500 transition-colors">
-                            <span>About Us</span>
-                            <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180" fill="none"
-                                viewBox="0 0 12 12" stroke="currentColor">
-                                <path d="M3 4l3 3 3-3" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </button>
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex items-center space-x-8">
+                        <div class="relative group">
+                            <button
+                                class="flex items-center gap-2 font-sans tracking-wide text-sm  text-slate-100/90 hover:text-primary-500 transition-colors">
+                                <span>About Us</span>
+                                <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180"
+                                    fill="none" viewBox="0 0 12 12" stroke="currentColor">
+                                    <path d="M3 4l3 3 3-3" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </button>
 
-                        <div
-                            class="absolute left-1/2 -translate-x-1/2 top-full mt-4 opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-all duration-200">
                             <div
-                                class="flex w-[420px] bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white rounded-3xl shadow-2xl border border-white/10 overflow-hidden ring-1 ring-primary-500/40">
-                                <div class="w-1/2 bg-primary-900/60 p-4 space-y-5">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-primary-100 font-semibold">About
-                                        us
+                                class="absolute left-1/2 -translate-x-1/2 top-full mt-4 opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-all duration-200">
+                                <div
+                                    class="flex w-[420px] bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white rounded-3xl shadow-2xl border border-white/10 overflow-hidden ring-1 ring-primary-500/40">
+                                    <div class="w-1/2 bg-primary-900/60 p-4 space-y-5">
+                                        <p class="text-xs uppercase tracking-[0.3em] text-primary-100 font-semibold">
+                                            About
+                                            us
+                                        </p>
+                                        <ul class="space-y-3 text-sm text-primary-100">
+                                            <li
+                                                class="group rounded-xl transition-colors duration-200 hover:bg-white/10 about-dropdown-item">
+                                                <a href="horizon-wills.html"
+                                                    class="flex items-center gap-3 px-2 py-2 text-white">
+                                                    <div
+                                                        class="w-8 h-8 rounded-2xl bg-white/10 border border-white/30 shadow flex items-center justify-center text-white">
+                                                        <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path
+                                                                d="M9 4a1 1 0 112 0v2h2a1 1 0 110 2h-2v2h2a1 1 0 110 2h-2v2a1 1 0 11-2 0v-2h-2a1 1 0 110-2h2V8H7a1 1 0 110-2h2V4z" />
+                                                        </svg>
+                                                    </div>
+                                                    <span
+                                                        class="font-semibold text-sm transition-colors duration-200 group-hover:text-white">HORIZON
+                                                        WILLS</span>
+                                                </a>
+                                            </li>
+                                            <li
+                                                class="flex items-center gap-3 group rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-white/10 about-dropdown-item">
+                                                <a href="guides.html"
+                                                    class="flex items-center gap-3 px-2 py-2 text-white">
+                                                    <div
+                                                        class="w-8 h-8 rounded-2xl bg-white/10 border border-white/30 shadow flex items-center justify-center text-white">
+                                                        <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path
+                                                                d="M4 3a2 2 0 00-2 2v9a2 2 0 002 2h5v-2H4V9h6v2l4-3-4-3v2H4V5h10V3H4z" />
+                                                        </svg>
+                                                    </div>
+                                                    <span
+                                                        class="font-semibold text-sm transition-colors duration-200 group-hover:text-white">Guides</span>
+                                                </a>
+                                            </li>
+                                            <li
+                                                class="flex items-center gap-3 group rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-white/10 about-dropdown-item">
+
+                                                <div
+                                                    class="w-8 h-8 rounded-2xl bg-white/10 border border-white/30 shadow flex items-center justify-center text-white">
+                                                    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fill-rule="evenodd"
+                                                            d="M10 3a1 1 0 01.894.553l2 4A1 1 0 0112 9H8a1 1 0 01-.894-1.447l2-4A1 1 0 0110 3zm-4.382 5.447A1 1 0 015.618 9H7v7a1 1 0 002 0v-3h2v3a1 1 0 002 0V9h1.382a1 1 0 00.894-1.447l-2-4a1 1 0 00-1.788 0l-2 4a1 1 0 01-.894.447H5.618z"
+                                                            clip-rule="evenodd" />
+                                                    </svg>
+                                                </div>
+                                                <span
+                                                    class="font-semibold text-sm transition-colors duration-200 group-hover:text-white">Careers</span>
+                                            </li>
+                                            <li
+                                                class="flex items-center gap-3 group rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-white/10 about-dropdown-item">
+
+                                                <div
+                                                    class="w-8 h-8 rounded-2xl bg-white/10 border border-white/30 shadow flex items-center justify-center text-white">
+                                                    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path d="M2 5a2 2 0 012-2h12a2 2 0 012 2v3l-8 4-8-4V5z" />
+                                                        <path d="M2 10l8 4 8-4v5a2 2 0 01-2 2H4a2 2 0 01-2-2v-5z" />
+                                                    </svg>
+                                                </div>
+                                                <span
+                                                    class="font-semibold text-sm transition-colors duration-200 group-hover:text-white">Contact
+                                                    Us</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="w-1/2 p-6 flex flex-col justify-between bg-white text-slate-900">
+                                        <div class="space-y-4">
+                                            <div class="flex items-center gap-2 text-primary-700">
+                                                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M12 3v18M5 9l7-6 7 6" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                <span class="font-semibold tracking-wide">Not sure where to
+                                                    start?</span>
+                                            </div>
+                                            <p class="text-sm text-slate-600 leading-relaxed">Take the 1 min quiz to
+                                                discover the right estate plan for you.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative group">
+                            <button
+                                class="flex items-center gap-2 font-sans tracking-wide text-sm text-slate-100/90 hover:text-primary-500 transition-colors">
+                                <span>Plan for Death</span>
+                                <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180"
+                                    fill="none" viewBox="0 0 12 12" stroke="currentColor">
+                                    <path d="M3 4l3 3 3-3" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </button>
+
+                            <div
+                                class="absolute left-1/2 -translate-x-1/2 top-full mt-4 opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-all duration-200">
+                                <div
+                                    class="w-[360px] bg-white rounded-3xl shadow-2xl border border-primary-100 p-6 text-slate-900 ring-1 ring-primary-200/60">
+                                    <p class="text-xs uppercase tracking-[0.3em] text-primary-500 font-semibold mb-4">
+                                        Plan
+                                        for
+                                        Death
                                     </p>
-                                    <ul class="space-y-3 text-sm text-primary-100">
-                                        <li
-                                            class="group rounded-xl transition-colors duration-200 hover:bg-white/10 about-dropdown-item">
-                                            <a href="horizon-wills.html"
-                                                class="flex items-center gap-3 px-2 py-2 text-white">
-                                                <div
-                                                    class="w-8 h-8 rounded-2xl bg-white/10 border border-white/30 shadow flex items-center justify-center text-white">
-                                                    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path
-                                                            d="M9 4a1 1 0 112 0v2h2a1 1 0 110 2h-2v2h2a1 1 0 110 2h-2v2a1 1 0 11-2 0v-2h-2a1 1 0 110-2h2V8H7a1 1 0 110-2h2V4z" />
-                                                    </svg>
-                                                </div>
-                                                <span
-                                                    class="font-semibold text-sm transition-colors duration-200 group-hover:text-white">HORIZON
-                                                    WILLS</span>
-                                            </a>
-                                        </li>
-                                        <li
-                                            class="flex items-center gap-3 group rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-white/10 about-dropdown-item">
-                                            <a href="guides.html" class="flex items-center gap-3 px-2 py-2 text-white">
-                                                <div
-                                                    class="w-8 h-8 rounded-2xl bg-white/10 border border-white/30 shadow flex items-center justify-center text-white">
-                                                    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path
-                                                            d="M4 3a2 2 0 00-2 2v9a2 2 0 002 2h5v-2H4V9h6v2l4-3-4-3v2H4V5h10V3H4z" />
-                                                    </svg>
-                                                </div>
-                                                <span
-                                                    class="font-semibold text-sm transition-colors duration-200 group-hover:text-white">Guides</span>
-                                            </a>
-                                        </li>
-                                        <li
-                                            class="flex items-center gap-3 group rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-white/10 about-dropdown-item">
-
+                                    <ul class="space-y-3 text-sm">
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
                                             <div
-                                                class="w-8 h-8 rounded-2xl bg-white/10 border border-white/30 shadow flex items-center justify-center text-white">
-                                                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd"
-                                                        d="M10 3a1 1 0 01.894.553l2 4A1 1 0 0112 9H8a1 1 0 01-.894-1.447l2-4A1 1 0 0110 3zm-4.382 5.447A1 1 0 015.618 9H7v7a1 1 0 002 0v-3h2v3a1 1 0 002 0V9h1.382a1 1 0 00.894-1.447l-2-4a1 1 0 00-1.788 0l-2 4a1 1 0 01-.894.447H5.618z"
-                                                        clip-rule="evenodd" />
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M5 20h14M7 20V4l10 3v13" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
                                                 </svg>
                                             </div>
-                                            <span
-                                                class="font-semibold text-sm transition-colors duration-200 group-hover:text-white">Careers</span>
+                                            <div>
+                                                <p class="font-semibold text-slate-900">Will Writing</p>
+                                                <p class="text-slate-500 text-xs">Write a will tailored to you</p>
+                                            </div>
                                         </li>
-                                        <li
-                                            class="flex items-center gap-3 group rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-white/10 about-dropdown-item">
-
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
                                             <div
-                                                class="w-8 h-8 rounded-2xl bg-white/10 border border-white/30 shadow flex items-center justify-center text-white">
-                                                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path d="M2 5a2 2 0 012-2h12a2 2 0 012 2v3l-8 4-8-4V5z" />
-                                                    <path d="M2 10l8 4 8-4v5a2 2 0 01-2 2H4a2 2 0 01-2-2v-5z" />
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path
+                                                        d="M12 21s8-4.5 8-10.5S15.5 3 12 6.5C8.5 3 4 4.5 4 10.5S12 21 12 21z"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
                                             </div>
-                                            <span
-                                                class="font-semibold text-sm transition-colors duration-200 group-hover:text-white">Contact
-                                                Us</span>
+                                            <div>
+                                                <p class="font-semibold text-slate-900">Life Insurance</p>
+                                                <p class="text-slate-500 text-xs">Protection for the 21st century</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
+                                            <div
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M12 12l-5-5m5 5l5-5m-5 5v9" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-slate-900">Lasting Power of Attorney</p>
+                                                <p class="text-slate-500 text-xs">Choose who makes decisions for you</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
+                                            <div
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M4 7h16M6 7V5a4 4 0 118 0v2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M8 7V5a4 4 0 0116 0v2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-slate-900">Legacy Box</p>
+                                                <p class="text-slate-500 text-xs">Make life easier for loved ones</p>
+                                            </div>
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="w-1/2 p-6 flex flex-col justify-between bg-white text-slate-900">
-                                    <div class="space-y-4">
-                                        <div class="flex items-center gap-2 text-primary-700">
-                                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="1.5">
-                                                <path d="M12 3v18M5 9l7-6 7 6" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                            <span class="font-semibold tracking-wide">Not sure where to start?</span>
-                                        </div>
-                                        <p class="text-sm text-slate-600 leading-relaxed">Take the 1 min quiz to
-                                            discover the right estate plan for you.</p>
-                                    </div>
+                            </div>
+                        </div>
+
+                        <div class="relative group">
+                            <button
+                                class="flex items-center gap-2 font-sans tracking-wide text-sm text-slate-100/90 hover:text-primary-500 transition-colors">
+                                <span>Get Support After Loss</span>
+                                <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180"
+                                    fill="none" viewBox="0 0 12 12" stroke="currentColor">
+                                    <path d="M3 4l3 3 3-3" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </button>
+
+                            <div
+                                class="absolute left-1/2 -translate-x-1/2 top-full mt-4 opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-all duration-200">
+                                <div
+                                    class="w-[340px] bg-white rounded-3xl shadow-2xl border border-primary-100 p-6 text-slate-900 ring-1 ring-primary-200/60">
+                                    <p class="text-xs uppercase tracking-[0.3em] text-primary-500 font-semibold mb-4">
+                                        Get
+                                        Support
+                                        After Loss
+                                    </p>
+                                    <ul class="space-y-3 text-sm">
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
+                                            <div
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path
+                                                        d="M12 21s-7-4.5-7-10.5a4 4 0 014-4c1.2 0 2.3.6 3 1.5A4 4 0 0115 6.5a4 4 0 014 4C19 16.5 12 21 12 21z"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-slate-900">Bereavement Support Hubs</p>
+                                                <p class="text-slate-500 text-xs">Build a supportive community</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
+                                            <div
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M6 19h12M6 5h12M9 5v14M15 5v14" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-slate-900">Probate</p>
+                                                <p class="text-slate-500 text-xs">Guidance through probate</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
+                                            <div
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M4 5h4l2 4h6a2 2 0 012 2v5h-4" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M9 21h6" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-slate-900">Dedicated Concierge</p>
+                                                <p class="text-slate-500 text-xs">Personal support after loss</p>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="relative group">
+
                         <button
-                            class="flex items-center gap-2 font-sans tracking-wide text-sm text-slate-100/90 hover:text-primary-500 transition-colors">
-                            <span>Plan for Death</span>
-                            <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180" fill="none"
-                                viewBox="0 0 12 12" stroke="currentColor">
-                                <path d="M3 4l3 3 3-3" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
+                            class="text-pink-400  py-2 transition-all hover:text-primary-100 font-sans font-semibold">
+                            Sign in
                         </button>
-
-                        <div
-                            class="absolute left-1/2 -translate-x-1/2 top-full mt-4 opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-all duration-200">
-                            <div
-                                class="w-[360px] bg-white rounded-3xl shadow-2xl border border-primary-100 p-6 text-slate-900 ring-1 ring-primary-200/60">
-                                <p class="text-xs uppercase tracking-[0.3em] text-primary-500 font-semibold mb-4">Plan
-                                    for
-                                    Death
-                                </p>
-                                <ul class="space-y-3 text-sm">
-                                    <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
-                                        <div
-                                            class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
-                                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="1.5">
-                                                <path d="M5 20h14M7 20V4l10 3v13" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p class="font-semibold text-slate-900">Will Writing</p>
-                                            <p class="text-slate-500 text-xs">Write a will tailored to you</p>
-                                        </div>
-                                    </li>
-                                    <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
-                                        <div
-                                            class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
-                                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="1.5">
-                                                <path
-                                                    d="M12 21s8-4.5 8-10.5S15.5 3 12 6.5C8.5 3 4 4.5 4 10.5S12 21 12 21z"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p class="font-semibold text-slate-900">Life Insurance</p>
-                                            <p class="text-slate-500 text-xs">Protection for the 21st century</p>
-                                        </div>
-                                    </li>
-                                    <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
-                                        <div
-                                            class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
-                                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="1.5">
-                                                <path d="M12 12l-5-5m5 5l5-5m-5 5v9" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p class="font-semibold text-slate-900">Lasting Power of Attorney</p>
-                                            <p class="text-slate-500 text-xs">Choose who makes decisions for you</p>
-                                        </div>
-                                    </li>
-                                    <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
-                                        <div
-                                            class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
-                                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="1.5">
-                                                <path d="M4 7h16M6 7V5a4 4 0 118 0v2" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M8 7V5a4 4 0 0116 0v2" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p class="font-semibold text-slate-900">Legacy Box</p>
-                                            <p class="text-slate-500 text-xs">Make life easier for loved ones</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
 
-                    <div class="relative group">
-                        <button
-                            class="flex items-center gap-2 font-sans tracking-wide text-sm text-slate-100/90 hover:text-primary-500 transition-colors">
-                            <span>Get Support After Loss</span>
-                            <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180" fill="none"
-                                viewBox="0 0 12 12" stroke="currentColor">
-                                <path d="M3 4l3 3 3-3" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </button>
-
-                        <div
-                            class="absolute left-1/2 -translate-x-1/2 top-full mt-4 opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-all duration-200">
-                            <div
-                                class="w-[340px] bg-white rounded-3xl shadow-2xl border border-primary-100 p-6 text-slate-900 ring-1 ring-primary-200/60">
-                                <p class="text-xs uppercase tracking-[0.3em] text-primary-500 font-semibold mb-4">Get
-                                    Support
-                                    After Loss
-                                </p>
-                                <ul class="space-y-3 text-sm">
-                                    <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
-                                        <div
-                                            class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
-                                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="1.5">
-                                                <path
-                                                    d="M12 21s-7-4.5-7-10.5a4 4 0 014-4c1.2 0 2.3.6 3 1.5A4 4 0 0115 6.5a4 4 0 014 4C19 16.5 12 21 12 21z"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p class="font-semibold text-slate-900">Bereavement Support Hubs</p>
-                                            <p class="text-slate-500 text-xs">Build a supportive community</p>
-                                        </div>
-                                    </li>
-                                    <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
-                                        <div
-                                            class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
-                                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="1.5">
-                                                <path d="M6 19h12M6 5h12M9 5v14M15 5v14" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p class="font-semibold text-slate-900">Probate</p>
-                                            <p class="text-slate-500 text-xs">Guidance through probate</p>
-                                        </div>
-                                    </li>
-                                    <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
-                                        <div
-                                            class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
-                                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="1.5">
-                                                <path d="M4 5h4l2 4h6a2 2 0 012 2v5h-4" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M9 21h6" stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p class="font-semibold text-slate-900">Dedicated Concierge</p>
-                                            <p class="text-slate-500 text-xs">Personal support after loss</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="text-pink-400  py-2 transition-all hover:text-primary-100 font-sans font-semibold">
-                        Sign in
+                    <!-- Mobile Menu Button -->
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                            <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
                     </button>
                 </div>
 
-                <!-- Mobile Menu Button -->
-                <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12" />
-                        <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                        <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
+                <!-- Mobile Menu -->
+                <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 transform scale-95"
+                    x-transition:enter-end="opacity-100 transform scale-100"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 transform scale-100"
+                    x-transition:leave-end="opacity-0 transform scale-95" class="md:hidden mt-4 pb-4 space-y-4">
+                    <a href="#about" class="block hover:text-primary-300 transition-colors">About Us</a>
+                    <a href="#planning" class="block hover:text-primary-300 transition-colors">Plan for Death</a>
+                    <a href="#support" class="block hover:text-primary-300 transition-colors">Get Support After Loss</a>
+                    <button class="bg-white text-slate-800 px-6 py-2 rounded-full transition-colors w-full">
+                        Take the Quiz
+                    </button>
+                </div>
             </div>
-
-            <!-- Mobile Menu -->
-            <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200"
-                x-transition:enter-start="opacity-0 transform scale-95"
-                x-transition:enter-end="opacity-100 transform scale-100"
-                x-transition:leave="transition ease-in duration-150"
-                x-transition:leave-start="opacity-100 transform scale-100"
-                x-transition:leave-end="opacity-0 transform scale-95" class="md:hidden mt-4 pb-4 space-y-4">
-                <a href="#about" class="block hover:text-primary-300 transition-colors">About Us</a>
-                <a href="#planning" class="block hover:text-primary-300 transition-colors">Plan for Death</a>
-                <a href="#support" class="block hover:text-primary-300 transition-colors">Get Support After Loss</a>
-                <button class="bg-white text-slate-800 px-6 py-2 rounded-full transition-colors w-full">
-                    Take the Quiz
-                </button>
-            </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section
-        class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-primary-900 to-black text-white pt-20 overflow-hidden">
-        <!-- Background image overlay effect -->
-        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-primary-900/60 to-black/80"></div>
-
-        <!-- Animated background elements -->
-        <div class="absolute inset-0 opacity-30">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-primary-600 rounded-full blur-3xl animate-float"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-primary-500 rounded-full blur-3xl animate-float"
-                style="animation-delay: 2s;"></div>
-        </div>
-
-        <div class="container mx-auto px-6 py-20 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="space-y-8 animate-fade-in-up" data-animate data-animate-direction="up">
-
-                    <h1 class="text-5xl md:text-7xl font-bold leading-tight text-balance uppercase">
-                        Protecting Your Assets And Securing Your Future
-                    </h1>
-                    <p class="text-xl md:text-2xl text-primary-200 font-body max-w-xl text-balance leading-relaxed">
-                        Professional will writing and estate planning services. Create your legally-binding will online
-                        in as little as 15 minutes.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                        <button
-                            class="bg-white text-slate-900 px-10 py-4 rounded-lg font-sans font-bold text-lg hover:bg-primary-100 transition-all hover:scale-105 shadow-2xl uppercase tracking-wide">
-                            Get Started Now
-                        </button>
-                        <button
-                            class="border-2 border-white px-10 py-4 rounded-lg font-sans font-bold text-lg hover:bg-white hover:text-slate-900 transition-all uppercase tracking-wide">
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Hexagonal Icons Grid - Matching Banner Design -->
-                <div class="relative animate-fade-in-delay" data-animate data-animate-direction="left"
-                    data-animate-delay="0.15s">
-
-                    <!-- Main hexagonal layout -->
-                    <div class="grid grid-cols-2 gap-8 items-center">
-                        <!-- Row 1 - Left side hexagons -->
-                        <div class="space-y-8">
-                            <!-- Financial Assets Hexagon -->
-                            <div class="relative group">
-                                <div
-                                    class="hexagon w-40 h-40 bg-primary-600/20 backdrop-blur-sm border-2 border-white/30 mx-auto flex items-center justify-center hover:bg-primary-500/30 transition-all duration-300">
-                                    <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0111 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                                <p class="text-center mt-3 font-semibold text-sm">Financial<br />Assets</p>
-                            </div>
-
-                            <!-- Property Hexagon -->
-                            <div class="relative group">
-                                <div
-                                    class="hexagon w-40 h-40 bg-primary-600/20 backdrop-blur-sm border-2 border-white/30 mx-auto flex items-center justify-center hover:bg-primary-500/30 transition-all duration-300">
-                                    <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                                    </svg>
-                                </div>
-                                <p class="text-center mt-3 font-semibold text-sm">Property &<br />Real Estate</p>
-                            </div>
-                        </div>
-
-                        <!-- Row 2 - Right side hexagons -->
-                        <div class="space-y-8 mt-16">
-                            <!-- Legal Balance Hexagon -->
-                            <div class="relative group">
-                                <div
-                                    class="hexagon w-40 h-40 bg-primary-600/20 backdrop-blur-sm border-2 border-white/30 mx-auto flex items-center justify-center hover:bg-primary-500/30 transition-all duration-300">
-                                    <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
-                                        <path d="M13 7h2a1 1 0 011 1v1a1 1 0 11-2 0V8h-1a1 1 0 110-2h1V7z" />
-                                    </svg>
-                                </div>
-                                <p class="text-center mt-3 font-semibold text-sm">Legal<br />Protection</p>
-                            </div>
-
-                            <!-- Will Document Hexagon - Larger -->
-                            <div class="relative group">
-                                <div
-                                    class="hexagon w-52 h-52 bg-primary-600/20 backdrop-blur-sm border-2 border-white/30 mx-auto flex items-center justify-center hover:bg-primary-500/30 transition-all duration-300">
-                                    <div class="text-center">
-                                        <div class="text-4xl font-bold mb-2">WILL</div>
-                                        <div class="space-y-1">
-                                            <div class="h-1 w-16 bg-white mx-auto"></div>
-                                            <div class="h-1 w-12 bg-white mx-auto"></div>
-                                            <div class="h-1 w-16 bg-white mx-auto"></div>
-                                            <div class="h-1 w-14 bg-white mx-auto"></div>
-                                            <div class="h-1 w-16 bg-white mx-auto"></div>
-                                            <div class="h-1 w-10 bg-white mx-auto"></div>
-                                        </div>
-                                        <svg class="w-8 h-8 mx-auto mt-2" fill="currentColor" viewBox="0 0 20 20">
-                                            <path
-                                                d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <p class="text-center mt-3 font-semibold">Estate Planning<br />Documents</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Scroll indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-        </div>
+    <section class="min-h-screen  ">
+        <img src="/assets/img/hero.jpeg" alt="Estate planning illustration"
+            class="w-full h-full object-cover object-center" />
     </section>
 
     <!-- Why Create A Will Section -->
@@ -882,7 +773,7 @@
         <div class="container mx-auto px-6">
             <div class="text-center mb-16 space-y-4" data-animate data-animate-direction="up">
 
-                <h2 class="text-5xl md:text-6xl font-serif font-bold text-primary-900">Planning for Death</h2>
+                <h2 class="text-5xl md:text-6xl font-serif font-bold text-primary-900">Managing Your Affairs</h2>
                 <p class="text-xl text-slate-700 max-w-2xl mx-auto font-body">
                     Prepare the essential details that will help your loved ones during difficult times
                 </p>
