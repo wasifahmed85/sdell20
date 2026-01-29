@@ -139,6 +139,34 @@
         .hexagon {
             clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
         }
+
+        [data-animate] {
+            opacity: 0;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            will-change: opacity, transform;
+        }
+
+        [data-animate]:not([data-animate-direction]),
+        [data-animate-direction="up"] {
+            transform: translateY(32px);
+        }
+
+        [data-animate-direction="down"] {
+            transform: translateY(-32px);
+        }
+
+        [data-animate-direction="left"] {
+            transform: translateX(40px);
+        }
+
+        [data-animate-direction="right"] {
+            transform: translateX(-40px);
+        }
+
+        [data-animate].animate-in {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
     </style>
 </head>
 
@@ -191,7 +219,7 @@
                                                     class="w-8 h-8 rounded-2xl bg-white/10 border border-white/30 shadow flex items-center justify-center text-white">
                                                     <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
                                                         <path
-                                                            d="M9 4a1 1 0 112 0v2h2a1 1 0 110 2h-2v2h2a1 1 0 110 2h-2v2a1 1 0 11-2 0v-2H7a1 1 0 110-2h2V8H7a1 1 0 110-2h2V4z" />
+                                                            d="M9 4a1 1 0 112 0v2h2a1 1 0 110 2h-2v2h2a1 1 0 110 2h-2v2a1 1 0 11-2 0v-2h-2a1 1 0 110-2h2V8H7a1 1 0 110-2h2V4z" />
                                                     </svg>
                                                 </div>
                                                 <span
@@ -465,7 +493,8 @@
 
         <div class="container mx-auto px-6 py-20 relative z-10">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="space-y-8 animate-fade-in-up">
+                <div class="space-y-8 animate-fade-in-up" data-animate data-animate-direction="up">
+
                     <h1 class="text-5xl md:text-7xl font-bold leading-tight text-balance uppercase">
                         Protecting Your Assets And Securing Your Future
                     </h1>
@@ -486,7 +515,9 @@
                 </div>
 
                 <!-- Hexagonal Icons Grid - Matching Banner Design -->
-                <div class="relative animate-fade-in-delay">
+                <div class="relative animate-fade-in-delay" data-animate data-animate-direction="left"
+                    data-animate-delay="0.15s">
+
                     <!-- Main hexagonal layout -->
                     <div class="grid grid-cols-2 gap-8 items-center">
                         <!-- Row 1 - Left side hexagons -->
@@ -499,7 +530,7 @@
                                         <path
                                             d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
                                         <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0111 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
                                             clip-rule="evenodd" />
                                     </svg>
                                 </div>
@@ -527,8 +558,8 @@
                                     class="hexagon w-40 h-40 bg-primary-600/20 backdrop-blur-sm border-2 border-white/30 mx-auto flex items-center justify-center hover:bg-primary-500/30 transition-all duration-300">
                                     <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd"
-                                            d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1zm-5 8.274l-.818 2.552c.25.112.526.174.818.174.292 0 .569-.062.818-.174L5 10.274zm10 0l-.818 2.552c.25.112.526.174.818.174.292 0 .569-.062.818-.174L15 10.274z"
-                                            clip-rule="evenodd" />
+                                            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
+                                        <path d="M13 7h2a1 1 0 011 1v1a1 1 0 11-2 0V8h-1a1 1 0 110-2h1V7z" />
                                     </svg>
                                 </div>
                                 <p class="text-center mt-3 font-semibold text-sm">Legal<br />Protection</p>
@@ -573,7 +604,8 @@
     <!-- Why Create A Will Section -->
     <section class="py-24 bg-white">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16 space-y-4">
+            <div class="text-center mb-16 space-y-4" data-animate data-animate-direction="down">
+
                 <h2 class="text-5xl md:text-6xl font-serif font-bold text-primary-900">Why Should You Create A Will?
                 </h2>
                 <p class="text-xl text-slate-700 max-w-2xl mx-auto font-body">
@@ -581,7 +613,8 @@
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto" data-animate
+                data-animate-direction="up" data-animate-delay="0.1s">
                 <!-- Reason 1 -->
                 <div
                     class="feature-card bg-gradient-to-br from-pink-50 to-pink-100 border-4 border-pink-300 rounded-3xl p-8 text-center shadow-lg">
@@ -635,7 +668,7 @@
                             <path
                                 d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
                             <path fill-rule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0111 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
                                 clip-rule="evenodd" />
                         </svg>
                     </div>
@@ -659,7 +692,7 @@
                         <svg class="w-14 h-14 text-accent-green" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
                                 clip-rule="evenodd" />
-                            <path d="M13 7h2a1 1 0 011 1v1a1 1 0 11-2 0V8h-1a1 1 0 110-2z" />
+                            <path d="M13 7h2a1 1 0 011 1v1a1 1 0 11-2 0V8h-1a1 1 0 110-2h1V7z" />
                         </svg>
                     </div>
                     <div class="flex items-center justify-center gap-2 mb-3">
@@ -681,7 +714,8 @@
     <!-- How It Works Section -->
     <section class="py-24 bg-cream">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16 space-y-4">
+            <div class="text-center mb-16 space-y-4" data-animate data-animate-direction="up">
+
                 <h2 class="text-5xl md:text-6xl font-serif font-bold text-primary-900">
                     Quick Guide to Will Writing Online
                 </h2>
@@ -690,7 +724,8 @@
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto" data-animate data-animate-direction="up"
+                data-animate-delay="0.1s">
                 <!-- Step 1 -->
                 <div class="text-center space-y-6">
                     <div class="relative inline-block">
@@ -760,10 +795,12 @@
     <section class="py-24 bg-slate-900 text-white">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-                <div class="space-y-6 order-2 md:order-1">
+                <div class="space-y-6 order-2 md:order-1" data-animate data-animate-direction="right">
+
                     <h2 class="text-4xl md:text-5xl font-serif font-bold">
                         My Will Dashboard
                     </h2>
+
                     <p class="text-xl text-slate-200 leading-relaxed font-body">
                         Welcome to your online will writing service. It can take as little as 15 minutes to create your
                         will through our simple, step-by-step process.
@@ -817,7 +854,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="order-1 md:order-2">
+                <div class="order-1 md:order-2" data-animate data-animate-direction="left" data-animate-delay="0.15s">
+
                     <div class="bg-white rounded-3xl p-8 shadow-2xl">
                         <div class="bg-cream rounded-2xl p-8 border-2 border-slate-100">
                             <h3 class="text-3xl font-serif font-bold text-primary-900 mb-4">
@@ -842,14 +880,16 @@
     <!-- Planning for Death Section -->
     <section id="planning" class="py-24 bg-cream">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16 space-y-4">
+            <div class="text-center mb-16 space-y-4" data-animate data-animate-direction="up">
+
                 <h2 class="text-5xl md:text-6xl font-serif font-bold text-primary-900">Planning for Death</h2>
                 <p class="text-xl text-slate-700 max-w-2xl mx-auto font-body">
                     Prepare the essential details that will help your loved ones during difficult times
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto" data-animate
+                data-animate-direction="up" data-animate-delay="0.1s">
                 <!-- Feature Card 1 -->
                 <div class="feature-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl">
                     <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mb-6">
@@ -947,14 +987,18 @@
     <section class="py-20 bg-white">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-                <div class="order-2 md:order-1">
+                <div class="order-2 md:order-1" data-animate data-animate-direction="left">
+
                     <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&h=600&fit=crop"
                         alt="Family gathering" class="rounded-3xl shadow-2xl w-full h-auto">
                 </div>
-                <div class="order-1 md:order-2 space-y-6">
+                <div class="order-1 md:order-2 space-y-6" data-animate data-animate-direction="right"
+                    data-animate-delay="0.1s">
+
                     <h2 class="text-4xl md:text-5xl font-serif font-bold text-primary-900">
                         It's for the ones we love
                     </h2>
+
                     <p class="text-lg text-slate-700 leading-relaxed font-body">
                         Planning ahead isn't just about organization—it's an act of love. By documenting your wishes
                         and important information now, you're giving your family the gift of clarity and peace of mind
@@ -979,14 +1023,16 @@
         </div>
 
         <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center mb-16 space-y-4">
+            <div class="text-center mb-16 space-y-4" data-animate data-animate-direction="up">
+
                 <h2 class="text-5xl md:text-6xl font-serif font-bold">Finding Support After a Loss</h2>
                 <p class="text-xl text-slate-200 max-w-2xl mx-auto font-body">
                     Resources and guidance to help you navigate grief and handle practical matters
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto" data-animate
+                data-animate-direction="up" data-animate-delay="0.1s">
                 <!-- Support Card 1 -->
                 <div
                     class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all">
@@ -1047,7 +1093,8 @@
         </div>
 
         <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-4xl mx-auto text-center space-y-8">
+            <div class="max-w-4xl mx-auto text-center space-y-8" data-animate data-animate-direction="up">
+
                 <h2 class="text-5xl md:text-6xl font-serif font-bold">
                     Start Protecting Your Legacy Today
                 </h2>
@@ -1153,7 +1200,7 @@
             <div class="border-t border-slate-800 pt-8 mt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                     <p class="text-slate-300 text-sm">
-                        © 2026 Horizon Wills. All rights reserved.
+                        &copy; 2026 Horizon Wills. All rights reserved.
                     </p>
                     <div class="flex space-x-6 text-sm text-slate-300">
                         <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
@@ -1164,6 +1211,26 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const animatedSections = document.querySelectorAll('[data-animate]');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const delay = el.dataset.animateDelay || '0s';
+                    el.style.transitionDelay = delay;
+                    el.classList.add('animate-in');
+                    observer.unobserve(el);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -10% 0px'
+        });
+
+        animatedSections.forEach(section => observer.observe(section));
+    </script>
 
 </body>
 
