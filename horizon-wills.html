@@ -9,9 +9,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -29,15 +27,55 @@
                             800: '#002a3e',
                             900: '#00151f',
                         },
+                        slate: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334e68',
+                            800: '#243b53',
+                            900: '#1e293b',
+                        },
                         accent: {
                             pink: '#ec4899',
-                            sand: '#f0e7db'
-                        }
+                            blue: '#3b82f6',
+                            yellow: '#fbbf24',
+                            green: '#10b981',
+                            purple: '#8b5cf6',
+                        },
+                        cream: '#f8f6f0',
+                        sand: '#e8e4d9',
                     },
                     fontFamily: {
-                        serif: ['Cormorant Garamond', 'serif'],
-                        sans: ['Inter', 'system-ui', 'sans-serif']
-                    }
+                        'serif': ['Cormorant Garamond', 'Georgia', 'serif'],
+                        'body': ['Lora', 'Georgia', 'serif'],
+                        'display': ['Crimson Text', 'Georgia', 'serif'],
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'fade-in-delay': 'fadeIn 0.8s ease-out 0.2s both',
+                        'fade-in-delay-2': 'fadeIn 0.8s ease-out 0.4s both',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                    },
                 }
             }
         }
@@ -45,16 +83,55 @@
     <style>
         body {
             font-family: 'Inter', system-ui, sans-serif;
-            background: #f8f6f0;
+            background: #ffffff;
         }
 
-        .text-balance {
-            text-wrap: balance;
+        .hero-gradient {
+            background: linear-gradient(180deg,
+                    rgba(0, 21, 31, 0.9) 0%,
+                    rgba(0, 42, 62, 0.85) 55%,
+                    rgba(0, 105, 155, 0.75) 100%);
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-text {
+            transition: color 0.3s ease;
+        }
+
+        .mission-section {
+            background: linear-gradient(180deg, #cce1eb 20%, #f8f6f0 100%);
+        }
+
+        .team-photo {
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #cce1eb;
+            background-color: #f8f6f0;
+        }
+
+        .quote-section {
+            background: linear-gradient(180deg, #00699bbf 0%, #00151f 100%);
+        }
+
+        .cta-section {
+            background: linear-gradient(180deg, #f8f6f0 0%, #e8e4d9 100%);
+        }
+
+        .scrollbar-hide {
+            scrollbar-width: none;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
         }
     </style>
 </head>
 
-<body class="bg-cream text-slate-900 antialiased">
+<body class="bg-white text-slate-900 antialiased">
+    <!-- Keep your existing navigation -->
     <nav class="fixed top-0 w-full bg-slate-800 text-white z-50 shadow-lg" x-data="{ mobileMenuOpen: false }">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
@@ -349,379 +426,224 @@
         </div>
     </nav>
 
-    <header class="bg-gradient-to-r from-primary-900 via-primary-800 to-primary-600 text-white pt-32">
-        <div class="container mx-auto px-6 py-6 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div>
-                <p class="text-sm tracking-[0.4em] uppercase text-primary-200">Horizon Wills</p>
-                <h1 class="text-4xl md:text-5xl font-serif font-semibold text-balance leading-tight">Protecting families
-                    with empathetic estate planning</h1>
-                <p class="mt-3 text-primary-100 max-w-2xl">Learn who we are, the values guiding our work, and how we
-                    combine tradition with technology to make planning effortless.</p>
+    <main>
+        <!-- Hero Section with scrolling text color change -->
+        <section class="hero-gradient pt-20">
+            <div class="container mx-auto px-6 text-center">
+                <h1 id="heroText" class="hero-text text-5xl md:text-7xl font-light leading-tight max-w-4xl mx-auto">
+                    Death can feel like the full stop at the end of our lives.
+                </h1>
             </div>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <a href="index.html"
-                    class="inline-flex items-center justify-center gap-2 rounded-full border border-white/50 px-6 py-3 font-semibold hover:bg-white/10 transition">
-                    ⟵ Back to Home
-                </a>
-                <a href="#contact"
-                    class="inline-flex items-center justify-center gap-2 rounded-full bg-white text-primary-800 px-6 py-3 font-semibold hover:bg-primary-50 transition">
-                    Talk to a Planner
-                </a>
-            </div>
-        </div>
-    </header>
+        </section>
 
-    <main class="space-y-0">
-        <!-- Heritage + Image Story -->
-        <section class="bg-white py-20">
-            <div class="container mx-auto px-6 grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
-                <div class="space-y-6">
-                    <p class="text-sm uppercase tracking-[0.35em] text-primary-500">Our legacy</p>
-                    <h2 class="text-4xl md:text-5xl font-serif text-primary-900 text-balance">A studio-born firm with
-                        global reach</h2>
-                    <p class="text-lg text-slate-600 leading-relaxed">Horizon Wills started in a Clerkenwell design
-                        studio where a duo of solicitors and service designers reimagined estate planning. Today, our
-                        team spans probate lawyers, technologists, grief-trained concierges, and product researchers who
-                        keep every journey deeply personal.</p>
-                    <div class="grid sm:grid-cols-3 gap-4">
-                        <div class="rounded-2xl border border-primary-100 bg-primary-50/60 p-5">
-                            <p class="text-xs uppercase tracking-[0.4em] text-primary-500">Families</p>
-                            <p class="text-3xl font-serif font-semibold text-primary-900">24k+</p>
-                            <p class="text-sm text-slate-600">Documents drafted, updated, and notarised.</p>
-                        </div>
-                        <div class="rounded-2xl border border-primary-100 bg-white p-5 shadow-sm">
-                            <p class="text-xs uppercase tracking-[0.4em] text-primary-500">Partner firms</p>
-                            <p class="text-3xl font-serif font-semibold text-primary-900">180</p>
-                            <p class="text-sm text-slate-600">Private banks, IFAs, and charity partners.</p>
-                        </div>
-                        <div class="rounded-2xl border border-primary-100 bg-white p-5 shadow-sm">
-                            <p class="text-xs uppercase tracking-[0.4em] text-primary-500">Avg. response</p>
-                            <p class="text-3xl font-serif font-semibold text-primary-900">21 min</p>
-                            <p class="text-sm text-slate-600">Live concierge support 7 days a week.</p>
+        <!-- Mission Section -->
+        <section class="mission-section py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <div
+                        class="w-16 h-16 mx-auto mb-6 rounded-full bg-white border-2 border-slate-300 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-slate-700" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 6v6l4 2" />
+                        </svg>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-light text-slate-900 mb-6">Our mission</h2>
+                    <p class="text-lg text-slate-600 leading-relaxed">
+                        Death is inevitable. Losing what and who you love is hard. But doing nothing about it is harder.
+                        We plan to prevent the people you'll leave behind from spending precious time figuring out what
+                        to do next, and more time living the life you've left them.
+                    </p>
+                </div>
+
+                <!-- Video Placeholder -->
+                <div class="max-w-4xl mx-auto">
+                    <div
+                        class="aspect-video bg-gradient-to-br from-slate-200 to-slate-300 rounded-3xl overflow-hidden shadow-2xl">
+                        <video class="w-full h-full object-cover" loop playsinline controls
+                            poster="https://a.storyblok.com/f/309177/2620x1458/648998649c/video-thumbnail.avif">
+                            <source
+                                src="https://a.storyblok.com/f/309177/x/1bfef5d928/oct_leg_0005_legacy_box_all-contributors_v2_16x9.mp4"
+                                type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Job Section -->
+        <section class="mission-section  py-24">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="order-2 lg:order-1 flex justify-center lg:justify-start">
+                        <div class="max-w-[580px] rounded-xl shadow-2xl border border-primary-100">
+                            <img src="https://a.storyblok.com/f/309177/867x867/5b4a9d2eba/sam-mum.jpeg"
+                                alt="Family legacy moments" class="w-full rounded-xl object-cover" loading="lazy" />
                         </div>
                     </div>
+                    <div class=" order-1 lg:order-2 space-y-6 text-center lg:text-left">
+                        <p class="uppercase tracking-[0.35em] text-primary-500 text-xs">Why we exist</p>
+                        <h2 class="text-4xl md:text-5xl font-light text-primary-900 leading-tight">
+                            Our job is to bring death to life.
+                        </h2>
+                        <p class="text-lg text-primary-800 leading-relaxed">
+                            Born after Sam's mum died in a car accident, we know the difference a good plan makes
+                            — and what it’s like when there isn’t one. We see a world where you work out your
+                            personal
+                            meaning of legacy by talking about death with people you love.
+                        </p>
+                        <p class="text-lg text-primary-800 leading-relaxed">
+                            We’re here to make that happen by guiding every conversation and detail with empathy.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <a href="#planning"
+                                class="inline-flex items-center justify-center gap-2 rounded-full bg-primary-900 text-white px-8 py-3 text-sm font-semibold shadow-md hover:bg-primary-800 transition">
+                                Plan for death →
+                            </a>
+                            <a href="#support"
+                                class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-primary-900 text-primary-900 px-8 py-3 text-sm font-semibold hover:bg-primary-100 transition">
+                                Get support after loss →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="bg-primary-50 py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-4xl md:text-5xl font-light text-slate-900 mb-4">Meet the team</h2>
+                    <p class="text-lg text-slate-600">
+                        We're a creative bunch who are here to make all of life's admin easier.
+                    </p>
+                </div>
+
+                <!-- Team Photo -->
+                <div class="max-w-5xl mx-auto">
+                    <div class="team-photo shadow-2xl">
+                        <img src="https://octopuslegacy.com/build/assets/meetTheTeam-BtHz-ds9.avif"
+                            alt="Horizon Wills team" class="w-full h-full object-cover" loading="lazy" />
+                    </div>
+                </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="quote-section py-24">
+            <div class="max-w-7xl mx-auto px-7 text-center text-white space-y-10">
+                <div class="space-y-4">
+                    <h2 class="text-3xl md:text-4xl font-light">These people are talking about death and creating their
+                        legacy.</h2>
+                    <p class="text-lg text-primary-50/80">Join the conversation. Read what they have to say.</p>
                 </div>
                 <div class="relative">
-                    <div class="rounded-[32px] bg-primary-900/90 text-white p-10 shadow-2xl">
-                        <p class="text-sm uppercase tracking-[0.4em] text-primary-100">Human-first promise</p>
-                        <h3 class="text-2xl font-serif mt-3">Care that feels like family</h3>
-                        <p class="text-primary-100 mt-4 leading-relaxed">Every household receives a dedicated guide
-                            who coordinates legal drafting, notarisation, secure storage, and bereavement logistics. We
-                            log every decision, give allies the right permissions, and keep you updated via in-app
-                            stories, calls, or doorstep visits.</p>
-                        <ul class="mt-6 space-y-3 text-sm text-white/90">
-                            <li class="flex items-start gap-3"><span
-                                    class="w-2.5 h-2.5 rounded-full bg-accent-pink mt-1"></span>Dedicated concierge +
-                                legal duo from onboarding to probate.</li>
-                            <li class="flex items-start gap-3"><span
-                                    class="w-2.5 h-2.5 rounded-full bg-primary-200 mt-1"></span>Encrypted digital vault
-                                mirrored across HMCTS-compliant servers.</li>
-                            <li class="flex items-start gap-3"><span
-                                    class="w-2.5 h-2.5 rounded-full bg-primary-400 mt-1"></span>Same-day amendments for
-                                life events and cross-border assets.</li>
-                        </ul>
-                    </div>
-                    <div
-                        class="hidden md:block absolute -bottom-6 -left-6 w-44 h-44 rounded-3xl bg-gradient-to-br from-primary-500/20 to-primary-900/40 blur-3xl">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Metrics + Trust Bar -->
-        <section class="bg-gradient-to-br from-cream via-white to-sand py-16">
-            <div class="container mx-auto px-6 space-y-8">
-                <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-                    <div>
-                        <p class="text-sm uppercase tracking-[0.35em] text-primary-500">Impact snapshot</p>
-                        <h2 class="text-3xl font-serif text-primary-900">What families trust us with every week</h2>
-                    </div>
-                    <div class="flex flex-wrap gap-4 text-sm text-slate-600">
-                        <span
-                            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-primary-100"><span
-                                class="w-2 h-2 rounded-full bg-primary-500"></span> SRA regulated</span>
-                        <span
-                            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-primary-100"><span
-                                class="w-2 h-2 rounded-full bg-accent-pink"></span> ISO 27001 vaults</span>
-                        <span
-                            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-primary-100"><span
-                                class="w-2 h-2 rounded-full bg-primary-300"></span> HMCTS partner</span>
-                    </div>
-                </div>
-                <div class="grid md:grid-cols-4 gap-6">
-                    <div class="rounded-3xl bg-white border border-primary-100 p-6 shadow-sm">
-                        <p class="text-xs uppercase tracking-[0.4em] text-primary-500">Live will creations</p>
-                        <p class="text-4xl font-serif text-primary-900 mt-3">320</p>
-                        <p class="text-sm text-slate-600">document journeys per month.</p>
-                    </div>
-                    <div class="rounded-3xl bg-white border border-primary-100 p-6 shadow-sm">
-                        <p class="text-xs uppercase tracking-[0.4em] text-primary-500">Estate audits</p>
-                        <p class="text-4xl font-serif text-primary-900 mt-3">82</p>
-                        <p class="text-sm text-slate-600">cross-border reviews in Q4.</p>
-                    </div>
-                    <div class="rounded-3xl bg-white border border-primary-100 p-6 shadow-sm">
-                        <p class="text-xs uppercase tracking-[0.4em] text-primary-500">Power of attorney</p>
-                        <p class="text-4xl font-serif text-primary-900 mt-3">140</p>
-                        <p class="text-sm text-slate-600">LPAs filed every 30 days.</p>
-                    </div>
-                    <div class="rounded-3xl bg-white border border-primary-100 p-6 shadow-sm">
-                        <p class="text-xs uppercase tracking-[0.4em] text-primary-500">Bereavement support</p>
-                        <p class="text-4xl font-serif text-primary-900 mt-3">96%</p>
-                        <p class="text-sm text-slate-600">clients feel “fully supported”.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Craft + Technology narrative -->
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-6 space-y-12">
-                <div class="flex flex-col lg:flex-row gap-12">
-                    <div class="lg:w-1/2 space-y-4">
-                        <p class="text-sm uppercase tracking-[0.4em] text-primary-500">Craft & technology</p>
-                        <h2 class="text-3xl font-serif text-primary-900">The Horizon method</h2>
-                        <p class="text-slate-600 leading-relaxed">We pair discreet human interviews with proprietary
-                            workflow tech. Every milestone is time-stamped, version-controlled, and shareable with the
-                            inner circle you nominate.</p>
-                    </div>
-                    <div class="lg:w-1/2 grid sm:grid-cols-2 gap-6">
-                        <article class="rounded-2xl border border-primary-100 p-6 bg-primary-50/60">
-                            <h3 class="text-xl font-serif text-primary-900">01. Discovery ateliers</h3>
-                            <p class="text-sm text-slate-600 mt-3">Design-led interviews uncover values, guardianship
-                                wishes, and edge cases before drafting begins.</p>
-                        </article>
-                        <article class="rounded-2xl border border-primary-100 p-6 bg-white">
-                            <h3 class="text-xl font-serif text-primary-900">02. Scenario modelling</h3>
-                            <p class="text-sm text-slate-600 mt-3">We stress-test multi-generational scenarios with our
-                                estate analytics engine and share a visual plan.</p>
-                        </article>
-                        <article class="rounded-2xl border border-primary-100 p-6 bg-white">
-                            <h3 class="text-xl font-serif text-primary-900">03. Concierge execution</h3>
-                            <p class="text-sm text-slate-600 mt-3">Witnessing, notarisation, asset schedules, and secure
-                                uploads handled without you leaving home.</p>
-                        </article>
-                        <article class="rounded-2xl border border-primary-100 p-6 bg-primary-900 text-white">
-                            <h3 class="text-xl font-serif">04. Ongoing stewardship</h3>
-                            <p class="text-sm text-primary-100 mt-3">Annual life-audit, bereavement hotlines, and
-                                instant
-                                amendments via encrypted vault messaging.</p>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Leadership -->
-        <section class="bg-primary-900 text-white py-20">
-            <div class="container mx-auto px-6 space-y-10">
-                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-                    <div class="space-y-3">
-                        <p class="text-sm uppercase tracking-[0.35em] text-primary-200">Leadership</p>
-                        <h2 class="text-4xl font-serif">Guides who bridge legal, tech, and care</h2>
-                        <p class="text-primary-100 max-w-2xl">Our leadership bench blends decades of City law
-                            experience, NHS bereavement practice, and venture-backed product building.</p>
-                    </div>
-                    <a href="#contact"
-                        class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/30 px-6 py-3 text-sm font-semibold hover:bg-white/20 transition">Meet
-                        us live →</a>
-                </div>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <article class="bg-white/5 rounded-3xl p-6 border border-white/10">
-                        <h3 class="text-2xl font-serif">Sienna Rahman</h3>
-                        <p class="text-primary-100 text-sm">Managing Partner &amp; Solicitor</p>
-                        <p class="mt-4 text-sm text-primary-100/80">Former Linklaters private wealth lawyer, Sienna
-                            oversees regulated services and strategic charity alliances.</p>
-                    </article>
-                    <article class="bg-white/5 rounded-3xl p-6 border border-white/10">
-                        <h3 class="text-2xl font-serif">Jacob Luo</h3>
-                        <p class="text-primary-100 text-sm">Chief Experience Officer</p>
-                        <p class="mt-4 text-sm text-primary-100/80">Leads product, research, and the secure vault team
-                            after a decade at Monzo and NHS Digital.</p>
-                    </article>
-                    <article class="bg-white/5 rounded-3xl p-6 border border-white/10">
-                        <h3 class="text-2xl font-serif">Dr. Amina Patel</h3>
-                        <p class="text-primary-100 text-sm">Head of Bereavement Care</p>
-                        <p class="mt-4 text-sm text-primary-100/80">Psychologist spearheading loss support hubs and
-                            training every concierge in trauma-informed communication.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Timeline -->
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center max-w-2xl mx-auto space-y-3">
-                    <p class="text-sm uppercase tracking-[0.35em] text-primary-500">Milestones</p>
-                    <h2 class="text-3xl font-serif text-primary-900">From pop-up studio to nationwide concierge</h2>
-                    <p class="text-slate-600">Key chapters that shaped how we care for families today.</p>
-                </div>
-                <div class="mt-12 relative">
-                    <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-0.5 h-full bg-primary-100"></div>
-                    <div class="space-y-12">
-                        <div class="relative md:flex md:items-center">
-                            <div class="md:w-1/2 md:pr-12">
-                                <p class="text-sm text-primary-500 uppercase tracking-[0.3em]">2012</p>
-                                <h3 class="text-2xl font-serif text-primary-900">Horizon launches</h3>
-                                <p class="text-slate-600">We host estate-planning pop-ups inside design studios,
-                                    blending legal rigour with service design.</p>
+                    <button type="button"
+                        class="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full border border-white/20 text-primary-50/70 hover:bg-white/10"
+                        data-slider="reviews" data-direction="prev">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6" />
+                        </svg>
+                    </button>
+                    <button type="button"
+                        class="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full border border-white/20 text-primary-50/70 hover:bg-white/10"
+                        data-slider="reviews" data-direction="next">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6" />
+                        </svg>
+                    </button>
+                    <div class="overflow-x-auto pb-6 scrollbar-hide" id="reviews-slider">
+                        <div class="flex gap-4 min-w-[900px] snap-x snap-mandatory">
+                            <div
+                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
+                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
+                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
+                                    <span>Invited</span>
+                                </div>
+                                <h3 class="mt-4 text-sm font-semibold text-white">Chris was so easy to talk to</h3>
+                                <p class="text-xs text-primary-50/70 mt-2">Chris was so easy to talk to and he listened
+                                    and addressed our concerns very personal.</p>
+                                <p class="text-[11px] text-primary-100/60 mt-3">Mark Hirst • 18 hours ago</p>
                             </div>
                             <div
-                                class="hidden md:block w-6 h-6 rounded-full bg-primary-500 border-4 border-white shadow absolute left-1/2 -translate-x-1/2">
-                            </div>
-                            <div class="md:w-1/2 md:pl-12 mt-4 md:mt-0">
-                                <p class="text-sm text-primary-500 uppercase tracking-[0.3em]">2016</p>
-                                <h3 class="text-2xl font-serif text-primary-900">Digital vault debuts</h3>
-                                <p class="text-slate-600">First encrypted portal launches with smart nudges and
-                                    real-time executor guidance.</p>
-                            </div>
-                        </div>
-                        <div class="relative md:flex md:items-center">
-                            <div class="md:w-1/2 md:pr-12">
-                                <p class="text-sm text-primary-500 uppercase tracking-[0.3em]">2020</p>
-                                <h3 class="text-2xl font-serif text-primary-900">National bereavement hubs</h3>
-                                <p class="text-slate-600">We partner with hospices to create concierge-led support
-                                    networks across the UK.</p>
+                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
+                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
+                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
+                                    <span>Invited</span>
+                                </div>
+                                <h3 class="mt-4 text-sm font-semibold text-white">Legacy issues</h3>
+                                <p class="text-xs text-primary-50/70 mt-2">Impressed by the way the consultant dug
+                                    deeply into the issues with me.</p>
+                                <p class="text-[11px] text-primary-100/60 mt-3">P. Murray • 10 hours ago</p>
                             </div>
                             <div
-                                class="hidden md:block w-6 h-6 rounded-full bg-primary-500 border-4 border-white shadow absolute left-1/2 -translate-x-1/2">
+                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
+                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
+                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
+                                    <span>Invited</span>
+                                </div>
+                                <h3 class="mt-4 text-sm font-semibold text-white">Knowledgeable and attentive</h3>
+                                <p class="text-xs text-primary-50/70 mt-2">Very attentive and pleasant advisor who
+                                    listened and was skilful for my will.</p>
+                                <p class="text-[11px] text-primary-100/60 mt-3">B. H • 15 hours ago</p>
                             </div>
-                            <div class="md:w-1/2 md:pl-12 mt-4 md:mt-0">
-                                <p class="text-sm text-primary-500 uppercase tracking-[0.3em]">2024</p>
-                                <h3 class="text-2xl font-serif text-primary-900">Cross-border intelligence</h3>
-                                <p class="text-slate-600">AI-assisted scenario planning launches for clients with
-                                    assets in 19 jurisdictions.</p>
+                            <div
+                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
+                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
+                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
+                                    <span>Invited</span>
+                                </div>
+                                <h3 class="mt-4 text-sm font-semibold text-white">Very informative review</h3>
+                                <p class="text-xs text-primary-50/70 mt-2">We had a very informative review of our
+                                    estate planning needs following the creation.</p>
+                                <p class="text-[11px] text-primary-100/60 mt-3">Andrew Hutchinson • 18 hours ago</p>
+                            </div>
+                            <div
+                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
+                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
+                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
+                                    <span>Invited</span>
+                                </div>
+                                <h3 class="mt-4 text-sm font-semibold text-white">Seamless process</h3>
+                                <p class="text-xs text-primary-50/70 mt-2">Seamless process to date from enquiry through
+                                    identification of most suitable type.</p>
+                                <p class="text-[11px] text-primary-100/60 mt-3">Stuart Trower • 18 hours ago</p>
+                            </div>
+                            <div
+                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
+                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
+                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
+                                    <span>Invited</span>
+                                </div>
+                                <h3 class="mt-4 text-sm font-semibold text-white">Kind, clear guidance</h3>
+                                <p class="text-xs text-primary-50/70 mt-2">Guidance was kind, clear, and made complex
+                                    paperwork easy to sign off.</p>
+                                <p class="text-[11px] text-primary-100/60 mt-3">Rebecca L • 1 day ago</p>
+                            </div>
+                            <div
+                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
+                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
+                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
+                                    <span>Invited</span>
+                                </div>
+                                <h3 class="mt-4 text-sm font-semibold text-white">Handled every detail</h3>
+                                <p class="text-xs text-primary-50/70 mt-2">They handled every detail for our family,
+                                    leaving us free to focus on each other.</p>
+                                <p class="text-[11px] text-primary-100/60 mt-3">Omar K • 2 days ago</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Testimonials / Quote -->
-        <section class="bg-primary-50 py-20">
-            <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-4">
-                    <p class="text-sm uppercase tracking-[0.35em] text-primary-500">Client words</p>
-                    <h2 class="text-3xl font-serif text-primary-900">“They took the overwhelm away”</h2>
-                    <p class="text-slate-600">We invite real families to co-design our flows. Their stories shape the
-                        scripts, timelines, and rituals we craft.</p>
-                    <div class="space-y-6">
-                        <figure class="bg-white rounded-3xl border border-primary-100 p-6 shadow-sm">
-                            <blockquote class="text-primary-900 text-lg font-serif">“The concierge texted reminders to
-                                my siblings, couriered the documents, and organised a Zoom with our solicitor so Mum
-                                never
-                                left home.”</blockquote>
-                            <figcaption class="text-sm text-slate-600 mt-4">— The Khatri family, Birmingham</figcaption>
-                        </figure>
-                        <figure class="bg-white rounded-3xl border border-primary-100 p-6 shadow-sm">
-                            <blockquote class="text-primary-900 text-lg font-serif">“When we lost Dad, Horizon already
-                                had every artefact ready for probate, insurers, and the bank. We just focused on being a
-                                family.”</blockquote>
-                            <figcaption class="text-sm text-slate-600 mt-4">— The Davies family, Cardiff</figcaption>
-                        </figure>
-                    </div>
-                </div>
-                <div class="rounded-[32px] bg-white shadow-2xl border border-primary-100 p-10 space-y-8">
-                    <p class="text-sm uppercase tracking-[0.35em] text-primary-500">In-house care circle</p>
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-4">
-                            <div
-                                class="w-12 h-12 rounded-2xl bg-primary-100 text-primary-800 flex items-center justify-center font-serif text-xl">
-                                1</div>
-                            <div>
-                                <h3 class="text-lg font-semibold text-primary-900">Concierge lead</h3>
-                                <p class="text-sm text-slate-600">Single point of contact orchestrating every document
-                                    and visit.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div
-                                class="w-12 h-12 rounded-2xl bg-primary-100 text-primary-800 flex items-center justify-center font-serif text-xl">
-                                2</div>
-                            <div>
-                                <h3 class="text-lg font-semibold text-primary-900">Specialist solicitor</h3>
-                                <p class="text-sm text-slate-600">Handles drafting, witnessing guidance, and court
-                                    liaison.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div
-                                class="w-12 h-12 rounded-2xl bg-primary-100 text-primary-800 flex items-center justify-center font-serif text-xl">
-                                3</div>
-                            <div>
-                                <h3 class="text-lg font-semibold text-primary-900">Bereavement coach</h3>
-                                <p class="text-sm text-slate-600">Provides emotional check-ins, memorial planning, and
-                                    peer support groups.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#contact"
-                        class="inline-flex items-center justify-center gap-2 rounded-full bg-primary-900 text-white px-6 py-3 font-semibold hover:bg-primary-800 transition">Start
-                        your circle</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ + CTA -->
-        <section id="contact" class="bg-white py-20">
-            <div class="container mx-auto px-6 grid lg:grid-cols-[1.1fr_0.9fr] gap-16">
-                <div>
-                    <p class="text-sm uppercase tracking-[0.35em] text-primary-500">Questions we hear often</p>
-                    <h2 class="text-3xl font-serif text-primary-900 mt-2">Transparent answers before we begin</h2>
-                    <div class="mt-8 space-y-6">
-                        <details class="rounded-2xl border border-primary-100 bg-cream/60 p-5" open>
-                            <summary class="font-semibold text-primary-900 cursor-pointer">Do you only work in the UK?
-                            </summary>
-                            <p class="text-sm text-slate-600 mt-3">We operate nationwide and coordinate assets in 19
-                                jurisdictions through our cross-border partners.</p>
-                        </details>
-                        <details class="rounded-2xl border border-primary-100 bg-white p-5">
-                            <summary class="font-semibold text-primary-900 cursor-pointer">How quickly can we update a
-                                will?</summary>
-                            <p class="text-sm text-slate-600 mt-3">Minor amendments are executed within 24 hours;
-                                complex
-                                restructures average 4 working days.</p>
-                        </details>
-                        <details class="rounded-2xl border border-primary-100 bg-white p-5">
-                            <summary class="font-semibold text-primary-900 cursor-pointer">Is bereavement support
-                                included?</summary>
-                            <p class="text-sm text-slate-600 mt-3">Yes. Every family gets ongoing counselling options,
-                                memorial planning templates, and concierge check-ins.</p>
-                        </details>
-                    </div>
-                </div>
-                <div class="rounded-[32px] border border-primary-200 bg-white/90 shadow-2xl p-10 space-y-6">
-                    <p class="text-sm uppercase tracking-[0.35em] text-primary-500">Plan with us</p>
-                    <h3 class="text-2xl font-serif text-primary-900">Request a complimentary planning session</h3>
-                    <p class="text-slate-600">Share a few details and your concierge will reach out within one business
-                        day with schedules, fees, and a preview of your journey.</p>
-                    <form class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-semibold text-slate-700">Full name</label>
-                            <input type="text" class="mt-1 w-full rounded-2xl border border-primary-100 px-4 py-3"
-                                placeholder="Amelia Clarke">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-slate-700">Email</label>
-                            <input type="email" class="mt-1 w-full rounded-2xl border border-primary-100 px-4 py-3"
-                                placeholder="amelia@example.com">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-slate-700">What do you need help
-                                with?</label>
-                            <textarea rows="3" class="mt-1 w-full rounded-2xl border border-primary-100 px-4 py-3"
-                                placeholder="Updating my will after a new property purchase"></textarea>
-                        </div>
-                        <button type="submit"
-                            class="w-full rounded-full bg-primary-600 text-white py-3 font-semibold hover:bg-primary-500 transition">Send
-                            request</button>
-                    </form>
+                <div class="text-xs text-primary-50/70">
+                    Rated 4.6 / 5 based on 1,521 reviews. Showing our 4 & 5 star reviews. <span
+                        class="font-semibold">Trustpilot</span>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Keep your existing footer -->
     <footer class="bg-slate-900 text-white py-16">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-12 mb-12">
@@ -807,6 +729,44 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Scrolling text color change effect
+        window.addEventListener('scroll', function () {
+            const heroText = document.getElementById('heroText');
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+
+            // Calculate scroll progress (0 to 1)
+            const scrollProgress = Math.min(scrollPosition / (windowHeight * 0.5), 1);
+
+            // Interpolate between dark and light colors
+            const startColor = { r: 30, g: 41, b: 59 }; // slate-800
+            const endColor = { r: 203, g: 213, b: 225 }; // slate-300
+
+            const r = Math.round(startColor.r + (endColor.r - startColor.r) * scrollProgress);
+            const g = Math.round(startColor.g + (endColor.g - startColor.g) * scrollProgress);
+            const b = Math.round(startColor.b + (endColor.b - startColor.b) * scrollProgress);
+
+            heroText.style.color = `rgb(${r}, ${g}, ${b})`;
+        });
+
+        document.querySelectorAll('[data-slider]').forEach(button => {
+            const direction = button.dataset.direction;
+            const sliderId = `${button.dataset.slider}-slider`;
+            const container = document.getElementById(sliderId);
+
+            if (!container) return;
+
+            button.addEventListener('click', () => {
+                const scrollAmount = container.clientWidth * 0.8;
+                container.scrollBy({
+                    left: direction === 'next' ? scrollAmount : -scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
