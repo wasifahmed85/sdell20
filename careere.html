@@ -4,12 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horizon Wills – Our Story</title>
+    <title>Careers - Horizon Wills</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600;700&family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
@@ -54,94 +57,87 @@
                         'body': ['Lora', 'Georgia', 'serif'],
                         'display': ['Crimson Text', 'Georgia', 'serif'],
                         'sans': ['Inter', 'system-ui', 'sans-serif'],
-                    }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'fade-in-delay': 'fadeIn 0.8s ease-out 0.2s both',
+                        'fade-in-delay-2': 'fadeIn 0.8s ease-out 0.4s both',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                    },
                 }
             }
         }
     </script>
+
     <style>
         body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: #ffffff;
+            font-family: 'Lora', Georgia, serif;
         }
 
-        #heroSection {
-            position: relative;
-            height: 300vh;
-            background-image: url('https://a.storyblok.com/f/309177/2046x1151/9aa5043904/aboutusbackground.avif');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+        .text-balance {
+            text-wrap: balance;
         }
 
-        #scrollWrapper {
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        ::-webkit-scrollbar {
+            width: 8px;
         }
 
-        .hero-text-item {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            max-width: 1052px;
-            padding: 0 20px;
-            text-align: center;
+        ::-webkit-scrollbar-track {
+            background: #f8f6f0;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334e68;
+            border-radius: 4px;
+        }
+
+        [data-animate] {
             opacity: 0;
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            will-change: opacity, transform;
         }
 
-        .hero-text-item.active {
+        [data-animate]:not([data-animate-direction]),
+        [data-animate-direction="up"] {
+            transform: translateY(32px);
+        }
+
+        [data-animate-direction="down"] {
+            transform: translateY(-32px);
+        }
+
+        [data-animate-direction="left"] {
+            transform: translateX(40px);
+        }
+
+        [data-animate-direction="right"] {
+            transform: translateX(-40px);
+        }
+
+        [data-animate].animate-in {
             opacity: 1;
-            transform: translate(-50%, -50%);
-        }
-
-        .hero-text-item.above {
-            transform: translate(-50%, -150%);
-            opacity: 0;
-        }
-
-        .hero-text-item.below {
-            transform: translate(-50%, 50%);
-            opacity: 0;
-        }
-
-        .mission-section {
-            background: linear-gradient(180deg, #cce1eb 20%, #f8f6f0 100%);
-        }
-
-        .team-photo {
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid #cce1eb;
-            background-color: #f8f6f0;
-        }
-
-        .quote-section {
-            background: linear-gradient(180deg, #00699bbf 0%, #00151f 100%);
-        }
-
-        .cta-section {
-            background: linear-gradient(180deg, #f8f6f0 0%, #e8e4d9 100%);
-        }
-
-        .scrollbar-hide {
-            scrollbar-width: none;
-        }
-
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
+            transform: translate(0, 0);
         }
     </style>
 </head>
 
-<body class="bg-white text-slate-900 antialiased">
+<body class="bg-cream text-slate-900 antialiased">
+
     <header class="sticky top-0 z-50">
         <!-- Navigation -->
         <nav class="  w-full bg-slate-800 text-white z-50 shadow-lg" x-data="{ mobileMenuOpen: false }">
@@ -200,9 +196,8 @@
                                                 </a>
                                             </li>
                                             <li
-                                                class="flex items-center gap-3 group rounded-xl  py-2 transition-colors duration-200 hover:bg-white/10 about-dropdown-item">
-                                                <a href="guides.html"
-                                                    class="flex items-center gap-3 px-2 py-2 text-white">
+                                                class="flex items-center gap-3 group rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-white/10 about-dropdown-item">
+                                                <a href="guides.html" class="flex items-center gap-3  py-2 text-white">
                                                     <div
                                                         class="w-8 h-8 rounded-2xl bg-white/10 border border-white/30 shadow flex items-center justify-center text-white">
                                                         <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
@@ -217,7 +212,7 @@
                                             <li
                                                 class="flex items-center gap-3 group rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-white/10 about-dropdown-item">
                                                 <a href="careere.html"
-                                                    class="flex items-center gap-3 px-2 py-2 text-white w-full">
+                                                    class="flex items-center gap-3 py-2 text-white w-full">
                                                     <div
                                                         class="w-8 h-8 rounded-2xl bg-white/10 border border-white/30 shadow flex items-center justify-center text-white">
                                                         <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
@@ -458,247 +453,11 @@
         </nav>
     </header>
 
+
     <main>
-        <!-- Hero Section with Advanced Scrolling Text Animation -->
-        <section id="heroSection">
-            <div id="scrollWrapper">
-                <div id="scrollContent" class="relative w-full h-full">
-                    <div class="hero-text-item" data-index="0">
-                        <h1
-                            class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light leading-tight text-slate-900">
-                            Death can feel like the full stop at the end of our lives.
-                        </h1>
-                    </div>
-                    <div class="hero-text-item" data-index="1">
-                        <h1
-                            class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light leading-tight text-slate-900">
-                            But what if we treated it more like an invitation?
-                        </h1>
-                    </div>
-                    <div class="hero-text-item" data-index="2">
-                        <h1
-                            class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light leading-tight text-slate-900">
-                            For more words, more conversations
-                        </h1>
-                    </div>
-                    <div class="hero-text-item" data-index="3">
-                        <h1
-                            class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light leading-tight text-slate-900">
-                            And more meaning in every moment.
-                        </h1>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Mission Section -->
-        <section class="mission-section py-24">
-            <div class="container mx-auto px-6">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <div
-                        class="w-16 h-16 mx-auto mb-6 rounded-full bg-white border-2 border-slate-300 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-slate-700" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="M12 6v6l4 2" />
-                        </svg>
-                    </div>
-                    <h2 class="text-4xl md:text-5xl font-light text-slate-900 mb-6">Our mission</h2>
-                    <p class="text-lg text-slate-600 leading-relaxed">
-                        Death is inevitable. Losing what and who you love is hard. But doing nothing about it is harder.
-                        We plan to prevent the people you'll leave behind from spending precious time figuring out what
-                        to do next, and more time living the life you've left them.
-                    </p>
-                </div>
-
-                <!-- Video -->
-                <div class="max-w-4xl mx-auto">
-                    <div
-                        class="aspect-video bg-gradient-to-br from-slate-200 to-slate-300 rounded-3xl overflow-hidden shadow-2xl">
-                        <video class="w-full h-full object-cover" loop playsinline controls
-                            poster="https://a.storyblok.com/f/309177/2620x1458/648998649c/video-thumbnail.avif">
-                            <source
-                                src="https://a.storyblok.com/f/309177/x/1bfef5d928/oct_leg_0005_legacy_box_all-contributors_v2_16x9.mp4"
-                                type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Job Section -->
-        <section class="mission-section  py-24">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <div class="order-2 lg:order-1 flex justify-center lg:justify-start">
-                        <div class="max-w-[580px] rounded-xl shadow-2xl border border-primary-100">
-                            <img src="https://a.storyblok.com/f/309177/867x867/5b4a9d2eba/sam-mum.jpeg"
-                                alt="Family legacy moments" class="w-full rounded-xl object-cover" loading="lazy" />
-                        </div>
-                    </div>
-                    <div class=" order-1 lg:order-2 space-y-6 text-center lg:text-left">
-                        <p class="uppercase tracking-[0.35em] text-primary-500 text-xs">Why we exist</p>
-                        <h2 class="text-4xl md:text-5xl font-light text-primary-900 leading-tight">
-                            Our job is to bring death to life.
-                        </h2>
-                        <p class="text-lg text-primary-800 leading-relaxed">
-                            Born after Sam's mum died in a car accident, we know the difference a good plan makes
-                            — and what it's like when there isn't one. We see a world where you work out your
-                            personal
-                            meaning of legacy by talking about death with people you love.
-                        </p>
-                        <p class="text-lg text-primary-800 leading-relaxed">
-                            We're here to make that happen by guiding every conversation and detail with empathy.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <a href="#planning"
-                                class="inline-flex items-center justify-center gap-2 rounded-full bg-primary-900 text-white px-8 py-3 text-sm font-semibold shadow-md hover:bg-primary-800 transition">
-                                Plan for death →
-                            </a>
-                            <a href="#support"
-                                class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-primary-900 text-primary-900 px-8 py-3 text-sm font-semibold hover:bg-primary-100 transition">
-                                Get support after loss →
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Team Section -->
-        <section class="bg-primary-50 py-24">
-            <div class="container mx-auto px-6">
-                <div class="text-center max-w-3xl mx-auto mb-12">
-                    <h2 class="text-4xl md:text-5xl font-light text-slate-900 mb-4">Meet the team</h2>
-                    <p class="text-lg text-slate-600">
-                        We're a creative bunch who are here to make all of life's admin easier.
-                    </p>
-                </div>
-
-                <!-- Team Photo -->
-                <div class="max-w-5xl mx-auto">
-                    <div class="team-photo shadow-2xl">
-                        <img src="https://octopuslegacy.com/build/assets/meetTheTeam-BtHz-ds9.avif"
-                            alt="Horizon Wills team" class="w-full h-full object-cover" loading="lazy" />
-                    </div>
-                </div>
-        </section>
-
-        <!-- Quote Section -->
-        <section class="quote-section py-24">
-            <div class="max-w-7xl mx-auto px-7 text-center text-white space-y-10">
-                <div class="space-y-4">
-                    <h2 class="text-3xl md:text-4xl font-light">These people are talking about death and creating their
-                        legacy.</h2>
-                    <p class="text-lg text-primary-50/80">Join the conversation. Read what they have to say.</p>
-                </div>
-                <div class="relative">
-                    <button type="button"
-                        class="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full border border-white/20 text-primary-50/70 hover:bg-white/10"
-                        data-slider="reviews" data-direction="prev">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6" />
-                        </svg>
-                    </button>
-                    <button type="button"
-                        class="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full border border-white/20 text-primary-50/70 hover:bg-white/10"
-                        data-slider="reviews" data-direction="next">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6" />
-                        </svg>
-                    </button>
-                    <div class="overflow-x-auto pb-6 scrollbar-hide" id="reviews-slider">
-                        <div class="flex gap-4 min-w-[900px] snap-x snap-mandatory">
-                            <div
-                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
-                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
-                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
-                                    <span>Invited</span>
-                                </div>
-                                <h3 class="mt-4 text-sm font-semibold text-white">Chris was so easy to talk to</h3>
-                                <p class="text-xs text-primary-50/70 mt-2">Chris was so easy to talk to and he listened
-                                    and addressed our concerns very personal.</p>
-                                <p class="text-[11px] text-primary-100/60 mt-3">Mark Hirst • 18 hours ago</p>
-                            </div>
-                            <div
-                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
-                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
-                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
-                                    <span>Invited</span>
-                                </div>
-                                <h3 class="mt-4 text-sm font-semibold text-white">Legacy issues</h3>
-                                <p class="text-xs text-primary-50/70 mt-2">Impressed by the way the consultant dug
-                                    deeply into the issues with me.</p>
-                                <p class="text-[11px] text-primary-100/60 mt-3">P. Murray • 10 hours ago</p>
-                            </div>
-                            <div
-                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
-                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
-                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
-                                    <span>Invited</span>
-                                </div>
-                                <h3 class="mt-4 text-sm font-semibold text-white">Knowledgeable and attentive</h3>
-                                <p class="text-xs text-primary-50/70 mt-2">Very attentive and pleasant advisor who
-                                    listened and was skilful for my will.</p>
-                                <p class="text-[11px] text-primary-100/60 mt-3">B. H • 15 hours ago</p>
-                            </div>
-                            <div
-                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
-                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
-                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
-                                    <span>Invited</span>
-                                </div>
-                                <h3 class="mt-4 text-sm font-semibold text-white">Very informative review</h3>
-                                <p class="text-xs text-primary-50/70 mt-2">We had a very informative review of our
-                                    estate planning needs following the creation.</p>
-                                <p class="text-[11px] text-primary-100/60 mt-3">Andrew Hutchinson • 18 hours ago</p>
-                            </div>
-                            <div
-                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
-                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
-                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
-                                    <span>Invited</span>
-                                </div>
-                                <h3 class="mt-4 text-sm font-semibold text-white">Seamless process</h3>
-                                <p class="text-xs text-primary-50/70 mt-2">Seamless process to date from enquiry through
-                                    identification of most suitable type.</p>
-                                <p class="text-[11px] text-primary-100/60 mt-3">Stuart Trower • 18 hours ago</p>
-                            </div>
-                            <div
-                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
-                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
-                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
-                                    <span>Invited</span>
-                                </div>
-                                <h3 class="mt-4 text-sm font-semibold text-white">Kind, clear guidance</h3>
-                                <p class="text-xs text-primary-50/70 mt-2">Guidance was kind, clear, and made complex
-                                    paperwork easy to sign off.</p>
-                                <p class="text-[11px] text-primary-100/60 mt-3">Rebecca L • 1 day ago</p>
-                            </div>
-                            <div
-                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
-                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
-                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
-                                    <span>Invited</span>
-                                </div>
-                                <h3 class="mt-4 text-sm font-semibold text-white">Handled every detail</h3>
-                                <p class="text-xs text-primary-50/70 mt-2">They handled every detail for our family,
-                                    leaving us free to focus on each other.</p>
-                                <p class="text-[11px] text-primary-100/60 mt-3">Omar K • 2 days ago</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-xs text-primary-50/70">
-                    Rated 4.6 / 5 based on 1,521 reviews. Showing our 4 & 5 star reviews. <span
-                        class="font-semibold">Trustpilot</span>
-                </div>
-            </div>
-        </section>
+       
     </main>
 
-    <!-- Footer -->
     <footer class="bg-slate-900 text-white py-16">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-12 mb-12">
@@ -762,9 +521,9 @@
                 <div>
                     <h4 class="font-sans font-semibold text-lg mb-4">Company</h4>
                     <ul class="space-y-2 text-slate-200">
-                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="horizon-wills.html" class="hover:text-white transition-colors">About Us</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="careere.html" class="hover:text-white transition-colors">Careers</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Reviews</a></li>
                     </ul>
                 </div>
@@ -773,7 +532,7 @@
             <div class="border-t border-slate-800 pt-8 mt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                     <p class="text-slate-300 text-sm">
-                        © 2026 Horizon Wills. All rights reserved.
+                        &copy; 2026 Horizon Wills. All rights reserved.
                     </p>
                     <div class="flex space-x-6 text-sm text-slate-300">
                         <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
@@ -786,115 +545,25 @@
     </footer>
 
     <script>
-        // Advanced Scrolling Text Animation
-        const heroSection = document.getElementById('heroSection');
-        const textItems = document.querySelectorAll('.hero-text-item');
-        const totalItems = textItems.length;
-
-        let currentIndex = 0;
-        let ticking = false;
-
-        function updateTextAnimation() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const heroHeight = heroSection.offsetHeight;
-            const sectionHeight = heroHeight / totalItems;
-
-            // Calculate which text should be active
-            const newIndex = Math.min(
-                Math.floor(scrollTop / sectionHeight),
-                totalItems - 1
-            );
-
-            if (newIndex !== currentIndex) {
-                currentIndex = newIndex;
-
-                textItems.forEach((item, index) => {
-                    item.classList.remove('active', 'above', 'below');
-
-                    if (index === currentIndex) {
-                        item.classList.add('active');
-                    } else if (index < currentIndex) {
-                        item.classList.add('above');
-                    } else {
-                        item.classList.add('below');
-                    }
-                });
-            }
-
-            // Background color transition
-            const scrollProgress = Math.min(scrollTop / heroHeight, 1);
-
-            // Color transitions: blue → orange → white
-            let bgColor;
-            if (scrollProgress < 0.33) {
-                // Blue to light blue
-                const progress = scrollProgress / 0.33;
-                bgColor = interpolateColor(
-                    { r: 200, g: 220, b: 255 },
-                    { r: 230, g: 240, b: 255 },
-                    progress
-                );
-            } else if (scrollProgress < 0.66) {
-                // Light blue to orange
-                const progress = (scrollProgress - 0.33) / 0.33;
-                bgColor = interpolateColor(
-                    { r: 230, g: 240, b: 255 },
-                    { r: 255, g: 220, b: 180 },
-                    progress
-                );
-            } else {
-                // Orange to white
-                const progress = (scrollProgress - 0.66) / 0.34;
-                bgColor = interpolateColor(
-                    { r: 255, g: 220, b: 180 },
-                    { r: 255, g: 255, b: 255 },
-                    progress
-                );
-            }
-
-            heroSection.style.backgroundColor = `rgb(${bgColor.r}, ${bgColor.g}, ${bgColor.b})`;
-
-            ticking = false;
-        }
-
-        function interpolateColor(color1, color2, progress) {
-            return {
-                r: Math.round(color1.r + (color2.r - color1.r) * progress),
-                g: Math.round(color1.g + (color2.g - color1.g) * progress),
-                b: Math.round(color1.b + (color2.b - color1.b) * progress)
-            };
-        }
-
-        function requestTick() {
-            if (!ticking) {
-                requestAnimationFrame(updateTextAnimation);
-                ticking = true;
-            }
-        }
-
-        window.addEventListener('scroll', requestTick);
-
-        // Initialize first text as active
-        textItems[0].classList.add('active');
-        updateTextAnimation();
-
-        // Reviews slider functionality
-        document.querySelectorAll('[data-slider]').forEach(button => {
-            const direction = button.dataset.direction;
-            const sliderId = `${button.dataset.slider}-slider`;
-            const container = document.getElementById(sliderId);
-
-            if (!container) return;
-
-            button.addEventListener('click', () => {
-                const scrollAmount = container.clientWidth * 0.8;
-                container.scrollBy({
-                    left: direction === 'next' ? scrollAmount : -scrollAmount,
-                    behavior: 'smooth'
-                });
+        const animatedSections = document.querySelectorAll('[data-animate]');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const delay = el.dataset.animateDelay || '0s';
+                    el.style.transitionDelay = delay;
+                    el.classList.add('animate-in');
+                    observer.unobserve(el);
+                }
             });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -10% 0px'
         });
+
+        animatedSections.forEach(section => observer.observe(section));
     </script>
+
 </body>
 
 </html>
