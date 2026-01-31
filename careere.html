@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - Horizon Wills</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600;700&family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                          primary: {
+                            50: '#e6f0f5',
+                            100: '#cce1eb',
+                            200: '#99c3d7',
+                            300: '#66a5c3',
+                            400: '#3387af',
+                            500: '#00699b',
+                            600: '#00547c',
+                            700: '#003f5d',
+                            800: '#002a3e',
+                            900: '#00151f',
+                        },
+                        slate: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334e68',
+                            800: '#243b53',
+                            900: '#1e293b',
+                        },
+                        cream: '#f8f6f0',
+                        sand: '#e8e4d9',
+                        ink: '#1b1430',
+                        plum: '#24103f',
+                        lilac: '#efe7ff',
+                        mist: '#eef6ff',
+                    },
+                    fontFamily: {
+                        'serif': ['Cormorant Garamond', 'Georgia', 'serif'],
+                        'body': ['Lora', 'Georgia', 'serif'],
+                        'display': ['Crimson Text', 'Georgia', 'serif'],
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'float': 'float 7s ease-in-out infinite',
+                        'pulse-soft': 'pulseSoft 2.6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(18px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        pulseSoft: {
+                            '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+                            '50%': { transform: 'scale(1.02)', opacity: '.92' },
+                        }
+                    },
+                    boxShadow: {
+                        soft: '0 20px 60px rgba(17, 24, 39, 0.10)',
+                        lift: '0 18px 44px rgba(17, 24, 39, 0.16)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Lora', Georgia, serif;
+        }
+
+        .text-balance {
+            text-wrap: balance;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f8f6f0;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334e68;
+            border-radius: 4px;
+        }
+
+        [data-animate] {
+            opacity: 0;
+            transition: opacity 0.85s ease, transform 0.85s ease;
+            will-change: opacity, transform;
+        }
+
+        [data-animate]:not([data-animate-direction]),
+        [data-animate-direction="up"] {
+            transform: translateY(34px);
+        }
+
+        [data-animate-direction="down"] {
+            transform: translateY(-34px);
+        }
+
+        [data-animate-direction="left"] {
+            transform: translateX(44px);
+        }
+
+        [data-animate-direction="right"] {
+            transform: translateX(-44px);
+        }
+
+        [data-animate].animate-in {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        /* nicer focus */
+        .focus-ring:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(239, 231, 255, 0.9), 0 0 0 1px rgba(36, 16, 63, 0.5);
+        }
+    </style>
+</head>
+
+<body class="bg-cream text-slate-900 antialiased">
+
+
+    <header class="sticky top-0 z-50">
+        <nav class="w-full bg-slate-800 text-white z-50 shadow-lg" x-data="{ mobileMenuOpen: false }">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <svg class="w-12 h-12" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="25" r="12" stroke="currentColor" stroke-width="3" fill="none" />
+                            <path d="M15 40 Q50 20, 85 40" stroke="currentColor" stroke-width="3" fill="none"
+                                stroke-linecap="round" />
+                        </svg>
+                        <div>
+                            <div class="text-2xl font-sans font-bold tracking-wider">HORIZON WILLS</div>
+                            <div class="text-xs text-slate-300 tracking-widest">PROTECTING YOUR ASSETS</div>
+                        </div>
+                    </a>
+
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="horizon-wills.html"
+                            class="font-sans tracking-wide text-sm text-slate-100/90 hover:text-primary-500 transition-colors">About
+                            Us</a>
+                        <a href="#"
+                            class="font-sans tracking-wide text-sm text-slate-100/90 hover:text-primary-500 transition-colors">Plan
+                            for Death</a>
+                        <a href="#"
+                            class="font-sans tracking-wide text-sm text-slate-100/90 hover:text-primary-500 transition-colors">Get
+                            Support After Loss</a>
+                        <button
+                            class="text-pink-400 py-2 transition-all hover:text-primary-100 font-sans font-semibold">Sign
+                            in</button>
+                    </div>
+
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div x-show="mobileMenuOpen" x-transition class="md:hidden mt-4 pb-4 space-y-4">
+                    <a href="horizon-wills.html" class="block hover:text-primary-300 transition-colors">About Us</a>
+                    <a href="#" class="block hover:text-primary-300 transition-colors">Plan for Death</a>
+                    <a href="#" class="block hover:text-primary-300 transition-colors">Get Support After Loss</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#f3efe6] via-[#f8f6f0] to-[#f8f6f0]"></div>
+
+            <!-- floating blobs -->
+            <div
+                class="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[740px] h-[420px] rounded-full bg-lilac/70 blur-3xl opacity-70 animate-float">
+            </div>
+            <div
+                class="pointer-events-none absolute top-10 -left-24 w-[420px] h-[420px] rounded-full bg-[#ffe8d6]/70 blur-3xl opacity-70 animate-float">
+            </div>
+
+            <div class="relative container mx-auto px-6 pt-16 pb-14 text-center">
+                <div data-animate data-animate-direction="up">
+                    <h1 class="font-display text-4xl md:text-6xl text-ink tracking-tight">
+                        Work at <span class="italic">Horizon Wills</span>
+                    </h1>
+                    <p class="mx-auto mt-4 max-w-2xl text-sm md:text-base text-slate-700 text-balance">
+                        We’re building a kinder, more human approach to planning and legacy.
+                        If you care about craft, clarity, and impact—come join us.
+                    </p>
+
+                    <div class="mt-7 flex items-center justify-center gap-3">
+                        <a href="#open-roles"
+                            class="inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-sans font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift focus-ring">
+                            View our roles
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JOB IS TO BRING ... -->
+        <section class="bg-gradient-to-b from-[#EDE6D9] via-[#F8F6F0] to-white">
+            <div class="container mx-auto px-6 py-16">
+                <div class="mx-auto max-w-5xl">
+                    <div data-animate data-animate-direction="up"
+                        class="grid gap-10 md:grid-cols-2 items-center rounded-[36px]   md:p-10">
+                        <div class="relative">
+                            <div
+                                class="absolute -inset-2 rounded-[40px] bg-gradient-to-tr from-lilac/70 via-white to-[#ffe8d6]/70 blur-xl opacity-70">
+                            </div>
+                            <img class="relative w-full h-[280px] md:h-[420px] object-cover rounded-[28px]"
+                                src="https://a.storyblok.com/f/309177/718x1000/f544cb2f60/sam-mum.jpg"
+                                alt="Team moment">
+                        </div>
+
+                        <div>
+                            <h2 class="font-display text-2xl md:text-4xl text-ink">
+                                Our job is to bring care to life.
+                            </h2>
+
+                            <div class="mt-5 space-y-4 text-slate-700 leading-relaxed text-sm md:text-base">
+                                <p>
+                                    At Horizon Wills, we work on meaningful, sensitive moments with real people.
+                                    That means we move thoughtfully, communicate clearly, and obsess over details.
+                                </p>
+                                <p>
+                                    We’re a team that values kindness, craft, and ownership.
+                                    If you enjoy building products and services that genuinely help—this is your place.
+                                </p>
+                            </div>
+
+                            <div class="mt-6">
+                                <a href="#perks"
+                                    class="inline-flex items-center gap-2 text-sm font-sans font-semibold text-ink hover:opacity-80 transition">
+                                    <span>Explore perks & benefits</span>
+                                    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M3 10a.75.75 0 01.75-.75h9.69l-3.22-3.22a.75.75 0 111.06-1.06l4.5 4.5a.75.75 0 010 1.06l-4.5 4.5a.75.75 0 11-1.06-1.06l3.22-3.22H3.75A.75.75 0 013 10z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FROM OUR TEAM (mosaic) -->
+        <section class="bg-cream py-16">
+            <div class="container mx-auto px-6 py-6">
+                <div class="text-center" data-animate data-animate-direction="up">
+                    <h3 class="font-display text-3xl md:text-4xl text-ink">From our team</h3>
+                    <p class="mt-3 text-sm text-slate-700 max-w-2xl mx-auto text-balance">
+                        People-first culture, high standards, and a calm pace—so we can do the work properly.
+                    </p>
+                </div>
+
+                <div class="mx-auto mt-10 max-w-6xl grid gap-6 md:grid-cols-2 items-start">
+                    <!-- LEFT COLUMN -->
+                    <div class="space-y-6">
+                        <div data-animate data-animate-direction="up"
+                            class="overflow-hidden rounded-[28px] shadow-soft border border-slate-200/60 bg-white">
+                            <img class="w-full h-[240px] object-cover"
+                                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80"
+                                alt="Workshop">
+                        </div>
+
+                        <div data-animate data-animate-direction="up" data-animate-delay="0.05s"
+                            class="rounded-[28px] shadow-soft border border-slate-200/60 bg-white p-7 md:p-8">
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="shrink-0 w-10 h-10 rounded-2xl bg-lilac flex items-center justify-center text-ink">
+                                    <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path
+                                            d="M7.5 5A2.5 2.5 0 005 7.5V10a2 2 0 01-2 2 .75.75 0 000 1.5A3.5 3.5 0 006.5 10V7.5a1 1 0 011-1h1a.75.75 0 000-1.5h-1zM12.5 5h-1a.75.75 0 000 1.5h1a1 1 0 011 1V10a3.5 3.5 0 003.5 3.5.75.75 0 000-1.5 2 2 0 01-2-2V7.5A2.5 2.5 0 0012.5 5z" />
+                                    </svg>
+                                </div>
+
+                                <div>
+                                    <p class="font-display text-xl text-ink">“I get to help people. Every day.”</p>
+                                    <p class="mt-3 text-sm text-slate-700 leading-relaxed">
+                                        The work is meaningful, and the team is supportive. You’re trusted to do your
+                                        best work,
+                                        without drama or chaos. The work is meaningful, and the team is supportive.
+                                        You’re trusted to do your best work,
+                                        without drama or chaos.
+                                    </p>
+
+                                    <div class="mt-5 flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-full bg-slate-200 overflow-hidden">
+                                            <img class="w-full h-full object-cover"
+                                                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80"
+                                                alt="Person">
+                                        </div>
+                                        <div class="text-sm">
+                                            <p class="font-sans font-semibold text-ink leading-none">Tashfiq</p>
+                                            <p class="text-slate-600 text-xs mt-1">Support Team</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div data-animate data-animate-direction="up" data-animate-delay="0.08s"
+                            class="overflow-hidden rounded-[28px] shadow-soft border border-slate-200/60 bg-white">
+                            <img class="w-full h-[240px] object-cover"
+                                src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1400&q=80"
+                                alt="Work desk">
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN -->
+                    <div class="space-y-6">
+                        <div data-animate data-animate-direction="up" data-animate-delay="0.03s"
+                            class="rounded-[28px] shadow-soft border border-slate-200/60 bg-white p-7 md:p-8">
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="shrink-0 w-10 h-10 rounded-2xl bg-lilac flex items-center justify-center text-ink">
+                                    <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path
+                                            d="M7.5 5A2.5 2.5 0 005 7.5V10a2 2 0 01-2 2 .75.75 0 000 1.5A3.5 3.5 0 006.5 10V7.5a1 1 0 011-1h1a.75.75 0 000-1.5h-1zM12.5 5h-1a.75.75 0 000 1.5h1a1 1 0 011 1V10a3.5 3.5 0 003.5 3.5.75.75 0 000-1.5 2 2 0 01-2-2V7.5A2.5 2.5 0 0012.5 5z" />
+                                    </svg>
+                                </div>
+
+                                <div>
+                                    <p class="font-display text-xl text-ink">“The company culture is fantastic.”</p>
+                                    <p class="mt-3 text-sm text-slate-700 leading-relaxed">
+                                        Clear goals, kind people, and a strong bar for quality. You can focus and ship
+                                        with confidence.
+                                    </p>
+
+                                    <div class="mt-5 flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-full bg-slate-200 overflow-hidden">
+                                            <img class="w-full h-full object-cover"
+                                                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80"
+                                                alt="Person">
+                                        </div>
+                                        <div class="text-sm">
+                                            <p class="font-sans font-semibold text-ink leading-none">Maggie</p>
+                                            <p class="text-slate-600 text-xs mt-1">People Team</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div data-animate data-animate-direction="up" data-animate-delay="0.06s"
+                            class="overflow-hidden rounded-[28px] shadow-soft border border-slate-200/60 bg-white">
+                            <video class="grid-asset" src="https://a.storyblok.com/f/309177/x/cdf7e04203/sports-day.mp4"
+                                autoplay="" playsinline="" loop=""></video>
+                        </div>
+
+                        <div data-animate data-animate-direction="up" data-animate-delay="0.09s"
+                            class="rounded-[28px] shadow-soft border border-slate-200/60 bg-white p-7 md:p-8">
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="shrink-0 w-10 h-10 rounded-2xl bg-lilac flex items-center justify-center text-ink">
+                                    <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path
+                                            d="M7.5 5A2.5 2.5 0 005 7.5V10a2 2 0 01-2 2 .75.75 0 000 1.5A3.5 3.5 0 006.5 10V7.5a1 1 0 011-1h1a.75.75 0 000-1.5h-1zM12.5 5h-1a.75.75 0 000 1.5h1a1 1 0 011 1V10a3.5 3.5 0 003.5 3.5.75.75 0 000-1.5 2 2 0 01-2-2V7.5A2.5 2.5 0 0012.5 5z" />
+                                    </svg>
+                                </div>
+
+                                <div>
+                                    <p class="font-display text-xl text-ink">We’re creating a leading probate service.
+                                    </p>
+                                    <p class="mt-3 text-sm text-slate-700 leading-relaxed">
+                                        We build systems that respect people’s time and emotions—simple, accessible, and
+                                        reliable.
+                                    </p>
+
+                                    <div class="mt-5 flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-full bg-slate-200 overflow-hidden">
+                                            <img class="w-full h-full object-cover"
+                                                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80"
+                                                alt="Person">
+                                        </div>
+                                        <div class="text-sm">
+                                            <p class="font-sans font-semibold text-ink leading-none">Jia</p>
+                                            <p class="text-slate-600 text-xs mt-1">Operations</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PERKS & BENEFITS -->
+        <section id="perks" class="bg-gradient-to-b from-[#EDE6D9] via-[#F8F6F0] to-white">
+            <div class="container mx-auto px-6 py-16">
+                <div class="text-center" data-animate data-animate-direction="up">
+                    <h3 class="font-display text-3xl md:text-4xl text-ink">Perks & Benefits</h3>
+                </div>
+
+                <div class="mx-auto mt-10 max-w-5xl grid gap-4 md:grid-cols-2">
+                    <!-- card component -->
+                    <div data-animate data-animate-direction="up"
+                        class="group rounded-2xl border border-ink/25 bg-white/70 p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-2xl bg-lilac flex items-center justify-center text-ink">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M12 6v6l4 2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-sans font-semibold text-ink">Flexible Working</p>
+                                <p class="mt-1 text-sm text-slate-700">Hybrid options and a calm, focused way of
+                                    working.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-animate data-animate-direction="up" data-animate-delay="0.03s"
+                        class="group rounded-2xl border border-ink/25 bg-white/70 p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-2xl bg-lilac flex items-center justify-center text-ink">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M12 6v12M6 12h12" stroke-linecap="round" />
+                                    <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-sans font-semibold text-ink">Share Incentive Scheme (SIP)</p>
+                                <p class="mt-1 text-sm text-slate-700">We share ownership—so everyone benefits from
+                                    growth.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-animate data-animate-direction="up" data-animate-delay="0.05s"
+                        class="group rounded-2xl border border-ink/25 bg-white/70 p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-2xl bg-lilac flex items-center justify-center text-ink">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path
+                                        d="M12 21s-7-4.5-7-10.5a4 4 0 014-4c1.2 0 2.3.6 3 1.5A4 4 0 0115 6.5a4 4 0 014 4C19 16.5 12 21 12 21z"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-sans font-semibold text-ink">Health & Life Insurance</p>
+                                <p class="mt-1 text-sm text-slate-700">Support that actually matters, beyond the basics.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-animate data-animate-direction="up" data-animate-delay="0.07s"
+                        class="group rounded-2xl border border-ink/25 bg-white/70 p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-2xl bg-lilac flex items-center justify-center text-ink">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M7 17l10-10" stroke-linecap="round" />
+                                    <path d="M7 7h10v10" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-sans font-semibold text-ink">Cycle to work scheme</p>
+                                <p class="mt-1 text-sm text-slate-700">Commute support and greener travel options.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-animate data-animate-direction="up" data-animate-delay="0.09s"
+                        class="group rounded-2xl border border-ink/25 bg-white/70 p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-2xl bg-lilac flex items-center justify-center text-ink">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M4 7h16M6 7V5a4 4 0 118 0v2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M6 7v14h12V7" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-sans font-semibold text-ink">Mat & Pat Leave</p>
+                                <p class="mt-1 text-sm text-slate-700">Time that supports families properly.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-animate data-animate-direction="up" data-animate-delay="0.11s"
+                        class="group rounded-2xl border border-ink/25 bg-white/70 p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-2xl bg-lilac flex items-center justify-center text-ink">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M12 2v20" stroke-linecap="round" />
+                                    <path d="M2 12h20" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-sans font-semibold text-ink">Charity matching</p>
+                                <p class="mt-1 text-sm text-slate-700">We match donations to causes you care about.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-animate data-animate-direction="up" data-animate-delay="0.13s"
+                        class="group rounded-2xl border border-ink/25 bg-white/70 p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-2xl bg-lilac flex items-center justify-center text-ink">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M7 7h10v10H7z" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M4 12h3M17 12h3" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-sans font-semibold text-ink">Events and socials</p>
+                                <p class="mt-1 text-sm text-slate-700">Low-key team days and meaningful hangouts.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-animate data-animate-direction="up" data-animate-delay="0.15s"
+                        class="group rounded-2xl border border-ink/25 bg-white/70 p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-2xl bg-lilac flex items-center justify-center text-ink">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M12 21s8-4.5 8-10.5S15.5 3 12 6.5C8.5 3 4 4.5 4 10.5S12 21 12 21z"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-sans font-semibold text-ink">Dog-friendly office</p>
+                                <p class="mt-1 text-sm text-slate-700">Good vibes. (And occasionally good dogs.)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CORE VALUES -->
+        <section class="bg-mist py-16 md:py-20">
+            <div class="container mx-auto px-6">
+                <div class="mx-auto max-w-4xl text-center" data-animate data-animate-direction="up">
+                    <h3 class="font-display text-3xl md:text-4xl text-ink">Our core values</h3>
+                    <p class="mt-4 text-sm md:text-base text-slate-700 leading-relaxed">
+                        Each value guides our culture, aligns people, and focuses on products and customers. They
+                        influence
+                        decisions in identity, actions, and hiring. They're ingrained in our DNA as we evolve and grow.
+                    </p>
+                </div>
+
+                <div class="mx-auto mt-10 max-w-5xl grid gap-10 md:grid-cols-3 text-center">
+                    <div data-animate data-animate-direction="up" class="space-y-4">
+                        <img src="https://a.storyblok.com/f/309177/103x160/71fe2160ed/lemonade.svg"
+                            alt="Optimism illustration" class="mx-auto h-32 object-contain" />
+                        <h4 class="font-sans font-semibold text-base text-ink">Optimism</h4>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            Bringing death to life is about being a glass half fuller. Success is easy when you focus on
+                            the
+                            things that matter.
+                        </p>
+                    </div>
+
+                    <div data-animate data-animate-direction="up" data-animate-delay="0.06s" class="space-y-4">
+                        <img src="https://a.storyblok.com/f/309177/115x160/cf009623b2/lightbulb.svg"
+                            alt="Hard working illustration" class="mx-auto h-32 object-contain" />
+                        <h4 class="font-sans font-semibold text-base text-ink">Hard working</h4>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            There’s no such thing as great success without hard work. We’re curious—always learning,
+                            testing,
+                            and improving.
+                        </p>
+                    </div>
+
+                    <div data-animate data-animate-direction="up" data-animate-delay="0.12s" class="space-y-4">
+                        <img src="https://a.storyblok.com/f/309177/192x160/892da9602c/fly-kite.svg"
+                            alt="Customer first illustration" class="mx-auto h-32 object-contain" />
+                        <h4 class="font-sans font-semibold text-base text-ink">Customer first</h4>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            We’re obsessed with meeting our customers’ needs and delivering the best experience and
+                            value for
+                            them.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- B CORP SECTION -->
+        <section class="bg-primary-700 text-white py-24">
+            <div class="container mx-auto px-6">
+                <div
+                    class="mx-auto max-w-7xl rounded-[32px]  px-8 py-12 md:px-12 md:py-14 grid gap-20 md:grid-cols-[220px,1fr] lg:grid-cols-[220px,1fr] xl:grid-cols-[220px,1fr] items-center">
+                    <div data-animate data-animate-direction="up" class="flex bg-cream px-10 rounded-2xl p-4 justify-center">
+                        <img src="https://octopuslegacy.com/build/assets/B-Corp-logo-BNx3dGnN.png"
+                            alt="Certified B Corp logo" class="max-w-[180px] w-full" />
+                    </div>
+
+                    <div data-animate data-animate-direction="up" data-animate-delay="0.08s" class="space-y-4 max-w-2xl">
+                        <h3 class="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl">Proud to be a B Corp</h3>
+                        <p class="text-sm md:text-base lg:text-lg xl:text-xl text-white/90 leading-relaxed">
+                            We are very proud to announce we are officially B Corp accredited. To gain B Corp
+                            certification,
+                            a company needs to meet high standards and prove it has a positive impact not just on its
+                            workers and customers, but also on the wider community and environment.
+                        </p>
+                        <a href="#"
+                            class="inline-block text-sm font-sans font-semibold text-white border-b border-white/60 pb-1">
+                            Learn more about what it means to be B Corp Certified
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JOIN THE TEAM -->
+        <section id="open-roles" class="bg-cream py-16">
+            <div class="container mx-auto px-6 py-16">
+                <div class="text-center" data-animate data-animate-direction="up">
+                    <h3 class="font-display text-3xl md:text-4xl text-ink">Join the team</h3>
+                    <p class="mt-3 text-sm text-slate-700 max-w-2xl mx-auto text-balance">
+                        Explore roles across teams. Filter by department or location, and apply in minutes.
+                    </p>
+                </div>
+
+                <!-- Filters -->
+                <div data-animate data-animate-direction="up" data-animate-delay="0.05s"
+                    class="mx-auto mt-10 max-w-5xl rounded-[24px] bg-white/70 border border-slate-200/60 shadow-soft p-5 md:p-6">
+                    <div class="grid gap-4 md:grid-cols-3">
+                        <div>
+                            <label class="text-xs font-sans font-semibold text-slate-700">Department</label>
+                            <select id="filterDepartment"
+                                class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm focus-ring">
+                                <option value="all">All</option>
+                                <option value="legacy">Legacy Specialists</option>
+                                <option value="ops">Operations</option>
+                                <option value="legal">Legal</option>
+                                <option value="sales">Sales</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="text-xs font-sans font-semibold text-slate-700">Location</label>
+                            <select id="filterLocation"
+                                class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm focus-ring">
+                                <option value="all">All</option>
+                                <option value="london">London</option>
+                                <option value="hybrid">Hybrid</option>
+                                <option value="remote">Remote</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="text-xs font-sans font-semibold text-slate-700">Search</label>
+                            <input id="filterSearch" type="text" placeholder="Search roles..."
+                                class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm focus-ring" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Roles list -->
+                <div class="mx-auto mt-10 max-w-5xl space-y-10">
+
+                    <!-- Group -->
+                    <div data-animate data-animate-direction="up" class="role-group">
+                        <h4 class="font-sans font-semibold text-ink">Legacy Specialists</h4>
+
+                        <div class="mt-4 space-y-3">
+                            <!-- role row -->
+                            <div class="role-item flex flex-col md:flex-row md:items-center md:justify-between gap-4 rounded-[22px] border border-ink/25 bg-white/70 px-5 py-4 shadow-soft"
+                                data-department="legacy" data-location="london"
+                                data-title="Customer Success Specialist">
+                                <div>
+                                    <p class="font-sans font-semibold text-ink">Customer Success Specialist</p>
+                                    <p class="text-xs text-slate-700 mt-1">London</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <a href="#"
+                                        class="rounded-full border border-ink/25 bg-white px-4 py-2 text-xs font-sans font-semibold text-ink hover:bg-lilac transition">Find
+                                        out more</a>
+                                    <a href="#"
+                                        class="rounded-full bg-ink px-4 py-2 text-xs font-sans font-semibold text-white hover:opacity-90 transition">Apply</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-animate data-animate-direction="up" data-animate-delay="0.05s" class="role-group">
+                        <h4 class="font-sans font-semibold text-ink">Operations</h4>
+
+                        <div class="mt-4 space-y-3">
+                            <div class="role-item flex flex-col md:flex-row md:items-center md:justify-between gap-4 rounded-[22px] border border-ink/25 bg-white/70 px-5 py-4 shadow-soft"
+                                data-department="ops" data-location="hybrid" data-title="Estate Planner (Operations)">
+                                <div>
+                                    <p class="font-sans font-semibold text-ink">Estate Planner (Operations)</p>
+                                    <p class="text-xs text-slate-700 mt-1">Hybrid</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <a href="#"
+                                        class="rounded-full border border-ink/25 bg-white px-4 py-2 text-xs font-sans font-semibold text-ink hover:bg-lilac transition">Find
+                                        out more</a>
+                                    <a href="#"
+                                        class="rounded-full bg-ink px-4 py-2 text-xs font-sans font-semibold text-white hover:opacity-90 transition">Apply</a>
+                                </div>
+                            </div>
+
+                            <div class="role-item flex flex-col md:flex-row md:items-center md:justify-between gap-4 rounded-[22px] border border-ink/25 bg-white/70 px-5 py-4 shadow-soft"
+                                data-department="ops" data-location="remote" data-title="Executive Assistant">
+                                <div>
+                                    <p class="font-sans font-semibold text-ink">Executive Assistant</p>
+                                    <p class="text-xs text-slate-700 mt-1">Remote</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <a href="#"
+                                        class="rounded-full border border-ink/25 bg-white px-4 py-2 text-xs font-sans font-semibold text-ink hover:bg-lilac transition">Find
+                                        out more</a>
+                                    <a href="#"
+                                        class="rounded-full bg-ink px-4 py-2 text-xs font-sans font-semibold text-white hover:opacity-90 transition">Apply</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-animate data-animate-direction="up" data-animate-delay="0.07s" class="role-group">
+                        <h4 class="font-sans font-semibold text-ink">Legal</h4>
+
+                        <div class="mt-4 space-y-3">
+                            <div class="role-item flex flex-col md:flex-row md:items-center md:justify-between gap-4 rounded-[22px] border border-ink/25 bg-white/70 px-5 py-4 shadow-soft"
+                                data-department="legal" data-location="london" data-title="Legal Admin">
+                                <div>
+                                    <p class="font-sans font-semibold text-ink">Legal Admin</p>
+                                    <p class="text-xs text-slate-700 mt-1">London</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <a href="#"
+                                        class="rounded-full border border-ink/25 bg-white px-4 py-2 text-xs font-sans font-semibold text-ink hover:bg-lilac transition">Find
+                                        out more</a>
+                                    <a href="#"
+                                        class="rounded-full bg-ink px-4 py-2 text-xs font-sans font-semibold text-white hover:opacity-90 transition">Apply</a>
+                                </div>
+                            </div>
+
+                            <div class="role-item flex flex-col md:flex-row md:items-center md:justify-between gap-4 rounded-[22px] border border-ink/25 bg-white/70 px-5 py-4 shadow-soft"
+                                data-department="legal" data-location="hybrid" data-title="Paralegal">
+                                <div>
+                                    <p class="font-sans font-semibold text-ink">Paralegal</p>
+                                    <p class="text-xs text-slate-700 mt-1">Hybrid</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <a href="#"
+                                        class="rounded-full border border-ink/25 bg-white px-4 py-2 text-xs font-sans font-semibold text-ink hover:bg-lilac transition">Find
+                                        out more</a>
+                                    <a href="#"
+                                        class="rounded-full bg-ink px-4 py-2 text-xs font-sans font-semibold text-white hover:opacity-90 transition">Apply</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-animate data-animate-direction="up" data-animate-delay="0.09s" class="role-group">
+                        <h4 class="font-sans font-semibold text-ink">Sales</h4>
+
+                        <div class="mt-4 space-y-3">
+                            <div class="role-item flex flex-col md:flex-row md:items-center md:justify-between gap-4 rounded-[22px] border border-ink/25 bg-white/70 px-5 py-4 shadow-soft"
+                                data-department="sales" data-location="london" data-title="Sales Associate">
+                                <div>
+                                    <p class="font-sans font-semibold text-ink">Sales Associate</p>
+                                    <p class="text-xs text-slate-700 mt-1">London</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <a href="#"
+                                        class="rounded-full border border-ink/25 bg-white px-4 py-2 text-xs font-sans font-semibold text-ink hover:bg-lilac transition">Find
+                                        out more</a>
+                                    <a href="#"
+                                        class="rounded-full bg-ink px-4 py-2 text-xs font-sans font-semibold text-white hover:opacity-90 transition">Apply</a>
+                                </div>
+                            </div>
+
+                            <div class="role-item flex flex-col md:flex-row md:items-center md:justify-between gap-4 rounded-[22px] border border-ink/25 bg-white/70 px-5 py-4 shadow-soft"
+                                data-department="sales" data-location="hybrid" data-title="Sales Training Manager">
+                                <div>
+                                    <p class="font-sans font-semibold text-ink">Sales Training Manager</p>
+                                    <p class="text-xs text-slate-700 mt-1">Hybrid</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <a href="#"
+                                        class="rounded-full border border-ink/25 bg-white px-4 py-2 text-xs font-sans font-semibold text-ink hover:bg-lilac transition">Find
+                                        out more</a>
+                                    <a href="#"
+                                        class="rounded-full bg-ink px-4 py-2 text-xs font-sans font-semibold text-white hover:opacity-90 transition">Apply</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- empty state -->
+                    <div id="noResults"
+                        class="hidden text-center rounded-[28px] border border-slate-200 bg-white/70 shadow-soft p-10">
+                        <p class="font-sans font-semibold text-ink">No roles found</p>
+                        <p class="text-sm text-slate-700 mt-2">Try changing filters or search keywords.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <svg class="w-12 h-12" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="25" r="12" stroke="currentColor" stroke-width="3" fill="none" />
+                            <path d="M15 40 Q50 20, 85 40" stroke="currentColor" stroke-width="3" fill="none"
+                                stroke-linecap="round" />
+                        </svg>
+                        <div>
+                            <div class="text-xl font-sans font-bold tracking-wider">HORIZON WILLS</div>
+                            <div class="text-xs text-slate-200 tracking-widest">PROTECTING YOUR ASSETS</div>
+                        </div>
+                    </div>
+                    <p class="text-slate-200 text-sm leading-relaxed">
+                        Professional will writing and estate planning services to secure your family's future.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-sans font-semibold text-lg mb-4">Services</h4>
+                    <ul class="space-y-2 text-slate-200">
+                        <li><a href="#" class="hover:text-white transition-colors">Will Writing</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Estate Planning</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Power of Attorney</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Probate Services</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-sans font-semibold text-lg mb-4">Resources</h4>
+                    <ul class="space-y-2 text-slate-200">
+                        <li><a href="#" class="hover:text-white transition-colors">FAQs</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Guides</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Support</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-sans font-semibold text-lg mb-4">Company</h4>
+                    <ul class="space-y-2 text-slate-200">
+                        <li><a href="horizon-wills.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="careere.html" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Reviews</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-8 mt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <p class="text-slate-300 text-sm">
+                        &copy; 2026 Horizon Wills. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6 text-sm text-slate-300">
+                        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                        <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const animatedSections = document.querySelectorAll('[data-animate]');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const delay = el.dataset.animateDelay || '0s';
+                    el.style.transitionDelay = delay;
+                    el.classList.add('animate-in');
+                    observer.unobserve(el);
+                }
+            });
+        }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
+
+        animatedSections.forEach(section => observer.observe(section));
+
+        // Join the team filters
+        const department = document.getElementById('filterDepartment');
+        const locationSel = document.getElementById('filterLocation');
+        const search = document.getElementById('filterSearch');
+        const items = Array.from(document.querySelectorAll('.role-item'));
+        const noResults = document.getElementById('noResults');
+
+        function normalize(v) { return (v || '').toLowerCase().trim(); }
+
+        function applyFilters() {
+            const dep = normalize(department.value);
+            const loc = normalize(locationSel.value);
+            const q = normalize(search.value);
+
+            let visibleCount = 0;
+
+            items.forEach(el => {
+                const elDep = normalize(el.dataset.department);
+                const elLoc = normalize(el.dataset.location);
+                const title = normalize(el.dataset.title);
+
+                const depOk = dep === 'all' || elDep === dep;
+                const locOk = loc === 'all' || elLoc === loc;
+                const qOk = !q || title.includes(q);
+
+                const show = depOk && locOk && qOk;
+                el.classList.toggle('hidden', !show);
+                if (show) visibleCount++;
+            });
+
+            // Hide empty group headings if all children hidden
+            document.querySelectorAll('.role-group').forEach(group => {
+                const rows = group.querySelectorAll('.role-item');
+                const hasVisible = Array.from(rows).some(r => !r.classList.contains('hidden'));
+                group.classList.toggle('hidden', !hasVisible);
+            });
+
+            noResults.classList.toggle('hidden', visibleCount !== 0);
+        }
+
+        [department, locationSel].forEach(el => el.addEventListener('change', applyFilters));
+        search.addEventListener('input', applyFilters);
+        applyFilters();
+    </script>
+
+</body>
+
+</html>
