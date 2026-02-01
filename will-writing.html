@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizon Wills - Protecting Your Assets and Securing Your Future</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600;700&family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#e6f0f5',
+                            100: '#cce1eb',
+                            200: '#99c3d7',
+                            300: '#66a5c3',
+                            400: '#3387af',
+                            500: '#00699b',
+                            600: '#00547c',
+                            700: '#003f5d',
+                            800: '#002a3e',
+                            900: '#00151f',
+                        },
+                        slate: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334e68',
+                            800: '#243b53',
+                            900: '#1e293b',
+                        },
+                        accent: {
+                            pink: '#ec4899',
+                            blue: '#3b82f6',
+                            yellow: '#fbbf24',
+                            green: '#10b981',
+                            purple: '#8b5cf6',
+                        },
+                        cream: '#f8f6f0',
+                        sand: '#e8e4d9',
+                    },
+                    fontFamily: {
+                        'serif': ['Cormorant Garamond', 'Georgia', 'serif'],
+                        'body': ['Lora', 'Georgia', 'serif'],
+                        'display': ['Crimson Text', 'Georgia', 'serif'],
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'fade-in-delay': 'fadeIn 0.8s ease-out 0.2s both',
+                        'fade-in-delay-2': 'fadeIn 0.8s ease-out 0.4s both',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 9999px;
+            background-color: #E3D8BE;
+            color: #000;
+            font-weight: bold;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 640px) {
+            .number {
+                width: 3rem;
+                height: 3rem;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .number {
+                width: 3.5rem;
+                height: 3.5rem;
+                font-size: 1.75rem;
+            }
+        }
+
+        .text-dark-ashes-100 {
+            color: #6B7280;
+        }
+
+        body {
+            font-family: 'Lora', Georgia, serif;
+        }
+
+        .text-balance {
+            text-wrap: balance;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f8f6f0;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334e68;
+            border-radius: 4px;
+        }
+
+        /* Gradient overlay */
+        .gradient-overlay {
+            background: linear-gradient(135deg, rgba(36, 59, 83, 0.95) 0%, rgba(16, 42, 67, 0.98) 100%);
+        }
+
+        /* Image hover effect */
+        .image-card {
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .image-card img {
+            transition: transform 0.6s ease;
+        }
+
+        .image-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Feature card hover */
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Hexagon shape for icons */
+        .hexagon {
+            clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
+        }
+
+        /* Animation styles - FIXED */
+        [data-animate] {
+            opacity: 0;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: var(--delay, 0s);
+            will-change: opacity, transform;
+        }
+
+        [data-animate]:not([data-animate-direction]),
+        [data-animate-direction="up"] {
+            transform: translateY(32px);
+        }
+
+        [data-animate-direction="down"] {
+            transform: translateY(-32px);
+        }
+
+        [data-animate-direction="left"] {
+            transform: translateX(40px);
+        }
+
+        [data-animate-direction="right"] {
+            transform: translateX(-40px);
+        }
+
+        [data-animate].animate-in {
+            opacity: 1;
+            transform: translate(0, 0) !important;
+        }
+
+        /* Navigation dropdown fixes */
+        .about-dropdown-item a {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 8px 12px;
+        }
+
+        /* Ensure dropdowns are properly positioned */
+        .relative.group .absolute {
+            z-index: 1000;
+        }
+
+        /* Fix for mobile menu transition */
+        [x-transition] {
+            overflow: hidden;
+        }
+
+        /* Image fallback */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Scrollbar hide for review slider */
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Pricing card styling */
+        .pricing-card {
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header class="sticky top-0 z-50">
+        <!-- Navigation -->
+        <nav class="w-full bg-slate-800 text-white z-50 shadow-lg" x-data="{ mobileMenuOpen: false }">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <!-- Logo -->
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <svg class="w-12 h-12" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="25" r="12" stroke="currentColor" stroke-width="3" fill="none" />
+                            <path d="M15 40 Q50 20, 85 40" stroke="currentColor" stroke-width="3" fill="none"
+                                stroke-linecap="round" />
+                        </svg>
+                        <div>
+                            <div class="text-2xl font-sans font-bold tracking-wider">HORIZON WILLS</div>
+                            <div class="text-xs text-slate-300 tracking-widest">PROTECTING YOUR ASSETS</div>
+                        </div>
+                    </a>
+
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex items-center space-x-8">
+                        <div class="relative group">
+                            <a href="horizon-wills.html"
+                                class="flex items-center gap-2 font-sans tracking-wide text-sm text-slate-100/90 hover:text-primary-500 transition-colors">
+                                <span>About Us</span>
+                                <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180"
+                                    fill="none" viewBox="0 0 12 12" stroke="currentColor">
+                                    <path d="M3 4l3 3 3-3" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </a>
+
+                            <div
+                                class="absolute left-1/2 -translate-x-1/2 top-full mt-4 opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-all duration-200">
+                                <div
+                                    class="flex w-[420px] bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white rounded-3xl shadow-2xl border border-white/10 overflow-hidden ring-1 ring-primary-500/40">
+                                    <div class="w-1/2 bg-primary-900/60 p-4 space-y-5">
+                                        <p class="text-xs uppercase tracking-[0.3em] text-primary-100 font-semibold">
+                                            About us
+                                        </p>
+                                        <ul class="space-y-3 text-sm text-primary-100">
+                                            <li
+                                                class="group rounded-xl transition-colors duration-200 hover:bg-white/10 about-dropdown-item">
+                                                <a href="horizon-wills.html"
+                                                    class="flex items-center gap-3 px-2 py-2 text-white">
+                                                    <div
+                                                        class="w-8 h-8 rounded-2xl bg-white/10 border border-white/30 shadow flex items-center justify-center text-white">
+                                                        <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path
+                                                                d="M9 4a1 1 0 112 0v2h2a1 1 0 110 2h-2v2h2a1 1 0 110 2h-2v2a1 1 0 11-2 0v-2h-2a1 1 0 110-2h2V8H7a1 1 0 110-2h2V4z" />
+                                                        </svg>
+                                                    </div>
+                                                    <span
+                                                        class="font-semibold text-sm transition-colors duration-200 group-hover:text-white">HORIZON
+                                                        WILLS</span>
+                                                </a>
+                                            </li>
+                                            <li
+                                                class="flex items-center gap-3 group rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-white/10 about-dropdown-item">
+                                                <a href="guides.html" class="flex items-center gap-3 py-2 text-white">
+                                                    <div
+                                                        class="w-8 h-8 rounded-2xl bg-white/10 border border-white/30 shadow flex items-center justify-center text-white">
+                                                        <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path
+                                                                d="M4 3a2 2 0 00-2 2v9a2 2 0 002 2h5v-2H4V9h6v2l4-3-4-3v2H4V5h10V3H4z" />
+                                                        </svg>
+                                                    </div>
+                                                    <span
+                                                        class="font-semibold text-sm transition-colors duration-200 group-hover:text-white">Guides</span>
+                                                </a>
+                                            </li>
+                                            <li
+                                                class="flex items-center gap-3 group rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-white/10 about-dropdown-item">
+                                                <a href="careere.html"
+                                                    class="flex items-center gap-3 py-2 text-white w-full">
+                                                    <div
+                                                        class="w-8 h-8 rounded-2xl bg-white/10 border border-white/30 shadow flex items-center justify-center text-white">
+                                                        <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fill-rule="evenodd"
+                                                                d="M10 3a1 1 0 01.894.553l2 4A1 1 0 0112 9H8a1 1 0 01-.894-1.447l2-4A1 1 0 0110 3zm-4.382 5.447A1 1 0 015.618 9H7v7a1 1 0 002 0v-3h2v3a1 1 0 002 0V9h1.382a1 1 0 00.894-1.447l-2-4a1 1 0 00-1.788 0l-2 4a1 1 0 01-.894.447H5.618z"
+                                                                clip-rule="evenodd" />
+                                                        </svg>
+                                                    </div>
+                                                    <span
+                                                        class="font-semibold text-sm transition-colors duration-200 group-hover:text-white">Careers</span>
+                                                </a>
+                                            </li>
+                                            <li
+                                                class="flex items-center gap-3 group rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-white/10 about-dropdown-item">
+                                                <a href="contact.html"
+                                                    class="flex items-center gap-3 py-2 text-white w-full">
+                                                    <div
+                                                        class="w-8 h-8 rounded-2xl bg-white/10 border border-white/30 shadow flex items-center justify-center text-white">
+                                                        <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path d="M2 5a2 2 0 012-2h12a2 2 0 012 2v3l-8 4-8-4V5z" />
+                                                            <path d="M2 10l8 4 8-4v5a2 2 0 01-2 2H4a2 2 0 01-2-2v-5z" />
+                                                        </svg>
+                                                    </div>
+                                                    <span
+                                                        class="font-semibold text-sm transition-colors duration-200 group-hover:text-white">Contact
+                                                        Us</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="w-1/2 p-6 flex flex-col justify-between bg-white text-slate-900">
+                                        <div class="space-y-4">
+                                            <div class="flex items-center gap-2 text-primary-700">
+                                                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M12 3v18M5 9l7-6 7 6" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                <span class="font-semibold tracking-wide">Not sure where to
+                                                    start?</span>
+                                            </div>
+                                            <p class="text-sm text-slate-600 leading-relaxed">Take the 1 min quiz to
+                                                discover the right estate plan for you.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative group">
+                            <a href="will-writing.html"
+                                class="flex items-center gap-2 font-sans tracking-wide text-sm text-slate-100/90 hover:text-primary-500 transition-colors">
+                                <span>Plan for Death</span>
+                                <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180"
+                                    fill="none" viewBox="0 0 12 12" stroke="currentColor">
+                                    <path d="M3 4l3 3 3-3" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </a>
+
+                            <div
+                                class="absolute left-1/2 -translate-x-1/2 top-full mt-4 opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-all duration-200">
+                                <div
+                                    class="w-[360px] bg-white rounded-3xl shadow-2xl border border-primary-100 p-6 text-slate-900 ring-1 ring-primary-200/60">
+                                    <p class="text-xs uppercase tracking-[0.3em] text-primary-500 font-semibold mb-4">
+                                        Plan for Death
+                                    </p>
+                                    <ul class="space-y-3 text-sm">
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
+                                            <div
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M5 20h14M7 20V4l10 3v13" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <a href="will-writing.html" class="font-semibold text-slate-900">Will
+                                                    Writing</a>
+                                                <p class="text-slate-500 text-xs">Write a will tailored to you</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
+                                            <div
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path
+                                                        d="M12 21s8-4.5 8-10.5S15.5 3 12 6.5C8.5 3 4 4.5 4 10.5S12 21 12 21z"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <a href="life-insurance.html" class="font-semibold text-slate-900">Life
+                                                    Insurance</a>
+                                                <p class="text-slate-500 text-xs">Protection for the 21st century</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
+                                            <div
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M12 12l-5-5m5 5l5-5m-5 5v9" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <a href="lasting-power-of-attorney.html"
+                                                    class="font-semibold text-slate-900">Lasting Power of Attorney</a>
+                                                <p class="text-slate-500 text-xs">Choose who makes decisions for you</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
+                                            <div
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M4 7h16M6 7V5a4 4 0 0116 0v2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M8 7V5a4 4 0 0116 0v2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <a href="Legacy-Box.html" class="font-semibold text-slate-900">Legacy
+                                                    Box</a>
+                                                <p class="text-slate-500 text-xs">Make life easier for loved ones</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative group">
+                            <a href="Berevament-support-Hubs.html"
+                                class="flex items-center gap-2 font-sans tracking-wide text-sm text-slate-100/90 hover:text-primary-500 transition-colors">
+                                <span>Get Support After Loss</span>
+                                <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180"
+                                    fill="none" viewBox="0 0 12 12" stroke="currentColor">
+                                    <path d="M3 4l3 3 3-3" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </a>
+
+                            <div
+                                class="absolute left-1/2 -translate-x-1/2 top-full mt-4 opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-all duration-200">
+                                <div
+                                    class="w-[340px] bg-white rounded-3xl shadow-2xl border border-primary-100 p-6 text-slate-900 ring-1 ring-primary-200/60">
+                                    <p class="text-xs uppercase tracking-[0.3em] text-primary-500 font-semibold mb-4">
+                                        Get Support After Loss
+                                    </p>
+                                    <ul class="space-y-3 text-sm">
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
+                                            <div
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path
+                                                        d="M12 21s-7-4.5-7-10.5a4 4 0 014-4c1.2 0 2.3.6 3 1.5A4 4 0 0115 6.5a4 4 0 014 4C19 16.5 12 21 12 21z"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <a href="Berevament-support-Hubs.html"
+                                                    class="font-semibold text-slate-900">Bereavement Support Hubs</a>
+                                                <p class="text-slate-500 text-xs">Build a supportive community</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
+                                            <div
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M6 19h12M6 5h12M9 5v14M15 5v14" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <a href="Probate.html" class="font-semibold text-slate-900">Probate</a>
+                                                <p class="text-slate-500 text-xs">Guidance through probate</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
+                                            <div
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M4 5h4l2 4h6a2 2 0 012 2v5h-4" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M9 21h6" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <a href="contact.html" class="font-semibold text-slate-900">Dedicated
+                                                    Concierge</a>
+                                                <p class="text-slate-500 text-xs">Personal support after loss</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="login.html"
+                            class="text-pink-400 py-2 transition-all hover:text-primary-100 font-sans font-semibold">
+                            Sign in
+                        </a>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu -->
+                <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 transform scale-95"
+                    x-transition:enter-end="opacity-100 transform scale-100"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 transform scale-100"
+                    x-transition:leave-end="opacity-0 transform scale-95" class="md:hidden mt-4 pb-4 space-y-4">
+                    <a href="horizon-wills.html" class="block hover:text-primary-300 transition-colors">About Us</a>
+                    <a href="will-writing.html" class="block hover:text-primary-300 transition-colors">Plan for
+                        Death</a>
+                    <a href="Berevament-support-Hubs.html" class="block hover:text-primary-300 transition-colors">Get
+                        Support After Loss</a>
+
+                    <button class="bg-white text-slate-800 px-6 py-2 rounded-full transition-colors w-full">
+                        Take the Quiz
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="flex items-center justify-center bg-[#fffef3] p-8">
+        <div
+            class="container relative w-full overflow-hidden rounded-3xl shadow-2xl aspect-[16/9] md:aspect-[21/9] lg:aspect-[2.4/1]">
+
+            <img src="assets/img/willwriting_hero.jpg" alt="Grandmother and child"
+                class="absolute inset-0 object-cover w-full h-full" />
+
+            <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent"></div>
+
+            <div class="relative h-full flex flex-col justify-center px-8 md:px-16 lg:px-24 text-white max-w-2xl">
+
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6">
+                    Professional will writing services, tailored to you.
+                </h1>
+
+                <p class="text-lg md:text-xl text-gray-100 mb-8 max-w-lg leading-relaxed">
+                    Finding the right type of will can feel complex - we're here to make it simple.
+                    Trusted by 700,000+ families to plan ahead with confidence.
+                </p>
+
+                <div class="flex items-center space-x-3 mb-10">
+                    <span
+                        class="font-semibold underline decoration-1 underline-offset-4 cursor-pointer">Excellent</span>
+                    <div class="flex space-x-1">
+                        <div class="bg-[#00b67a] p-1"><svg class="w-4 h-4 text-white fill-current" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                            </svg></div>
+                        <div class="bg-[#00b67a] p-1"><svg class="w-4 h-4 text-white fill-current" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                            </svg></div>
+                        <div class="bg-[#00b67a] p-1"><svg class="w-4 h-4 text-white fill-current" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                            </svg></div>
+                        <div class="bg-[#00b67a] p-1"><svg class="w-4 h-4 text-white fill-current" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                            </svg></div>
+                        <div class="bg-[#dcdce6] p-1"><svg class="w-4 h-4 text-white fill-current" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                            </svg></div>
+                    </div>
+                    <span class="text-sm flex items-center">
+                        <svg class="w-4 h-4 text-[#00b67a] mr-1 fill-current" viewBox="0 0 20 20">
+                            <path
+                                d="M10 0L13.09 6.26L20 7.27L15 12.14L16.18 19.02L10 15.77L3.82 19.02L5 12.14L0 7.27L6.91 6.26L10 0Z" />
+                        </svg>
+                        Trustpilot
+                    </span>
+                </div>
+
+                <button
+                    class="group w-fit flex items-center space-x-3 bg-white text-black px-8 py-4 rounded-full font-semibold transition-all hover:bg-gray-100">
+                    <span>Let's get started</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                        stroke="currentColor" class="w-5 h-5 transition-transform group-hover:translate-x-1">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </button>
+
+                <p
+                    class="absolute bottom-6 right-0 text-[10px] md:text-xs text-gray-300 opacity-80 max-w-[200px] text-right">
+                    Laura, Head of Legal and her late Grandmother, Mamá Inés
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="bg-[#fffef3] flex items-center justify-center p-6">
+        <div class="max-w-7xl w-full">
+            <!-- Heading -->
+            <h1 class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12">
+                What are our different types of wills?
+            </h1>
+
+            <!-- Pricing Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Online Will Card -->
+                <div class="pricing-card">
+                    <div class="grid grid-cols-1 rounded-[2rem] p-2 shadow-md shadow-black/5">
+                        <div class="rounded-3xl bg-white pt-10 pb-20 px-8 shadow-2xl ring-1 ring-black/5">
+                            <div class="flex flex-col gap-5 mb-10">
+                                <div class="flex flex-col gap-3">
+                                    <div
+                                        class="inline-flex items-center justify-center bg-gray-900 text-white px-4 py-2 rounded-full text-xl font-medium w-fit">
+                                        Online
+                                    </div>
+                                    <p class="text-gray-500 text-base">
+                                        Create your will using our online will platform
+                                    </p>
+                                </div>
+                                <div>
+                                    <div class="flex gap-4">
+                                        <h4 class="text-4xl text-gray-800 font-bold">£150</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="flex flex-col gap-3">
+                                <li class="flex gap-2 xs:gap-[14px] justify-start items-start">
+                                    <div class="w-5 h-5">
+                                        <svg fill="none" viewBox="0 0 26 26" width="26" height="26"
+                                            xmlns="http://www.w3.org/2000/svg" class="fill-gray-900 w-5 h-5">
+                                            <path
+                                                d="m0.8125 13c0-6.731 5.4565-12.188 12.188-12.188 6.731 0 12.188 5.4565 12.188 12.188 0 6.731-5.4565 12.188-12.188 12.188-6.731 0-12.188-5.4565-12.188-12.188zm16.7-2.2676c0.3009-0.4213 0.2033-1.0068-0.218-1.3078-0.4213-0.30095-1.0068-0.20337-1.3078 0.21796l-4.0442 5.6619-2.03-2.0299c-0.36611-0.3661-0.95971-0.3661-1.3258 0-0.36612 0.3661-0.36612 0.9597 0 1.3258l2.8125 2.8125c0.1949 0.1949 0.4656 0.2941 0.7402 0.2714 0.2747-0.0227 0.5254-0.1651 0.6856-0.3894l4.6875-6.5625z"
+                                                clip-rule="evenodd" fill-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-gray-700 text-base">Reviewed by our expert team</p>
+                                </li>
+                                <li class="flex gap-2 xs:gap-[14px] justify-start items-start">
+                                    <div class="w-5 h-5">
+                                        <svg fill="none" viewBox="0 0 26 26" width="26" height="26"
+                                            xmlns="http://www.w3.org/2000/svg" class="fill-gray-900 w-5 h-5">
+                                            <path
+                                                d="m0.8125 13c0-6.731 5.4565-12.188 12.188-12.188 6.731 0 12.188 5.4565 12.188 12.188 0 6.731-5.4565 12.188-12.188 12.188-6.731 0-12.188-5.4565-12.188-12.188zm16.7-2.2676c0.3009-0.4213 0.2033-1.0068-0.218-1.3078-0.4213-0.30095-1.0068-0.20337-1.3078 0.21796l-4.0442 5.6619-2.03-2.0299c-0.36611-0.3661-0.95971-0.3661-1.3258 0-0.36612 0.3661-0.36612 0.9597 0 1.3258l2.8125 2.8125c0.1949 0.1949 0.4656 0.2941 0.7402 0.2714 0.2747-0.0227 0.5254-0.1651 0.6856-0.3894l4.6875-6.5625z"
+                                                clip-rule="evenodd" fill-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-gray-700 text-base">Completed online</p>
+                                </li>
+                                <li class="flex gap-2 xs:gap-[14px] justify-start items-start">
+                                    <div class="w-5 h-5">
+                                        <svg fill="none" viewBox="0 0 26 26" width="26" height="26"
+                                            xmlns="http://www.w3.org/2000/svg" class="fill-gray-900 w-5 h-5">
+                                            <path
+                                                d="m0.8125 13c0-6.731 5.4565-12.188 12.188-12.188 6.731 0 12.188 5.4565 12.188 12.188 0 6.731-5.4565 12.188-12.188 12.188-6.731 0-12.188-5.4565-12.188-12.188zm16.7-2.2676c0.3009-0.4213 0.2033-1.0068-0.218-1.3078-0.4213-0.30095-1.0068-0.20337-1.3078 0.21796l-4.0442 5.6619-2.03-2.0299c-0.36611-0.3661-0.95971-0.3661-1.3258 0-0.36612 0.3661-0.36612 0.9597 0 1.3258l2.8125 2.8125c0.1949 0.1949 0.4656 0.2941 0.7402 0.2714 0.2747-0.0227 0.5254-0.1651 0.6856-0.3894l4.6875-6.5625z"
+                                                clip-rule="evenodd" fill-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-gray-700 text-base">For simple estates</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phone/Home Will Card -->
+                <div class="pricing-card">
+                    <div class="grid grid-cols-1 rounded-[2rem] p-2 shadow-md shadow-black/5">
+                        <div class="rounded-3xl bg-white pt-10 pb-20 px-8 shadow-2xl ring-1 ring-black/5">
+                            <div class="flex flex-col gap-5 mb-10">
+                                <div class="flex flex-col gap-3">
+                                    <div
+                                        class="inline-flex items-center justify-center bg-gray-900 text-white px-4 py-2 rounded-full text-xl font-medium w-fit">
+                                        Phone/home
+                                    </div>
+                                    <p class="text-gray-500 text-base">
+                                        Prepare your will over the phone or during a home visit
+                                    </p>
+                                </div>
+                                <div>
+                                    <div class="flex gap-4">
+                                        <h4 class="text-4xl text-gray-800 font-bold">£150</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="flex flex-col gap-3">
+                                <li class="flex gap-2 xs:gap-[14px] justify-start items-start">
+                                    <div class="w-5 h-5">
+                                        <svg fill="none" viewBox="0 0 26 26" width="26" height="26"
+                                            xmlns="http://www.w3.org/2000/svg" class="fill-gray-900 w-5 h-5">
+                                            <path
+                                                d="m0.8125 13c0-6.731 5.4565-12.188 12.188-12.188 6.731 0 12.188 5.4565 12.188 12.188 0 6.731-5.4565 12.188-12.188 12.188-6.731 0-12.188-5.4565-12.188-12.188zm16.7-2.2676c0.3009-0.4213 0.2033-1.0068-0.218-1.3078-0.4213-0.30095-1.0068-0.20337-1.3078 0.21796l-4.0442 5.6619-2.03-2.0299c-0.36611-0.3661-0.95971-0.3661-1.3258 0-0.36612 0.3661-0.36612 0.9597 0 1.3258l2.8125 2.8125c0.1949 0.1949 0.4656 0.2941 0.7402 0.2714 0.2747-0.0227 0.5254-0.1651 0.6856-0.3894l4.6875-6.5625z"
+                                                clip-rule="evenodd" fill-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-gray-700 text-base">With an expert will writer</p>
+                                </li>
+                                <li class="flex gap-2 xs:gap-[14px] justify-start items-start">
+                                    <div class="w-5 h-5">
+                                        <svg fill="none" viewBox="0 0 26 26" width="26" height="26"
+                                            xmlns="http://www.w3.org/2000/svg" class="fill-gray-900 w-5 h-5">
+                                            <path
+                                                d="m0.8125 13c0-6.731 5.4565-12.188 12.188-12.188 6.731 0 12.188 5.4565 12.188 12.188 0 6.731-5.4565 12.188-12.188 12.188-6.731 0-12.188-5.4565-12.188-12.188zm16.7-2.2676c0.3009-0.4213 0.2033-1.0068-0.218-1.3078-0.4213-0.30095-1.0068-0.20337-1.3078 0.21796l-4.0442 5.6619-2.03-2.0299c-0.36611-0.3661-0.95971-0.3661-1.3258 0-0.36612 0.3661-0.36612 0.9597 0 1.3258l2.8125 2.8125c0.1949 0.1949 0.4656 0.2941 0.7402 0.2714 0.2747-0.0227 0.5254-0.1651 0.6856-0.3894l4.6875-6.5625z"
+                                                clip-rule="evenodd" fill-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-gray-700 text-base">Completed over the phone or in person</p>
+                                </li>
+                                <li class="flex gap-2 xs:gap-[14px] justify-start items-start">
+                                    <div class="w-5 h-5">
+                                        <svg fill="none" viewBox="0 0 26 26" width="26" height="26"
+                                            xmlns="http://www.w3.org/2000/svg" class="fill-gray-900 w-5 h-5">
+                                            <path
+                                                d="m0.8125 13c0-6.731 5.4565-12.188 12.188-12.188 6.731 0 12.188 5.4565 12.188 12.188 0 6.731-5.4565 12.188-12.188 12.188-6.731 0-12.188-5.4565-12.188-12.188zm16.7-2.2676c0.3009-0.4213 0.2033-1.0068-0.218-1.3078-0.4213-0.30095-1.0068-0.20337-1.3078 0.21796l-4.0442 5.6619-2.03-2.0299c-0.36611-0.3661-0.95971-0.3661-1.3258 0-0.36612 0.3661-0.36612 0.9597 0 1.3258l2.8125 2.8125c0.1949 0.1949 0.4656 0.2941 0.7402 0.2714 0.2747-0.0227 0.5254-0.1651 0.6856-0.3894l4.6875-6.5625z"
+                                                clip-rule="evenodd" fill-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-gray-700 text-base">Suitable for most estates</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Will with Trust Card -->
+                <div class="pricing-card">
+                    <div class="grid grid-cols-1 rounded-[2rem] p-2 shadow-md shadow-black/5">
+                        <div class="rounded-3xl bg-white pt-10 pb-20 px-8 shadow-2xl ring-1 ring-black/5">
+                            <div class="flex flex-col gap-5 mb-10">
+                                <div class="flex flex-col gap-3">
+                                    <div
+                                        class="inline-flex items-center justify-center bg-gray-900 text-white px-4 py-2 rounded-full text-xl font-medium w-fit">
+                                        Will with trust
+                                    </div>
+                                    <p class="text-gray-500 text-base">
+                                        Manage and protect your assets for your loved ones
+                                    </p>
+                                </div>
+                                <div>
+                                    <div class="flex gap-4">
+                                        <h4 class="text-4xl text-gray-800 font-bold">£450</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="flex flex-col gap-3">
+                                <li class="flex gap-2 xs:gap-[14px] justify-start items-start">
+                                    <div class="w-5 h-5">
+                                        <svg fill="none" viewBox="0 0 26 26" width="26" height="26"
+                                            xmlns="http://www.w3.org/2000/svg" class="fill-gray-900 w-5 h-5">
+                                            <path
+                                                d="m0.8125 13c0-6.731 5.4565-12.188 12.188-12.188 6.731 0 12.188 5.4565 12.188 12.188 0 6.731-5.4565 12.188-12.188 12.188-6.731 0-12.188-5.4565-12.188-12.188zm16.7-2.2676c0.3009-0.4213 0.2033-1.0068-0.218-1.3078-0.4213-0.30095-1.0068-0.20337-1.3078 0.21796l-4.0442 5.6619-2.03-2.0299c-0.36611-0.3661-0.95971-0.3661-1.3258 0-0.36612 0.3661-0.36612 0.9597 0 1.3258l2.8125 2.8125c0.1949 0.1949 0.4656 0.2941 0.7402 0.2714 0.2747-0.0227 0.5254-0.1651 0.6856-0.3894l4.6875-6.5625z"
+                                                clip-rule="evenodd" fill-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-gray-700 text-base">With an expert will writer</p>
+                                </li>
+                                <li class="flex gap-2 xs:gap-[14px] justify-start items-start">
+                                    <div class="w-5 h-5">
+                                        <svg fill="none" viewBox="0 0 26 26" width="26" height="26"
+                                            xmlns="http://www.w3.org/2000/svg" class="fill-gray-900 w-5 h-5">
+                                            <path
+                                                d="m0.8125 13c0-6.731 5.4565-12.188 12.188-12.188 6.731 0 12.188 5.4565 12.188 12.188 0 6.731-5.4565 12.188-12.188 12.188-6.731 0-12.188-5.4565-12.188-12.188zm16.7-2.2676c0.3009-0.4213 0.2033-1.0068-0.218-1.3078-0.4213-0.30095-1.0068-0.20337-1.3078 0.21796l-4.0442 5.6619-2.03-2.0299c-0.36611-0.3661-0.95971-0.3661-1.3258 0-0.36612 0.3661-0.36612 0.9597 0 1.3258l2.8125 2.8125c0.1949 0.1949 0.4656 0.2941 0.7402 0.2714 0.2747-0.0227 0.5254-0.1651 0.6856-0.3894l4.6875-6.5625z"
+                                                clip-rule="evenodd" fill-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-gray-700 text-base">Completed over the phone or to face</p>
+                                </li>
+                                <li class="flex gap-2 xs:gap-[14px] justify-start items-start">
+                                    <div class="w-5 h-5">
+                                        <svg fill="none" viewBox="0 0 26 26" width="26" height="26"
+                                            xmlns="http://www.w3.org/2000/svg" class="fill-gray-900 w-5 h-5">
+                                            <path
+                                                d="m0.8125 13c0-6.731 5.4565-12.188 12.188-12.188 6.731 0 12.188 5.4565 12.188 12.188 0 6.731-5.4565 12.188-12.188 12.188-6.731 0-12.188-5.4565-12.188-12.188zm16.7-2.2676c0.3009-0.4213 0.2033-1.0068-0.218-1.3078-0.4213-0.30095-1.0068-0.20337-1.3078 0.21796l-4.0442 5.6619-2.03-2.0299c-0.36611-0.3661-0.95971-0.3661-1.3258 0-0.36612 0.3661-0.36612 0.9597 0 1.3258l2.8125 2.8125c0.1949 0.1949 0.4656 0.2941 0.7402 0.2714 0.2747-0.0227 0.5254-0.1651 0.6856-0.3894l4.6875-6.5625z"
+                                                clip-rule="evenodd" fill-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-gray-700 text-base">For complex estates and trusts</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Get Started Button -->
+            <div class="flex justify-center">
+                <button
+                    class="bg-[#160535] text-white font-semibold px-8 py-4 rounded-full text-lg transition-colors duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl">
+                    Get Started
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <section class="bg-[#fffef3] py-16 px-4 sm:px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+            <!-- Left column: Heading -->
+            <div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                    Write your will in 3<br />simple steps
+                </h2>
+            </div>
+
+            <!-- Right column: Steps -->
+            <div class="flex flex-col gap-12">
+
+                <!-- Step 1 -->
+                <div class="flex gap-6">
+                    <div class="flex flex-col items-center">
+                        <span
+                            class="flex h-9 w-9 items-center justify-center rounded-full bg-[#D8CDB3] text-sm font-semibold text-gray-900">
+                            1
+                        </span>
+                        <span class="mt-3 h-20 w-[2px] bg-[#D8CDB3]"></span>
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <h3 class="text-xl font-semibold text-gray-900">
+                            Find the right will for you
+                        </h3>
+                        <p class="text-base text-gray-700 max-w-md">
+                            Speak to our friendly team who will help determine the right type of will for you and answer
+                            any questions you may have.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex gap-6">
+                    <div class="flex flex-col items-center">
+                        <span
+                            class="flex h-9 w-9 items-center justify-center rounded-full bg-[#D8CDB3] text-sm font-semibold text-gray-900">
+                            2
+                        </span>
+                        <span class="mt-3 h-20 w-[2px] bg-[#D8CDB3]"></span>
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <h3 class="text-xl font-semibold text-gray-900">
+                            Complete your will
+                        </h3>
+                        <p class="text-base text-gray-700 max-w-md">
+                            Create your will with one of our will writers, or via our online platform.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex gap-6">
+                    <div class="flex flex-col items-center">
+                        <span
+                            class="flex h-9 w-9 items-center justify-center rounded-full bg-[#D8CDB3] text-sm font-semibold text-gray-900">
+                            3
+                        </span>
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <h3 class="text-xl font-semibold text-gray-900">
+                            Check and sign your will
+                        </h3>
+                        <p class="text-base text-gray-700 max-w-md">
+                            Our legal team review your will then send it to you to sign. You can use our will update
+                            services to ensure your will stands the test of time.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-[#fffef3] flex items-center justify-center p-6">
+        <div class="max-w-6xl w-full">
+            <!-- Heading -->
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 text-center mb-12">
+                Helping you make the right choice
+            </h1>
+
+            <!-- FAQ Accordion -->
+            <div class="space-y-0">
+                <!-- Question 1 -->
+                <div class="border-b border-gray-300 py-6">
+                    <button class="w-full flex items-center justify-between text-left group">
+                        <span class="text-lg md:text-xl text-gray-900 font-medium">Do I need a will?</span>
+                        <div
+                            class="w-10 h-10 rounded-full bg-[#1a1a2e] flex items-center justify-center flex-shrink-0 ml-4">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                    d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="border-b border-gray-300 py-6">
+                    <button class="w-full flex items-center justify-between text-left group">
+                        <span class="text-lg md:text-xl text-gray-900 font-medium">What kind of will do I need?</span>
+                        <div
+                            class="w-10 h-10 rounded-full bg-[#1a1a2e] flex items-center justify-center flex-shrink-0 ml-4">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                    d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="border-b border-gray-300 py-6">
+                    <button class="w-full flex items-center justify-between text-left group">
+                        <span class="text-lg md:text-xl text-gray-900 font-medium">What is a will with trust?</span>
+                        <div
+                            class="w-10 h-10 rounded-full bg-[#1a1a2e] flex items-center justify-center flex-shrink-0 ml-4">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                    d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="border-b border-gray-300 py-6">
+                    <button class="w-full flex items-center justify-between text-left group">
+                        <span class="text-lg md:text-xl text-gray-900 font-medium">What is a mirror will?</span>
+                        <div
+                            class="w-10 h-10 rounded-full bg-[#1a1a2e] flex items-center justify-center flex-shrink-0 ml-4">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                    d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Show More Button -->
+            <div class="flex justify-center mt-12">
+                <button
+                    class="px-8 py-3 border-2 border-gray-900 rounded-full text-gray-900 font-medium hover:bg-gray-900 hover:text-white transition-colors duration-300">
+                    Show more
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-[#efeafc]">
+        <section class="py-16 px-6">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl text-center mb-12">
+                    Call us now on
+                    <a href="tel:02045253605" class="font-bold whitespace-nowrap inline-block w-full sm:inline">
+                        020 4525 3605
+                    </a>
+                    to learn more about
+                </h2>
+
+                <ul class="flex flex-wrap justify-center gap-8 lg:gap-12">
+                    <li class="flex justify-center items-center w-full sm:w-[calc(50%-1rem)] lg:w-auto">
+                        <div class="flex flex-col justify-center items-center gap-4 md:gap-8">
+                            <img src="https://a.storyblok.com/f/309177/x/3434441de2/penpaper.avif" alt="Pen and paper"
+                                class="w-24 h-24 md:w-32 md:h-32">
+                            <p class="text-lg lg:text-xl text-center mx-4 sm:mx-0 max-w-xs">
+                                Our basic and bespoke will services
+                            </p>
+                        </div>
+                    </li>
+
+                    <li class="flex justify-center items-center w-full sm:w-[calc(50%-1rem)] lg:w-auto">
+                        <div class="flex flex-col justify-center items-center gap-4 md:gap-8">
+                            <img src="https://a.storyblok.com/f/309177/x/af41af3514/arrowtarget.avif" alt="Arrow target"
+                                class="w-24 h-24 md:w-32 md:h-32">
+                            <p class="text-lg lg:text-xl text-center mx-4 sm:mx-0 max-w-xs">
+                                Getting a fast-tracked will
+                            </p>
+                        </div>
+                    </li>
+
+                    <li class="flex justify-center items-center w-full sm:w-[calc(50%-1rem)] lg:w-auto">
+                        <div class="flex flex-col justify-center items-center gap-4 md:gap-8">
+                            <img src="https://a.storyblok.com/f/309177/x/5afd42ca1b/twopages.avif" alt="Two pages"
+                                class="w-24 h-24 md:w-32 md:h-32">
+                            <p class="text-lg lg:text-xl text-center mx-4 sm:mx-0 max-w-xs">
+                                Writing a mirror will
+                            </p>
+                        </div>
+                    </li>
+
+                    <li class="flex justify-center items-center w-full sm:w-[calc(50%-1rem)] lg:w-auto">
+                        <div class="flex flex-col justify-center items-center gap-4 md:gap-8">
+                            <img src="https://a.storyblok.com/f/309177/x/7330913b9e/closedsafe.avif" alt="Closed safe"
+                                class="w-24 h-24 md:w-32 md:h-32">
+                            <p class="text-lg lg:text-xl text-center mx-4 sm:mx-0 max-w-xs">
+                                Our will storage and update service
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </section>
+
+    <section class="bg-gradient-to-b from-[#EDE6D9] via-[#F8F6F0] to-white">
+        <div class="container mx-auto px-6 py-16">
+            <div class="mx-auto max-w-5xl">
+                <div data-animate="" data-animate-direction="up"
+                    class="grid gap-10 md:grid-cols-2 items-center rounded-[36px] md:p-10">
+                    <div class="relative">
+                        <div
+                            class="absolute -inset-2 rounded-[40px] bg-gradient-to-tr from-lilac/70 via-white to-[#ffe8d6]/70 blur-xl opacity-70">
+                        </div>
+                        <img class="relative w-full h-[280px] md:h-[420px] object-cover rounded-[28px]"
+                            src="https://a.storyblok.com/f/309177/718x1000/f544cb2f60/sam-mum.jpg" alt="Team moment">
+                    </div>
+
+                    <div>
+                        <h2 class="font-display text-2xl md:text-4xl text-ink">
+                            Our job is to bring care to life.
+                        </h2>
+
+                        <div class="mt-5 space-y-4 text-slate-700 leading-relaxed text-sm md:text-base">
+                            <p>
+                                At Horizon Wills, we work on meaningful, sensitive moments with real people.
+                                That means we move thoughtfully, communicate clearly, and obsess over details.
+                            </p>
+                            <p>
+                                We're a team that values kindness, craft, and ownership.
+                                If you enjoy building products and services that genuinely help—this is your place.
+                            </p>
+                        </div>
+
+                        <div class="mt-6">
+                            <a href="#perks"
+                                class="inline-flex items-center gap-2 text-sm font-sans font-semibold text-ink hover:opacity-80 transition">
+                                <span>Explore perks &amp; benefits</span>
+                                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M3 10a.75.75 0 01.75-.75h9.69l-3.22-3.22a.75.75 0 111.06-1.06l4.5 4.5a.75.75 0 010 1.06l-4.5 4.5a.75.75 0 11-1.06-1.06l3.22-3.22H3.75A.75.75 0 013 10z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-section py-24 bg-[#160535]">
+        <div class="max-w-7xl mx-auto px-7 text-center text-white space-y-10">
+            <div class="space-y-4">
+                <h2 class="text-3xl md:text-4xl font-light">These people are talking about death and creating their
+                    legacy.</h2>
+                <p class="text-lg text-primary-50/80">Join the conversation. Read what they have to say.</p>
+            </div>
+            <div class="relative">
+                <button type="button"
+                    class="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full border border-white/20 text-primary-50/70 hover:bg-white/10"
+                    data-slider="reviews" data-direction="prev">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6"></path>
+                    </svg>
+                </button>
+                <button type="button"
+                    class="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full border border-white/20 text-primary-50/70 hover:bg-white/10"
+                    data-slider="reviews" data-direction="next">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"></path>
+                    </svg>
+                </button>
+                <div class="overflow-x-auto pb-6 scrollbar-hide" id="reviews-slider">
+                    <div class="flex gap-4 min-w-[900px] snap-x snap-mandatory">
+                        <div
+                            class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
+                            <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
+                                <span class="flex gap-1">★ ★ ★ ★ ★</span>
+                                <span>Invited</span>
+                            </div>
+                            <h3 class="mt-4 text-sm font-semibold text-white">Chris was so easy to talk to</h3>
+                            <p class="text-xs text-primary-50/70 mt-2">Chris was so easy to talk to and he listened
+                                and addressed our concerns very personal.</p>
+                            <p class="text-[11px] text-primary-100/60 mt-3">Mark Hirst • 18 hours ago</p>
+                        </div>
+                        <div
+                            class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
+                            <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
+                                <span class="flex gap-1">★ ★ ★ ★ ★</span>
+                                <span>Invited</span>
+                            </div>
+                            <h3 class="mt-4 text-sm font-semibold text-white">Legacy issues</h3>
+                            <p class="text-xs text-primary-50/70 mt-2">Impressed by the way the consultant dug
+                                deeply into the issues with me.</p>
+                            <p class="text-[11px] text-primary-100/60 mt-3">P. Murray • 10 hours ago</p>
+                        </div>
+                        <div
+                            class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
+                            <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
+                                <span class="flex gap-1">★ ★ ★ ★ ★</span>
+                                <span>Invited</span>
+                            </div>
+                            <h3 class="mt-4 text-sm font-semibold text-white">Knowledgeable and attentive</h3>
+                            <p class="text-xs text-primary-50/70 mt-2">Very attentive and pleasant advisor who
+                                listened and was skilful for my will.</p>
+                            <p class="text-[11px] text-primary-100/60 mt-3">B. H • 15 hours ago</p>
+                        </div>
+                        <div
+                            class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
+                            <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
+                                <span class="flex gap-1">★ ★ ★ ★ ★</span>
+                                <span>Invited</span>
+                            </div>
+                            <h3 class="mt-4 text-sm font-semibold text-white">Very informative review</h3>
+                            <p class="text-xs text-primary-50/70 mt-2">We had a very informative review of our
+                                estate planning needs following the creation.</p>
+                            <p class="text-[11px] text-primary-100/60 mt-3">Andrew Hutchinson • 18 hours ago</p>
+                        </div>
+                        <div
+                            class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
+                            <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
+                                <span class="flex gap-1">★ ★ ★ ★ ★</span>
+                                <span>Invited</span>
+                            </div>
+                            <h3 class="mt-4 text-sm font-semibold text-white">Seamless process</h3>
+                            <p class="text-xs text-primary-50/70 mt-2">Seamless process to date from enquiry through
+                                identification of most suitable type.</p>
+                            <p class="text-[11px] text-primary-100/60 mt-3">Stuart Trower • 18 hours ago</p>
+                        </div>
+                        <div
+                            class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
+                            <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
+                                <span class="flex gap-1">★ ★ ★ ★ ★</span>
+                                <span>Invited</span>
+                            </div>
+                            <h3 class="mt-4 text-sm font-semibold text-white">Kind, clear guidance</h3>
+                            <p class="text-xs text-primary-50/70 mt-2">Guidance was kind, clear, and made complex
+                                paperwork easy to sign off.</p>
+                            <p class="text-[11px] text-primary-100/60 mt-3">Rebecca L • 1 day ago</p>
+                        </div>
+                        <div
+                            class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
+                            <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
+                                <span class="flex gap-1">★ ★ ★ ★ ★</span>
+                                <span>Invited</span>
+                            </div>
+                            <h3 class="mt-4 text-sm font-semibold text-white">Handled every detail</h3>
+                            <p class="text-xs text-primary-50/70 mt-2">They handled every detail for our family,
+                                leaving us free to focus on each other.</p>
+                            <p class="text-[11px] text-primary-100/60 mt-3">Omar K • 2 days ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-xs text-primary-50/70">
+                Rated 4.6 / 5 based on 1,521 reviews. Showing our 4 &amp; 5 star reviews. <span
+                    class="font-semibold">Trustpilot</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <svg class="w-12 h-12" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="25" r="12" stroke="currentColor" stroke-width="3" fill="none" />
+                            <path d="M15 40 Q50 20, 85 40" stroke="currentColor" stroke-width="3" fill="none"
+                                stroke-linecap="round" />
+                        </svg>
+                        <div>
+                            <div class="text-xl font-sans font-bold tracking-wider">HORIZON WILLS</div>
+                            <div class="text-xs text-slate-200 tracking-widest">PROTECTING YOUR ASSETS</div>
+                        </div>
+                    </div>
+                    <p class="text-slate-200 text-sm leading-relaxed">
+                        Professional will writing and estate planning services to secure your family's future.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-sans font-semibold text-lg mb-4">Services</h4>
+                    <ul class="space-y-2 text-slate-200">
+                        <li><a href="#" class="hover:text-white transition-colors">Will Writing</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Estate Planning</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Power of Attorney</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Probate Services</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-sans font-semibold text-lg mb-4">Resources</h4>
+                    <ul class="space-y-2 text-slate-200">
+                        <li><a href="#" class="hover:text-white transition-colors">FAQs</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Guides</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Support</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-sans font-semibold text-lg mb-4">Company</h4>
+                    <ul class="space-y-2 text-slate-200">
+                        <li><a href="horizon-wills.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="careere.html" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Reviews</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-8 mt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <p class="text-slate-300 text-sm">
+                        &copy; 2026 Horizon Wills. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6 text-sm text-slate-300">
+                        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                        <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const animatedElements = document.querySelectorAll('[data-animate]');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        const delay = element.getAttribute('data-animate-delay') || '0s';
+
+                        // Set CSS custom property for delay
+                        element.style.setProperty('--delay', delay);
+
+                        // Force reflow to ensure transition works properly
+                        void element.offsetWidth;
+
+                        // Add the animate-in class
+                        element.classList.add('animate-in');
+
+                        // Stop observing this element
+                        observer.unobserve(element);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '50px'
+            });
+
+            // Observe all elements with data-animate attribute
+            animatedElements.forEach(el => observer.observe(el));
+
+            // Simple slider functionality for reviews
+            const reviewsSlider = document.getElementById('reviews-slider');
+            const prevBtn = document.querySelector('[data-slider="reviews"][data-direction="prev"]');
+            const nextBtn = document.querySelector('[data-slider="reviews"][data-direction="next"]');
+
+            if (reviewsSlider && prevBtn && nextBtn) {
+                const scrollAmount = 250;
+
+                prevBtn.addEventListener('click', () => {
+                    reviewsSlider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    reviewsSlider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+            }
+
+            // Debug logging
+            console.log(`Found ${animatedElements.length} animated elements`);
+        });
+    </script>
+
+</body>
+
+</html>

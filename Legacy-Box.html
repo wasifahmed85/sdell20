@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizon Wills - Protecting Your Assets and Securing Your Future</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Add FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600;700&family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#e6f0f5',
+                            100: '#cce1eb',
+                            200: '#99c3d7',
+                            300: '#66a5c3',
+                            400: '#3387af',
+                            500: '#00699b',
+                            600: '#00547c',
+                            700: '#003f5d',
+                            800: '#002a3e',
+                            900: '#00151f',
+                        },
+                        slate: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334e68',
+                            800: '#243b53',
+                            900: '#1e293b',
+                        },
+                        accent: {
+                            pink: '#ec4899',
+                            blue: '#3b82f6',
+                            yellow: '#fbbf24',
+                            green: '#10b981',
+                            purple: '#8b5cf6',
+                        },
+                        cream: '#f8f6f0',
+                        sand: '#e8e4d9',
+                        lilac: '#c8b6ff',
+                        ink: '#1a1a2e',
+                    },
+                    fontFamily: {
+                        'serif': ['Cormorant Garamond', 'Georgia', 'serif'],
+                        'body': ['Lora', 'Georgia', 'serif'],
+                        'display': ['Crimson Text', 'Georgia', 'serif'],
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'fade-in-delay': 'fadeIn 0.8s ease-out 0.2s both',
+                        'fade-in-delay-2': 'fadeIn 0.8s ease-out 0.4s both',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 9999px;
+            background-color: #E3D8BE;
+            color: #000;
+            font-weight: bold;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 640px) {
+            .number {
+                width: 3rem;
+                height: 3rem;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .number {
+                width: 3.5rem;
+                height: 3.5rem;
+                font-size: 1.75rem;
+            }
+        }
+
+        body {
+            font-family: 'Lora', Georgia, serif;
+            background-color: #f8f6f0;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f8f6f0;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334e68;
+            border-radius: 4px;
+        }
+
+        /* Image hover effect */
+        .image-card {
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .image-card img {
+            transition: transform 0.6s ease;
+        }
+
+        .image-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Feature card hover */
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Scrollbar hide for review slider */
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Pricing card styling */
+        .pricing-card {
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Quote section background */
+        .quote-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        /* ANIMATION FIXES - CORRECTED & SIMPLIFIED */
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+        }
+
+        .animate-up {
+            transform: translateY(30px);
+        }
+
+        .animate-up.animated {
+            transform: translateY(0);
+        }
+
+        .animate-down {
+            transform: translateY(-30px);
+        }
+
+        .animate-down.animated {
+            transform: translateY(0);
+        }
+
+        .animate-left {
+            transform: translateX(40px);
+        }
+
+        .animate-left.animated {
+            transform: translateX(0);
+        }
+
+        .animate-right {
+            transform: translateX(-40px);
+        }
+
+        .animate-right.animated {
+            transform: translateX(0);
+        }
+
+        /* Direct animation classes for immediate use */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Ensure smooth transitions for Alpine.js */
+        [x-transition] {
+            overflow: hidden;
+        }
+
+        /* Navigation dropdown fixes */
+        .relative.group .absolute {
+            z-index: 1000;
+        }
+
+        .about-dropdown-item a {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 8px 12px;
+        }
+
+        /* Custom animation delays */
+        .delay-100 {
+            animation-delay: 100ms !important;
+        }
+
+        .delay-200 {
+            animation-delay: 200ms !important;
+        }
+
+        .delay-300 {
+            animation-delay: 300ms !important;
+        }
+
+        .delay-400 {
+            animation-delay: 400ms !important;
+        }
+
+        .delay-500 {
+            animation-delay: 500ms !important;
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+    <header class="sticky top-0 z-50">
+        <!-- Navigation -->
+        <nav class="  w-full bg-slate-800 text-white z-50 shadow-lg" x-data="{ mobileMenuOpen: false }">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <!-- Logo -->
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <svg class="w-12 h-12" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="25" r="12" stroke="currentColor" stroke-width="3" fill="none" />
+                            <path d="M15 40 Q50 20, 85 40" stroke="currentColor" stroke-width="3" fill="none"
+                                stroke-linecap="round" />
+                        </svg>
+                        <div>
+                            <div class="text-2xl font-sans font-bold tracking-wider">HORIZON WILLS</div>
+                            <div class="text-xs text-slate-300 tracking-widest">PROTECTING YOUR ASSETS</div>
+                        </div>
+                    </a>
+
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex items-center space-x-8">
+                        <div class="relative group">
+                            <button
+                                class="flex items-center gap-2 font-sans tracking-wide text-sm  text-slate-100/90 hover:text-primary-500 transition-colors">
+                                <span>About Us</span>
+                                <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180"
+                                    fill="none" viewBox="0 0 12 12" stroke="currentColor">
+                                    <path d="M3 4l3 3 3-3" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </button>
+
+                            <div
+                                class="absolute left-1/2 -translate-x-1/2 top-full mt-4 opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-all duration-200">
+                                <div
+                                    class="flex w-[420px] bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white rounded-3xl shadow-2xl border border-white/10 overflow-hidden ring-1 ring-primary-500/40">
+                                    <div class="w-1/2 bg-primary-900/60 p-4 space-y-5">
+                                        <p class="text-xs uppercase tracking-[0.3em] text-primary-100 font-semibold">
+                                            About
+                                            us
+                                        </p>
+                                        <ul class="space-y-3 text-sm text-primary-100">
+                                            <li
+                                                class="group rounded-xl transition-colors duration-200 hover:bg-white/10 about-dropdown-item">
+                                                <a href="horizon-wills.html"
+                                                    class="flex items-center gap-3 px-2 py-2 text-white">
+                                                    <div
+                                                        class="w-8 h-8 rounded-2xl bg-white/10 border border-white/30 shadow flex items-center justify-center text-white">
+                                                        <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path
+                                                                d="M9 4a1 1 0 112 0v2h2a1 1 0 110 2h-2v2h2a1 1 0 110 2h-2v2a1 1 0 11-2 0v-2h-2a1 1 0 110-2h2V8H7a1 1 0 110-2h2V4z" />
+                                                        </svg>
+                                                    </div>
+                                                    <span
+                                                        class="font-semibold text-sm transition-colors duration-200 group-hover:text-white">HORIZON
+                                                        WILLS</span>
+                                                </a>
+                                            </li>
+                                            <li
+                                                class="flex items-center gap-3 group rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-white/10 about-dropdown-item">
+                                                <a href="guides.html" class="flex items-center gap-3  py-2 text-white">
+                                                    <div
+                                                        class="w-8 h-8 rounded-2xl bg-white/10 border border-white/30 shadow flex items-center justify-center text-white">
+                                                        <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path
+                                                                d="M4 3a2 2 0 00-2 2v9a2 2 0 002 2h5v-2H4V9h6v2l4-3-4-3v2H4V5h10V3H4z" />
+                                                        </svg>
+                                                    </div>
+                                                    <span
+                                                        class="font-semibold text-sm transition-colors duration-200 group-hover:text-white">Guides</span>
+                                                </a>
+                                            </li>
+                                            <li
+                                                class="flex items-center gap-3 group rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-white/10 about-dropdown-item">
+                                                <a href="careere.html"
+                                                    class="flex items-center gap-3 py-2 text-white w-full">
+                                                    <div
+                                                        class="w-8 h-8 rounded-2xl bg-white/10 border border-white/30 shadow flex items-center justify-center text-white">
+                                                        <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fill-rule="evenodd"
+                                                                d="M10 3a1 1 0 01.894.553l2 4A1 1 0 0112 9H8a1 1 0 01-.894-1.447l2-4A1 1 0 0110 3zm-4.382 5.447A1 1 0 015.618 9H7v7a1 1 0 002 0v-3h2v3a1 1 0 002 0V9h1.382a1 1 0 00.894-1.447l-2-4a1 1 0 00-1.788 0l-2 4a1 1 0 01-.894.447H5.618z"
+                                                                clip-rule="evenodd" />
+                                                        </svg>
+                                                    </div>
+                                                    <span
+                                                        class="font-semibold text-sm transition-colors duration-200 group-hover:text-white">Careers</span>
+                                                </a>
+                                            </li>
+                                            <li
+                                                class="flex items-center gap-3 group rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-white/10 about-dropdown-item">
+
+                                                <div
+                                                    class="w-8 h-8 rounded-2xl bg-white/10 border border-white/30 shadow flex items-center justify-center text-white">
+                                                    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path d="M2 5a2 2 0 012-2h12a2 2 0 012 2v3l-8 4-8-4V5z" />
+                                                        <path d="M2 10l8 4 8-4v5a2 2 0 01-2 2H4a2 2 0 01-2-2v-5z" />
+                                                    </svg>
+                                                </div>
+                                                <a href="contact.html"
+                                                    class="font-semibold text-sm transition-colors duration-200 group-hover:text-white">Contact
+                                                    Us</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="w-1/2 p-6 flex flex-col justify-between bg-white text-slate-900">
+                                        <div class="space-y-4">
+                                            <div class="flex items-center gap-2 text-primary-700">
+                                                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M12 3v18M5 9l7-6 7 6" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                <span class="font-semibold tracking-wide">Not sure where to
+                                                    start?</span>
+                                            </div>
+                                            <p class="text-sm text-slate-600 leading-relaxed">Take the 1 min quiz to
+                                                discover the right estate plan for you.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative group">
+                            <button
+                                class="flex items-center gap-2 font-sans tracking-wide text-sm text-slate-100/90 hover:text-primary-500 transition-colors">
+                                <span>Plan for Death</span>
+                                <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180"
+                                    fill="none" viewBox="0 0 12 12" stroke="currentColor">
+                                    <path d="M3 4l3 3 3-3" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </button>
+
+                            <div
+                                class="absolute left-1/2 -translate-x-1/2 top-full mt-4 opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-all duration-200">
+                                <div
+                                    class="w-[360px] bg-white rounded-3xl shadow-2xl border border-primary-100 p-6 text-slate-900 ring-1 ring-primary-200/60">
+                                    <p class="text-xs uppercase tracking-[0.3em] text-primary-500 font-semibold mb-4">
+                                        Plan
+                                        for
+                                        Death
+                                    </p>
+                                    <ul class="space-y-3 text-sm">
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
+                                            <div
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M5 20h14M7 20V4l10 3v13" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <a href="/will-writing.html" class="font-semibold text-slate-900">Will
+                                                    Writing</a>
+                                                <p class="text-slate-500 text-xs">Write a will tailored to you</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
+                                            <div
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path
+                                                        d="M12 21s8-4.5 8-10.5S15.5 3 12 6.5C8.5 3 4 4.5 4 10.5S12 21 12 21z"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <a href="life-insurance.html" class="font-semibold text-slate-900">Life
+                                                    Insurance</a>
+                                                <p class="text-slate-500 text-xs">Protection for the 21st century</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
+                                            <div
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M12 12l-5-5m5 5l5-5m-5 5v9" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <a href="lasting-power-of-attorney.html" class="font-semibold text-slate-900">Lasting Power of Attorney</a>
+                                                <p class="text-slate-500 text-xs">Choose who makes decisions for you</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
+                                            <div
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M4 7h16M6 7V5a4 4 0 118 0v2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M8 7V5a4 4 0 0116 0v2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <a href="legacy-box.html" class="font-semibold text-slate-900">Legacy Box</a>
+                                                <p class="text-slate-500 text-xs">Make life easier for loved ones</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative group">
+                            <button
+                                class="flex items-center gap-2 font-sans tracking-wide text-sm text-slate-100/90 hover:text-primary-500 transition-colors">
+                                <span>Get Support After Loss</span>
+                                <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180"
+                                    fill="none" viewBox="0 0 12 12" stroke="currentColor">
+                                    <path d="M3 4l3 3 3-3" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </button>
+
+                            <div
+                                class="absolute left-1/2 -translate-x-1/2 top-full mt-4 opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-all duration-200">
+                                <div
+                                    class="w-[340px] bg-white rounded-3xl shadow-2xl border border-primary-100 p-6 text-slate-900 ring-1 ring-primary-200/60">
+                                    <p class="text-xs uppercase tracking-[0.3em] text-primary-500 font-semibold mb-4">
+                                        Get
+                                        Support
+                                        After Loss
+                                    </p>
+                                    <ul class="space-y-3 text-sm">
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
+                                            <div
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path
+                                                        d="M12 21s-7-4.5-7-10.5a4 4 0 014-4c1.2 0 2.3.6 3 1.5A4 4 0 0115 6.5a4 4 0 014 4C19 16.5 12 21 12 21z"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-slate-900">Bereavement Support Hubs</p>
+                                                <p class="text-slate-500 text-xs">Build a supportive community</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
+                                            <div
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M6 19h12M6 5h12M9 5v14M15 5v14" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-slate-900">Probate</p>
+                                                <p class="text-slate-500 text-xs">Guidance through probate</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex gap-3 group rounded-2xl p-3 hover:bg-primary-50 transition">
+                                            <div
+                                                class="w-10 h-10 rounded-2xl border border-primary-200 flex items-center justify-center text-primary-600">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M4 5h4l2 4h6a2 2 0 012 2v5h-4" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M9 21h6" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-slate-900">Dedicated Concierge</p>
+                                                <p class="text-slate-500 text-xs">Personal support after loss</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button
+                            class="text-pink-400  py-2 transition-all hover:text-primary-100 font-sans font-semibold">
+                            Sign in
+                        </button>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                            <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu -->
+                <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 transform scale-95"
+                    x-transition:enter-end="opacity-100 transform scale-100"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 transform scale-100"
+                    x-transition:leave-end="opacity-0 transform scale-95" class="md:hidden mt-4 pb-4 space-y-4">
+                    <a href="#about" class="block hover:text-primary-300 transition-colors">About Us</a>
+                    <a href="#planning" class="block hover:text-primary-300 transition-colors">Plan for Death</a>
+                    <a href="#support" class="block hover:text-primary-300 transition-colors">Get Support After Loss</a>
+                    <button class="bg-white text-slate-800 px-6 py-2 rounded-full transition-colors w-full">
+                        Take the Quiz
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section: Your legacy, gift wrapped -->
+    <section class=" flex flex-col md:flex-row items-center bg-stone-100">
+        <div class="container mx-auto px-6 py-12 md:py-16">
+            <div class="flex flex-col md:flex-row items-center gap-10 lg:gap-16">
+                <!-- Left column: copy + CTA + Trustpilot -->
+                <div class="flex-1 text-center md:text-left order-2 md:order-1">
+                    <h1 class="text-[#160535] text-6xl font-bold  leading-tight mb-6 font-sans">
+                        Your legacy,<br>
+                        gift wrapped<br>
+                        for the people<br>
+                        you love
+                    </h1>
+                    <p class="text-gray-700 text-lg sm:text-xl leading-relaxed mb-8 max-w-xl">
+                        Gather the essentials—your will, accounts, and policies—alongside the treasures that truly matter: your stories, letters, photos, and wisdom, all in one thoughtful box.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
+                        <a href="#" class="inline-flex items-center justify-center gap-2 bg-[#160535] text-white font-sans font-semibold px-8 py-4 rounded-full hover:bg-indigo-800 transition-colors shadow-lg">
+                            Buy now
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </a>
+                        <div class="flex items-center gap-2 text-gray-800">
+                            <span class="font-sans font-semibold">Excellent</span>
+                            <span class="flex text-green-500" aria-label="5 out of 5 stars">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                            </span>
+                            <span class="font-sans text-gray-700">Trustpilot</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right column: lifestyle image -->
+                <div class="flex-1 w-full max-w-lg order-1 md:order-2">
+                    <div class="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4] ">
+                        <img 
+                            src="assets/img/hero-image-BRj9UBQe.jpg" 
+                            alt="Two generations sharing a legacy box together on a sofa" 
+                            class="w-full h-full object-cover object-center"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Below fold: tagline -->
+    <section class="m-6 rounded-3xl fwig-below-fold bg-[#f0ebe0] py-16 md:py-24" data-testid="fwig-below-fold">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center justify-center text-center max-w-2xl mx-auto">
+                <div class="mb-8 md:mb-10 text-primary-600">
+                    <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 573.78 571.93" class="w-20 h-20 md:w-24 md:h-24 mx-auto" aria-hidden="true">
+                        <g id="Layer_2-2" data-name="Layer_2">
+                            <g>
+                                <path class="fill-current" d="M570.61,323.59c-.29-1.43-.48-2.85-.56-4.3-.88-3.74-1.86-7.45-2.94-11.15-.9-3.07-1.91-6.1-2.89-9.15-.2-.61-.31-1-.4-1.31-2.32-4.56-4.55-8.69-6.49-12.87-9.56-14.15-18.87-27.91-26.06-38.5.47-21.95,6.22-39.38-4.66-55.39,1.56-4.12,4.12-7.98,4.33-12.03.88-14.52.13-29.19,1.48-43.65,1.76-19.32-2.16-37.89-4.6-56.81-2.77-21.08-3.65-42.36-5.81-63.5-.47-4.73-3.04-9.25-5-14.93-6.82,3.99-12.03,7.03-17.43,10.2,0,11.15-.41,21.62,0,32.02,1.28,31.82,2.84,63.57,4.19,95.32.2,5.61-1.69,9.53-9.87,9.12-1.89-17.02-2.5-33.85-5.81-50.19-3.18-15.61-.41-32.56-9.26-47.09-1.35,3.24.34,6.75-.67,8.99-12.03,26.21-4.86,53.51-4.86,80.32,0,4.8,1.22,9.93,3.17,14.39,5.2,12.03,5.47,11.96-6.15,21.41-6.76-28.98-7.16-59.38-20-86.8-9.19.47-10.61,5.47-10.34,11.62.88,18.98,1.42,38.03,3.04,57.01,1.76,20.68,2.23,20.6,13.72,35.2-8.85-1.62-15.95-2.23-22.63-4.26-33.31-10-67.29-10.74-101.55-7.7-6.08.54-12.23,1.69-18.24,1.15-41.89-3.71-77.02,12.09-108.17,37.97-13.65,11.34-25.21,25.19-39.06,39.25-8.72-4.26-17.03.33-22.5,7.43-8.99-.88-16.35-1.62-24.05-2.36-2.23-14.26-4.26-27.83-6.49-41.34-2.64-16.01-6.08-31.89-7.98-47.97-1.15-9.93-.2-20.06-.2-30.2,3.31.47,6.01.81,10,1.28-.61-6.28-1.02-11.48-1.56-17.43,15.27-.94,29.25-6.15,44.39-3.31,6.42,1.22,13.44-1.35,20-.54,16.35,2.02,32.09-3.38,48.58-2.43,10.41.54,21.15,1.02,31.69.67,6.15-.2,12.23-4.66,18.31-7.16-15.2-3.17-29.46-2.91-43.78-3.24-14.53-.34-29.05-1.56-43.58-1.89-8.78-.21-17.36,1.08-21.55,8.58-3.38-2.5-5.61-5.54-8.18-5.81-12.7-1.48-25.47-2.16-38.24-3.37-10.2-1.02-12.84-4.06-13.11-14.66-.07-4.32,0-8.58,0-13.31,6.35-.74,11.35-1.69,16.35-1.82,24.06-.67,48.11-.94,72.16-1.76,13.72-.47,27.77-4.12,41.08-2.23,21.35,2.97,42.03-.54,62.97-2.36,6.95-.61,14.05-3.72,20.74-2.77,6.82.95,12.97,2.36,20.27,2.1,13.51-.47,26.62-3.92,40.4-3.18,20.06,1.08,40.27-.88,60.4-2.09,2.91-.21,5.61-3.38,9.87-6.08-37.02-10.13-84.93-8.79-101.35,1.08-5.4-1.62-9.19-3.38-13.11-3.72-5.54-.4-11.14.41-16.69.41-15.13,0-30.6-2.3-45.34,0-33.72,5.27-67.09.95-100.67-.34-11.62-.47-23.38,1.29-35.07,1.96-16.08.94-32.16,1.89-47.23-5.68,5.2-13.85,5.27-13.71,17.03-13.85,12.84-.2,25.61-1.01,38.45-.81,19.79.34,38.98-10.27,59.18-3.11,1.89.67,4.4-.47,6.62-.74,13.04-1.69,26.15-3.11,39.12-5.14,11.42-1.76,22.5-5,34.39-5.2,5.2-.07,9.73-3.25,16.28-.54,6.76,2.77,13.04-.88,13.11-9.93,0-.27,1.76-.47,3.04-.74,1.56,3.85,3.11,7.77,4.53,11.22,32.16-.75,63.38-1.08,94.53-2.3,19.46-.75,38.85-2.36,58.18-4.4,4.52-.47,8.71-4.12,13.04-6.28-.41-1.28-.88-2.57-1.28-3.85-3.65,0-7.3-.07-10.95,0-17.7.33-35.4,1.28-53.11.94-27.1-.47-54.32-.88-81.28-3.24-23.72-2.1-47.03,6.49-70.74,1.35-2.57-.54-5.54.67-8.31,1.02-12.03,1.35-24.12,3.85-36.14,3.71-12.03-.13-22.64,5.27-35.54,3.85-23.18-2.63-46.96-1.08-70.33.75-13.38,1.08-28.31-.27-39.53,10.4,1.35,12.63,2.63,24.73,3.92,36.75-11.62,1.89-16.42,8.65-14.6,21.35,2.97,21.01,6.42,41.96,9.8,62.89,1.68,10.48-1.08,16.69-10.21,22.09-3.31,1.96-7.3,3.78-9.39,6.75-14.8,21.08-29.6,42.22-43.44,63.98-3.79,5.88-8.99,12.97-3.38,20.88-5.2,2.9-9.93,5.61-16.62,9.39,18.1,21.33,15.92,45.77,17.33,70.07.55,2.26.86,4.57.82,6.91-.01.56-.1,1.12-.12,1.69.13,1.23.26,2.46.42,3.69-.24.08-.47.16-.7.25-.09,1.07-.21,2.14-.31,3.21,1.64,10.52,3.51,21.34,3.22,31.85,3.82,7.16,5.07,13.91,2.67,21.71-2.09,6.75-1.08,13.52,7.16,15.74-2.63,4.73-6.15,8.31-6.42,12.09-.94,12.09-.88,24.26-.61,36.35.07,2.29,2.3,5.13,4.33,6.69,2.63,1.96,6.01,2.9,9.05,4.26-1.89,1.01-3.78,2.02-5.68,3.04-1.35,5.54-4.46,11.35-3.58,16.48,1.36,8.1,8.04,7.84,14.66,5.54,1.82-.61,4.12.07,6.15.34,9.67,1.28,19.33,3.37,28.99,3.85,15,.67,30-.13,44.93.41,24.05.81,48.1,2.09,72.16,3.51,4.26.27,8.79,1.55,12.5,3.65,6.35,3.58,12.57,7.63,18.17,12.29,27.3,22.83,59.67,33.44,94.19,35.8,27.23,1.9,54.86.68,82.23-1.28,25.34-1.76,48.45-11.28,69.87-25.4,27.56-18.17,49.52-41.68,68.38-68.3,15.67-22.23,26.96-46.61,30.4-74.04,2.97-23.91,5.74-47.83,1.15-72.01-.49-2.62-.74-4.68-.73-6.36ZM86.35,184.22v-.07c2.36,12.3,3.58,22.16,6.22,31.55,2.7,9.52,3.17,18.44,1.08,28.31-1.22,5.94,2.1,12.83,3.72,21-25.07,3.51-48.85.54-75.41-2.02,18.58-29.66,41.42-52.62,64.39-78.77ZM138.38,498.23c-12.17-.13-24.32-.74-36.35-.81-14.86-.07-28.65,3.92-42.98,5.2-8.24.74-14.05-.67-20.14-7.23,4.33-6.89,11.62-14.46.88-22.23-.74-.54-.95-3.31-.34-4.32,7.98-12.77,2.77-25.81,1.36-38.84-1.15-10.2-.88-20.6-1.22-30.95-.07-1.68.74-3.51.27-5-7.36-23.37-3.45-48.44-10.94-72.01-3.45-10.81-2.97-22.83-4.6-36.88,17.7-.81,34.19-2.3,50.61-2.16,24.46.27,47.77-5.47,70.88-12.5,5.47-1.68,10-6.15,14.93-9.25.95.88,2.57,1.89,2.43,2.23-4.59,10.94-8.24,22.43-14.26,32.56-11.68,19.66-18.65,41.01-21.01,63.23-1.28,11.62,3.17,24.12,6.42,35.8,5.67,20.47,10.81,41.34,19.12,60.8,6.08,14.12,16.82,26.21,25.47,39.25.85,1.31,1.63,2.6,1.98,3.11-14.04,0-28.28.13-42.52,0ZM427.89,378.11c-4.12,13.72-7.63,27.29-13.78,40.4-7.5,16.01-19.59,26.08-36.01,29.18-35,6.69-66.96,3.45-94.05-25.06-14.94-15.67-16.49-33.51-18.52-52.02-.61-5.87,2.91-13.17,6.69-18.31,11.35-15.33,19.86-32.02,27.7-49.25,6.49-14.38,31.62-28.17,49.32-25.67,16.08,2.23,31.42,6.49,44.33,18.17,6.49,5.81,16.48,7.77,28.91,13.17l.07-.07c5.2,21.08,12.97,44.05,5.34,69.45ZM515.46,228.41c-20.41-11.96-36.89-23.44-54.53-36.14h.07c10.34-2.57,37.77-18.24,42.36-25.4,3.85-6.08,8.31-6.62,15.41-5.54-1.08,21.07-2.09,42.22-3.31,67.08Z"/>
+                                <path class="fill-current" d="M285.67,111.67h34.86c-2.43,7.77-8.99,10.27-14.39,7.16-6.28-3.51-15.07,8.38-20.47-7.16Z"/>
+                                <path class="fill-current" d="M382.08,108.29c-5.06,1.83-10.13,3.72-15.13,5.54,2.7-9.53,9.25-7.3,15.13-5.54Z"/>
+                                <path class="fill-current" d="M330.19,109.24h19.86c-5.5,5-12.12,5-19.86,0Z"/>
+                                <path class="fill-current" d="M341.88,371.43c-1.69-2.64-3.45-5.27-6.01-9.33,3.92-.67,6.69-1.15,11.82-2.02-2.83,5.4-4.52,8.58-6.21,11.82l.47-.47h-.07Z"/>
+                                <path class="fill-current" d="M341.48,371.83c2.37,1.08,4.73,2.23,7.09,3.31-1.08,1.08-2.1,2.16-3.18,3.17-1.15-2.3-2.29-4.66-3.51-6.96l-.47.47h.07Z"/>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                <p class="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-ink leading-tight tracking-tight">
+                    Give the people you love the tools to take on the world without you.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's in the box? -->
+    <section class="bg-cream py-16 md:py-24">
+        <div class="container mx-auto px-6 max-w-8xl">
+            <!-- Heading + intro (full width at top) -->
+            <div class="mb-12 lg:mb-16">
+                <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-ink tracking-tight">
+                    What's in the box?
+                </h2>
+                <p class="mt-4 text-slate-600 text-base lg:text-xl leading-relaxed max-w-3xl">
+                    When most people think about what they'll leave behind they think of the practical stuff—money, a plan for the house, life insurance. But why stop there? This box is your invitation to give something much more valuable to the people you love.
+                </p>
+            </div>
+
+            <!-- Two columns: features list (left) + product images (right) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+                <!-- Left column: features list -->
+                <dl class="space-y-0">
+                    <div class="border-t border-slate-200 pt-4 first:border-t-0 first:pt-0">
+                        <dt class="font-sans font-bold text-ink text-lg">Share your plans for the future</dt>
+                        <dd class="mt-3 text-slate-600 leading-relaxed">There's space to include your will, accounts, and insurance in one easy-to-find place.</dd>
+                    </div>
+                    <div class="border-t border-slate-200 pt-4">
+                        <dt class="font-sans font-bold text-ink text-lg">Get creative</dt>
+                        <dd class="mt-3 text-slate-600 leading-relaxed">Use this box as a springboard to share what makes you you.</dd>
+                    </div>
+                    <div class="border-t border-slate-200 pt-4">
+                        <dt class="font-sans font-bold text-ink text-lg">Connect with conversation cards</dt>
+                        <dd class="mt-3 text-slate-600 leading-relaxed">Use our card game to get to know the people you love even better and spark conversations worth having.</dd>
+                    </div>
+                    <div class="border-t border-slate-200 pt-4">
+                        <dt class="font-sans font-bold text-ink text-lg">Share the things that really matter</dt>
+                        <dd class="mt-3 text-slate-600 leading-relaxed">Your hard earned advice and wisdom, your much-loved recipes, your funeral wishes, letters, memories and photos.</dd>
+                    </div>
+                    <div class="border-t border-slate-200 pt-4">
+                        <dt class="font-sans font-bold text-ink text-lg">Share voice messages</dt>
+                        <dd class="mt-3 text-slate-600 leading-relaxed">Use this dictaphone to leave messages, share stories, and voice the things you don't say enough.</dd>
+                    </div>
+                    <div class="border-t border-slate-200 pt-4">
+                        <dt class="font-sans font-bold text-ink text-lg">Share the soundtrack of your life</dt>
+                        <dd class="mt-3 text-slate-600 leading-relaxed">Note down the songs that have accompanied you through the highs and lows of life.</dd>
+                    </div>
+                </dl>
+
+                <!-- Right column: 2x2 product images -->
+                <div class="grid grid-cols-2 gap-4 sm:gap-6 w-full">
+                    <div class="rounded-lg overflow-hidden bg-slate-100 aspect-square">
+                        <img src="https://octopuslegacy.com/build/assets/product-unboxed-DvqJqwl3.avif" alt="Legacy Box Unboxed" class="w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="rounded-lg overflow-hidden bg-slate-100 aspect-square">
+                        <img src="https://octopuslegacy.com/build/assets/product-image-BdI3Bsa0.avif" alt="Legacy Box" class="w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="rounded-lg overflow-hidden bg-slate-100 aspect-square">
+                        <img src="https://octopuslegacy.com/build/assets/product-card-B1qbkrGU.avif" alt="Legacy Card" class="w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="rounded-lg overflow-hidden bg-slate-100 aspect-square">
+                        <img src="https://octopuslegacy.com/build/assets/product-photos-hSbjogEz.avif" alt="Legacy Photos" class="w-full h-full object-cover" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works bg-[#e9f4fb] py-16 md:py-24">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <!-- Header + description -->
+            <div class="flex flex-col gap-3 mb-12 lg:mb-16 text-center max-w-2xl mx-auto">
+                <h2 class="how-it-works__header font-display text-2xl sm:text-3xl lg:text-4xl font-semibold text-ink tracking-tight" data-testid="fwig-how-it-works-header">
+                    How it works
+                </h2>
+                <p class="how-it-works__description text-slate-600 text-lg lg:text-xl leading-relaxed" data-testid="fwig-how-it-works-description">
+                    We're bringing planning back to life with this easy to use and fun to navigate box.
+                </p>
+            </div>
+
+            <!-- Three steps -->
+            <div class="how-it-works__container grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8" data-testid="fwig-how-it-works-container">
+                <div class="how-it-works__card bg-white rounded-2xl border border-slate-200 p-6 lg:p-8 shadow-sm hover:shadow-md transition-shadow">
+                    <b class="block font-sans font-bold text-ink text-lg mb-3">1. Place your order</b>
+                    <p class="text-slate-600 leading-relaxed">The box can be delivered directly to you, or it can be sent as a gift to someone you love.</p>
+                </div>
+                <div class="how-it-works__card bg-white rounded-2xl border border-slate-200 p-6 lg:p-8 shadow-sm hover:shadow-md transition-shadow">
+                    <b class="block font-sans font-bold text-ink text-lg mb-3">2. Fill the box with your plans</b>
+                    <p class="text-slate-600 leading-relaxed">Store your will, insurance documents and account information, all in one safe space. This small but mighty act makes life easier for the people you leave behind—creating space for them to focus on what matters.</p>
+                </div>
+                <div class="how-it-works__card bg-white rounded-2xl border border-slate-200 p-6 lg:p-8 shadow-sm hover:shadow-md transition-shadow">
+                    <b class="block font-sans font-bold text-ink text-lg mb-3">3. Share more than just money</b>
+                    <p class="text-slate-600 leading-relaxed">This is your invitation to share something much more valuable. Share photos, memories, advice, wishes, letters and much more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What our customers are saying -->
+    <section class="flex flex-col justify-center items-center gap-y-12 xl:gap-y-16 py-20 lg:py-28 xl:py-36 px-5 sm:px-6 mt-2 sm:mt-3 rounded-2xl mx-4 sm:mx-6 bg-[#f0ebe0]">
+        <h1 class="text-4xl md:text-4xl xl:text-5xl font-bold text-center text-ink mb-2">
+            What our customers are saying
+        </h1>
+
+        <div class="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12">
+            <!-- Column 1: image, Fabienne card, image -->
+            <div class="flex flex-col gap-6">
+                <img class="rounded-2xl object-cover w-full aspect-[4/3]" src="https://octopuslegacy.com/build/assets/product-cards-with-notes-DfluTXNB.avif" alt="Legacy Box cards with notes" loading="lazy">
+                <div class="bg-white shadow-xl rounded-xl p-6 lg:p-10">
+                    <div class="flex flex-wrap gap-0.5 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 25 24" fill="#7457E8"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.7914 3.46044C13.4061 2.53402 12.0938 2.53402 11.7084 3.46044L9.51148 8.74256L3.80899 9.19973C2.80884 9.27991 2.40329 10.528 3.1653 11.1808L7.51 14.9025L6.18262 20.4672C5.94982 21.4431 7.01155 22.2145 7.86781 21.6915L12.7499 18.7095L17.6321 21.6915C18.4883 22.2145 19.5501 21.4431 19.3173 20.4672L17.9899 14.9025L22.3346 11.1808C23.0966 10.528 22.691 9.27991 21.6909 9.19973L15.9884 8.74256L13.7914 3.46044Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 25 24" fill="#7457E8"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.7914 3.46044C13.4061 2.53402 12.0938 2.53402 11.7084 3.46044L9.51148 8.74256L3.80899 9.19973C2.80884 9.27991 2.40329 10.528 3.1653 11.1808L7.51 14.9025L6.18262 20.4672C5.94982 21.4431 7.01155 22.2145 7.86781 21.6915L12.7499 18.7095L17.6321 21.6915C18.4883 22.2145 19.5501 21.4431 19.3173 20.4672L17.9899 14.9025L22.3346 11.1808C23.0966 10.528 22.691 9.27991 21.6909 9.19973L15.9884 8.74256L13.7914 3.46044Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 25 24" fill="#7457E8"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.7914 3.46044C13.4061 2.53402 12.0938 2.53402 11.7084 3.46044L9.51148 8.74256L3.80899 9.19973C2.80884 9.27991 2.40329 10.528 3.1653 11.1808L7.51 14.9025L6.18262 20.4672C5.94982 21.4431 7.01155 22.2145 7.86781 21.6915L12.7499 18.7095L17.6321 21.6915C18.4883 22.2145 19.5501 21.4431 19.3173 20.4672L17.9899 14.9025L22.3346 11.1808C23.0966 10.528 22.691 9.27991 21.6909 9.19973L15.9884 8.74256L13.7914 3.46044Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 25 24" fill="#7457E8"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.7914 3.46044C13.4061 2.53402 12.0938 2.53402 11.7084 3.46044L9.51148 8.74256L3.80899 9.19973C2.80884 9.27991 2.40329 10.528 3.1653 11.1808L7.51 14.9025L6.18262 20.4672C5.94982 21.4431 7.01155 22.2145 7.86781 21.6915L12.7499 18.7095L17.6321 21.6915C18.4883 22.2145 19.5501 21.4431 19.3173 20.4672L17.9899 14.9025L22.3346 11.1808C23.0966 10.528 22.691 9.27991 21.6909 9.19973L15.9884 8.74256L13.7914 3.46044Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 25 24" fill="#7457E8"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.7914 3.46044C13.4061 2.53402 12.0938 2.53402 11.7084 3.46044L9.51148 8.74256L3.80899 9.19973C2.80884 9.27991 2.40329 10.528 3.1653 11.1808L7.51 14.9025L6.18262 20.4672C5.94982 21.4431 7.01155 22.2145 7.86781 21.6915L12.7499 18.7095L17.6321 21.6915C18.4883 22.2145 19.5501 21.4431 19.3173 20.4672L17.9899 14.9025L22.3346 11.1808C23.0966 10.528 22.691 9.27991 21.6909 9.19973L15.9884 8.74256L13.7914 3.46044Z"/></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-ink mb-5">I wish my mum had prepared a legacy box before she passed away</h2>
+                    <p class="text-slate-600 md:text-lg md:leading-7 font-medium leading-relaxed">We chose the wrong music for her funeral because we only found the music she wanted 2 months later, hidden in a pile of documents. I have no recordings of her voice and no words of advice or wisdom from her for major life events. I would have cherished having those when I gave birth to my children. That's what I miss the most, even now, 10 years later.</p>
+                    <p class="text-ink font-bold leading-6 mt-4">— Fabienne</p>
+                </div>
+                <img class="rounded-2xl object-cover w-full aspect-[4/3]" src="https://octopuslegacy.com/build/assets/product-cards-cmhnQPzA.avif" alt="Legacy cards" loading="lazy">
+            </div>
+
+            <!-- Column 2: Julie card, image, Linda card -->
+            <div class="flex flex-col gap-6">
+                <div class="bg-white shadow-xl rounded-xl p-6 lg:p-10">
+                    <div class="flex flex-wrap gap-0.5 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 25 24" fill="#7457E8"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.7914 3.46044C13.4061 2.53402 12.0938 2.53402 11.7084 3.46044L9.51148 8.74256L3.80899 9.19973C2.80884 9.27991 2.40329 10.528 3.1653 11.1808L7.51 14.9025L6.18262 20.4672C5.94982 21.4431 7.01155 22.2145 7.86781 21.6915L12.7499 18.7095L17.6321 21.6915C18.4883 22.2145 19.5501 21.4431 19.3173 20.4672L17.9899 14.9025L22.3346 11.1808C23.0966 10.528 22.691 9.27991 21.6909 9.19973L15.9884 8.74256L13.7914 3.46044Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 25 24" fill="#7457E8"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.7914 3.46044C13.4061 2.53402 12.0938 2.53402 11.7084 3.46044L9.51148 8.74256L3.80899 9.19973C2.80884 9.27991 2.40329 10.528 3.1653 11.1808L7.51 14.9025L6.18262 20.4672C5.94982 21.4431 7.01155 22.2145 7.86781 21.6915L12.7499 18.7095L17.6321 21.6915C18.4883 22.2145 19.5501 21.4431 19.3173 20.4672L17.9899 14.9025L22.3346 11.1808C23.0966 10.528 22.691 9.27991 21.6909 9.19973L15.9884 8.74256L13.7914 3.46044Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 25 24" fill="#7457E8"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.7914 3.46044C13.4061 2.53402 12.0938 2.53402 11.7084 3.46044L9.51148 8.74256L3.80899 9.19973C2.80884 9.27991 2.40329 10.528 3.1653 11.1808L7.51 14.9025L6.18262 20.4672C5.94982 21.4431 7.01155 22.2145 7.86781 21.6915L12.7499 18.7095L17.6321 21.6915C18.4883 22.2145 19.5501 21.4431 19.3173 20.4672L17.9899 14.9025L22.3346 11.1808C23.0966 10.528 22.691 9.27991 21.6909 9.19973L15.9884 8.74256L13.7914 3.46044Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 25 24" fill="#7457E8"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.7914 3.46044C13.4061 2.53402 12.0938 2.53402 11.7084 3.46044L9.51148 8.74256L3.80899 9.19973C2.80884 9.27991 2.40329 10.528 3.1653 11.1808L7.51 14.9025L6.18262 20.4672C5.94982 21.4431 7.01155 22.2145 7.86781 21.6915L12.7499 18.7095L17.6321 21.6915C18.4883 22.2145 19.5501 21.4431 19.3173 20.4672L17.9899 14.9025L22.3346 11.1808C23.0966 10.528 22.691 9.27991 21.6909 9.19973L15.9884 8.74256L13.7914 3.46044Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 25 24" fill="#7457E8"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.7914 3.46044C13.4061 2.53402 12.0938 2.53402 11.7084 3.46044L9.51148 8.74256L3.80899 9.19973C2.80884 9.27991 2.40329 10.528 3.1653 11.1808L7.51 14.9025L6.18262 20.4672C5.94982 21.4431 7.01155 22.2145 7.86781 21.6915L12.7499 18.7095L17.6321 21.6915C18.4883 22.2145 19.5501 21.4431 19.3173 20.4672L17.9899 14.9025L22.3346 11.1808C23.0966 10.528 22.691 9.27991 21.6909 9.19973L15.9884 8.74256L13.7914 3.46044Z"/></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-ink mb-5">The legacy box is peace of mind wrapped in a bow</h2>
+                    <p class="text-slate-600 md:text-lg md:leading-7 font-medium leading-relaxed">It's a simple, step-by-step guide that takes the guesswork out of what comes next. From legal and financial support to heartfelt messages, it ensures my family has everything they need after I die—practical help, a source of emotional comfort, and a lasting reminder of the love and memories we've shared. I like to plan in life, and in death it's no different.</p>
+                    <p class="text-ink font-bold leading-6 mt-4">— Julie</p>
+                </div>
+                <img class="rounded-2xl object-cover w-full aspect-[4/3]" src="https://octopuslegacy.com/build/assets/dictaphone-NqjRWNCA.avif" alt="Legacy dictaphone" loading="lazy">
+                <div class="bg-white shadow-xl rounded-xl p-6 lg:p-10">
+                    <div class="flex flex-wrap gap-0.5 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 25 24" fill="#7457E8"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.7914 3.46044C13.4061 2.53402 12.0938 2.53402 11.7084 3.46044L9.51148 8.74256L3.80899 9.19973C2.80884 9.27991 2.40329 10.528 3.1653 11.1808L7.51 14.9025L6.18262 20.4672C5.94982 21.4431 7.01155 22.2145 7.86781 21.6915L12.7499 18.7095L17.6321 21.6915C18.4883 22.2145 19.5501 21.4431 19.3173 20.4672L17.9899 14.9025L22.3346 11.1808C23.0966 10.528 22.691 9.27991 21.6909 9.19973L15.9884 8.74256L13.7914 3.46044Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 25 24" fill="#7457E8"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.7914 3.46044C13.4061 2.53402 12.0938 2.53402 11.7084 3.46044L9.51148 8.74256L3.80899 9.19973C2.80884 9.27991 2.40329 10.528 3.1653 11.1808L7.51 14.9025L6.18262 20.4672C5.94982 21.4431 7.01155 22.2145 7.86781 21.6915L12.7499 18.7095L17.6321 21.6915C18.4883 22.2145 19.5501 21.4431 19.3173 20.4672L17.9899 14.9025L22.3346 11.1808C23.0966 10.528 22.691 9.27991 21.6909 9.19973L15.9884 8.74256L13.7914 3.46044Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 25 24" fill="#7457E8"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.7914 3.46044C13.4061 2.53402 12.0938 2.53402 11.7084 3.46044L9.51148 8.74256L3.80899 9.19973C2.80884 9.27991 2.40329 10.528 3.1653 11.1808L7.51 14.9025L6.18262 20.4672C5.94982 21.4431 7.01155 22.2145 7.86781 21.6915L12.7499 18.7095L17.6321 21.6915C18.4883 22.2145 19.5501 21.4431 19.3173 20.4672L17.9899 14.9025L22.3346 11.1808C23.0966 10.528 22.691 9.27991 21.6909 9.19973L15.9884 8.74256L13.7914 3.46044Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 25 24" fill="#7457E8"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.7914 3.46044C13.4061 2.53402 12.0938 2.53402 11.7084 3.46044L9.51148 8.74256L3.80899 9.19973C2.80884 9.27991 2.40329 10.528 3.1653 11.1808L7.51 14.9025L6.18262 20.4672C5.94982 21.4431 7.01155 22.2145 7.86781 21.6915L12.7499 18.7095L17.6321 21.6915C18.4883 22.2145 19.5501 21.4431 19.3173 20.4672L17.9899 14.9025L22.3346 11.1808C23.0966 10.528 22.691 9.27991 21.6909 9.19973L15.9884 8.74256L13.7914 3.46044Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 25 24" fill="#7457E8"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.7914 3.46044C13.4061 2.53402 12.0938 2.53402 11.7084 3.46044L9.51148 8.74256L3.80899 9.19973C2.80884 9.27991 2.40329 10.528 3.1653 11.1808L7.51 14.9025L6.18262 20.4672C5.94982 21.4431 7.01155 22.2145 7.86781 21.6915L12.7499 18.7095L17.6321 21.6915C18.4883 22.2145 19.5501 21.4431 19.3173 20.4672L17.9899 14.9025L22.3346 11.1808C23.0966 10.528 22.691 9.27991 21.6909 9.19973L15.9884 8.74256L13.7914 3.46044Z"/></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-ink mb-5">A way to spark meaningful conversations with loved ones</h2>
+                    <p class="text-slate-600 md:text-lg md:leading-7 font-medium leading-relaxed">I wasn't sure what to expect when my daughter gave me my beautiful Legacy Box, but as we looked through it, I realised how much it helped us reflect on my legacy. From favourite memories, music, and photos to leaving a message for loved ones, it offered meaningful ways to prepare. The thoughtful questions and guidance made it easier to address important matters that aren't always easy to broach with loved ones.</p>
+                    <p class="text-ink font-bold leading-6 mt-4">— Linda</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <svg class="w-12 h-12" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="25" r="12" stroke="currentColor" stroke-width="3" fill="none"></circle>
+                            <path d="M15 40 Q50 20, 85 40" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"></path>
+                        </svg>
+                        <div>
+                            <div class="text-xl font-sans font-bold tracking-wider">HORIZON WILLS</div>
+                            <div class="text-xs text-slate-200 tracking-widest">PROTECTING YOUR ASSETS</div>
+                        </div>
+                    </div>
+                    <p class="text-slate-200 text-sm leading-relaxed">
+                        Professional will writing and estate planning services to secure your family's future.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-sans font-semibold text-lg mb-4">Services</h4>
+                    <ul class="space-y-2 text-slate-200">
+                        <li><a href="#" class="hover:text-white transition-colors">Will Writing</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Estate Planning</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Power of Attorney</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Probate Services</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-sans font-semibold text-lg mb-4">Resources</h4>
+                    <ul class="space-y-2 text-slate-200">
+                        <li><a href="#" class="hover:text-white transition-colors">FAQs</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Guides</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Support</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-sans font-semibold text-lg mb-4">Company</h4>
+                    <ul class="space-y-2 text-slate-200">
+                        <li><a href="horizon-wills.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="careere.html" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Reviews</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-8 mt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <p class="text-slate-300 text-sm">
+                        © 2026 Horizon Wills. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6 text-sm text-slate-300">
+                        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                        <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Animation Script - FIXED & SIMPLIFIED -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Animation script loaded');
+            
+            // Function to handle scroll animations
+            function handleScrollAnimations() {
+                const elements = document.querySelectorAll('.animate-on-scroll');
+                
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementBottom = element.getBoundingClientRect().bottom;
+                    const windowHeight = window.innerHeight;
+                    
+                    // Check if element is in viewport
+                    if (elementTop < windowHeight - 100 && elementBottom > 0) {
+                        element.classList.add('animated');
+                    }
+                });
+            }
+            
+            // Handle immediate animations on page load
+            function handleImmediateAnimations() {
+                // Elements with fade-in classes
+                const fadeElements = document.querySelectorAll('.fade-in, .fade-in-up');
+                fadeElements.forEach(element => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                });
+                
+                // Check for scroll animations on load
+                handleScrollAnimations();
+            }
+            
+            // Initial animations
+            handleImmediateAnimations();
+            
+            // Set up scroll listener
+            window.addEventListener('scroll', handleScrollAnimations);
+            
+            // Set up resize listener to recheck animations
+            window.addEventListener('resize', handleScrollAnimations);
+            
+            // Simple slider functionality for reviews
+            const reviewsSlider = document.getElementById('reviews-slider');
+            const prevBtn = document.querySelector('[data-slider="reviews"][data-direction="prev"]');
+            const nextBtn = document.querySelector('[data-slider="reviews"][data-direction="next"]');
+
+            if (reviewsSlider && prevBtn && nextBtn) {
+                const scrollAmount = 250;
+
+                prevBtn.addEventListener('click', () => {
+                    reviewsSlider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    reviewsSlider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+            }
+            
+            // Trigger animations once more after a short delay to catch any dynamic content
+            setTimeout(handleScrollAnimations, 500);
+        });
+    </script>
+
+</body>
+</html>
