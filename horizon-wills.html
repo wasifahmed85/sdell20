@@ -584,117 +584,73 @@
                 </div>
         </section>
 
-        <!-- Quote Section -->
-        <section class="quote-section py-24">
-            <div class="max-w-7xl mx-auto px-7 text-center text-white space-y-10">
-                <div class="space-y-4">
-                    <h2 class="text-3xl md:text-4xl font-light">These people are talking about death and creating their
-                        legacy.</h2>
-                    <p class="text-lg text-primary-50/80">Join the conversation. Read what they have to say.</p>
-                </div>
-                <div class="relative">
-                    <button type="button"
-                        class="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full border border-white/20 text-primary-50/70 hover:bg-white/10"
-                        data-slider="reviews" data-direction="prev">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6" />
-                        </svg>
-                    </button>
-                    <button type="button"
-                        class="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full border border-white/20 text-primary-50/70 hover:bg-white/10"
-                        data-slider="reviews" data-direction="next">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6" />
-                        </svg>
-                    </button>
-                    <div class="overflow-x-auto pb-6 scrollbar-hide" id="reviews-slider">
-                        <div class="flex gap-4 min-w-[900px] snap-x snap-mandatory">
-                            <div
-                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
-                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
-                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
-                                    <span>Invited</span>
-                                </div>
-                                <h3 class="mt-4 text-sm font-semibold text-white">Chris was so easy to talk to</h3>
-                                <p class="text-xs text-primary-50/70 mt-2">Chris was so easy to talk to and he listened
-                                    and addressed our concerns very personal.</p>
-                                <p class="text-[11px] text-primary-100/60 mt-3">Mark Hirst • 18 hours ago</p>
+        <!-- Testimonials Section -->
+        <section class="relative overflow-hidden py-20 lg:py-28">
+            <!-- Background image -->
+            <div class="absolute inset-0 -z-20 bg-center bg-cover"
+                style="background-image:url('https://heirkinestateplanning.co.uk/wp-content/themes/Heirkin/assets/images/testimonial-bg.png');">
+            </div>
+
+            <!-- Dark overlay (to match screenshot tone) -->
+            <div class="absolute inset-0 -z-10 bg-slate-900/60"></div>
+
+            <div class="mx-auto max-w-7xl px-6">
+                <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+                    <!-- Left content -->
+                    <div class="text-white">
+                        <h2 class="font-sans text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl">
+                            What<br />
+                            people say<br />
+                            about us
+                        </h2>
+
+                        <p class="mt-8 max-w-md text-base leading-7 text-white/80 sm:text-lg">
+                            Hear from our happy customers — real stories of trust, satisfaction, and exceptional service
+                            experiences.
+                        </p>
+                    </div>
+
+                    <!-- Right testimonial card -->
+                    <div class="lg:flex lg:justify-end">
+                        <div
+                            class="w-full max-w-3xl rounded-3xl border border-white/10 bg-black/30 p-8 shadow-2xl backdrop-blur-md sm:p-10">
+                            <!-- Quote icon -->
+                            <div class="mb-6 text-white/70">
+                                <svg width="56" height="56" viewBox="0 0 24 24" fill="currentColor" class="opacity-70">
+                                    <path d="M7.17 6.17A5 5 0 0 1 12 11v7H5v-6.5C5 9.01 5.9 7.12 7.17 6.17z" />
+                                    <path d="M16.17 6.17A5 5 0 0 1 21 11v7h-7v-6.5c0-2.49.9-4.38 2.17-5.33z" />
+                                </svg>
                             </div>
-                            <div
-                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
-                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
-                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
-                                    <span>Invited</span>
-                                </div>
-                                <h3 class="mt-4 text-sm font-semibold text-white">Legacy issues</h3>
-                                <p class="text-xs text-primary-50/70 mt-2">Impressed by the way the consultant dug
-                                    deeply into the issues with me.</p>
-                                <p class="text-[11px] text-primary-100/60 mt-3">P. Murray • 10 hours ago</p>
+
+                            <!-- Testimonial text -->
+                            <p class="text-base leading-8 text-white/85 sm:text-lg">
+                                thought doing my will myself would be simple, but I ended up completely stuck and
+                                worried
+                                I’d make mistakes. Heirkin Estate Planning took over and explained everything clearly
+                                during the home visit. They sorted it all properly and I finally have peace of mind.
+                            </p>
+
+                            <!-- Name -->
+                            <div class="mt-8 font-sans text-base font-semibold text-white">
+                                Samantha S.
                             </div>
-                            <div
-                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
-                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
-                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
-                                    <span>Invited</span>
-                                </div>
-                                <h3 class="mt-4 text-sm font-semibold text-white">Knowledgeable and attentive</h3>
-                                <p class="text-xs text-primary-50/70 mt-2">Very attentive and pleasant advisor who
-                                    listened and was skilful for my will.</p>
-                                <p class="text-[11px] text-primary-100/60 mt-3">B. H • 15 hours ago</p>
-                            </div>
-                            <div
-                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
-                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
-                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
-                                    <span>Invited</span>
-                                </div>
-                                <h3 class="mt-4 text-sm font-semibold text-white">Very informative review</h3>
-                                <p class="text-xs text-primary-50/70 mt-2">We had a very informative review of our
-                                    estate planning needs following the creation.</p>
-                                <p class="text-[11px] text-primary-100/60 mt-3">Andrew Hutchinson • 18 hours ago</p>
-                            </div>
-                            <div
-                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
-                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
-                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
-                                    <span>Invited</span>
-                                </div>
-                                <h3 class="mt-4 text-sm font-semibold text-white">Seamless process</h3>
-                                <p class="text-xs text-primary-50/70 mt-2">Seamless process to date from enquiry through
-                                    identification of most suitable type.</p>
-                                <p class="text-[11px] text-primary-100/60 mt-3">Stuart Trower • 18 hours ago</p>
-                            </div>
-                            <div
-                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
-                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
-                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
-                                    <span>Invited</span>
-                                </div>
-                                <h3 class="mt-4 text-sm font-semibold text-white">Kind, clear guidance</h3>
-                                <p class="text-xs text-primary-50/70 mt-2">Guidance was kind, clear, and made complex
-                                    paperwork easy to sign off.</p>
-                                <p class="text-[11px] text-primary-100/60 mt-3">Rebecca L • 1 day ago</p>
-                            </div>
-                            <div
-                                class="bg-slate-900/90 rounded-xl p-4 text-left border border-white/10 snap-start min-w-[230px]">
-                                <div class="flex items-center gap-2 text-green-400 text-sm font-semibold">
-                                    <span class="flex gap-1">★ ★ ★ ★ ★</span>
-                                    <span>Invited</span>
-                                </div>
-                                <h3 class="mt-4 text-sm font-semibold text-white">Handled every detail</h3>
-                                <p class="text-xs text-primary-50/70 mt-2">They handled every detail for our family,
-                                    leaving us free to focus on each other.</p>
-                                <p class="text-[11px] text-primary-100/60 mt-3">Omar K • 2 days ago</p>
+
+                            <!-- Slider dots (static UI like screenshot) -->
+                            <div class="mt-10 flex items-center justify-center gap-3">
+                                <span class="h-2 w-2 rounded-full bg-white/35"></span>
+                                <span class="h-2 w-2 rounded-full bg-white/35"></span>
+                                <span class="h-2 w-2 rounded-full bg-white/35"></span>
+                                <span class="h-2 w-2 rounded-full bg-white/35"></span>
+                                <span class="h-2 w-2 rounded-full bg-white/35"></span>
+                                <!-- active -->
+                                <span class="h-2 w-10 rounded-full bg-white/80"></span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="text-xs text-primary-50/70">
-                    Rated 4.6 / 5 based on 1,521 reviews. Showing our 4 & 5 star reviews. <span
-                        class="font-semibold">Trustpilot</span>
-                </div>
             </div>
         </section>
+
     </main>
 
     <!-- Footer -->
